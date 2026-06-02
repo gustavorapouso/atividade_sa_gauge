@@ -1,5 +1,5 @@
 # PLANO DE IMPLEMENTAÇÃO
-
+<!--Feito pelo Gustavo Rapouso: fez a introdução na seção 1, falou sobre os integrantes do grupo, um resumo sobre o site que foi feito o mockup, e fez a decisão técnica do que vai ser usado para fazer o site, HTML, CSS e JavaScript.-->
 ## Seção 1 — Identificação e visão geral
 
 Equipe Gauge <br>  
@@ -22,7 +22,7 @@ JavaScript: O JavaScript ele será responsável pela funcionabilidade do sistema
 Bootstrap: Ele ajuda a personalizar mais o site, colocando ícones e criação de layouts. Ele ajuda a não precisar criar interfaces do zero.
 
 
-
+<!--Feito por Davi Felski: ele fez a organização das pastas e arquivos para melhor compreendimento quando for feito os códigos.-->
 ## Seção 2 — Arquitetura de arquivos e pastas
 
 GAUGE/
@@ -69,6 +69,7 @@ docs/
 |-fluxos.md
 |-planejamento.md
 
+<!--Feito por Alice: a partir do mockup percebeu quais os componentes que mais repetiam em que telas eles apareciam e sua variações.-->
 ## Seção 3 - Componentes reutilizáveis identificados
 
 #### Componente:
@@ -124,7 +125,7 @@ docs/
 14. Dados diferentes para cada tipo de trem   
 15. Horários e datas diferentes  
 
-
+<!--Feito por Vitória Jaroczinski: Pensou em qual a lógica que o código deveria ser realizado, para que os dados se encontrassem.-->
 ## Seção 4 — Ordem de implementação
 
 1. Listagem e pesquisa de trens
@@ -144,6 +145,7 @@ Após a autenticação, serão desenvolvidas as telas de Perfil e Usuários, que
 8. Dashboard e menu principal
 Por último serão criados o Dashboard e o Menu Principal. Eles dependem de todas as funcionalidades anteriores, pois exibem informações de várias partes do sistema e serão adaptados para cada tipo de usuário (cliente, gestor ou maquinista).
 
+<!--Feito por Davi Felski: foi feito o fluxo de navegação do passageito, maquinista e gestor.-->
 ## Seção 5 — Fluxos de navegação do usuário
 
 Fluxo 1: Consultar informações de um trem
