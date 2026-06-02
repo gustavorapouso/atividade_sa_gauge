@@ -6,8 +6,8 @@ Equipe Gauge <br>
 Nome dos Integrantes: <br> Gustavo Henrique Rapouso; <br> Alice Lopes Fernandes; <br> Vitória Jaroczinski; <br> Davi Felski de Vargas.
 
 ### Mockup:
-Mobile:https://www.figma.com/design/ZlR3q7Mhq8Aml1ugFxDBSS/Mockup?node-id=0-1&t=Dkwz7SfWT71LABeK-1 <br>
-Desktop:https://www.figma.com/design/SRQWW2NRlSuZTv5nlgNLyQ/Desktop?node-id=0-1&t=p8QBmhttARt9gCcH-1  
+Mobile: https://www.figma.com/design/ZlR3q7Mhq8Aml1ugFxDBSS/Mockup?node-id=0-1&t=Dkwz7SfWT71LABeK-1 <br>
+Desktop: https://www.figma.com/design/SRQWW2NRlSuZTv5nlgNLyQ/Desktop?node-id=0-1&t=p8QBmhttARt9gCcH-1  
 
 
 ### Resumo:
