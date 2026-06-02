@@ -3,7 +3,7 @@
 ## Seção 1 — Identificação e visão geral
 
 Equipe Gauge <br>  
-Nome dos Integrantes: Gustavo Henrique Rapouso, <br> Alice Lopes Fernandes, <br> Vitória Jaroczinski e <br> Davi Felski de Vargas.
+Nome dos Integrantes: <br> Gustavo Henrique Rapouso; <br> Alice Lopes Fernandes; <br> Vitória Jaroczinski; <br> Davi Felski de Vargas.
 
 ### Mockup:
 Mobile:https://www.figma.com/design/ZlR3q7Mhq8Aml1ugFxDBSS/Mockup?node-id=0-1&t=Dkwz7SfWT71LABeK-1 <br>
