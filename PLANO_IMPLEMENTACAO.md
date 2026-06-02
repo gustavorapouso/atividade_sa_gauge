@@ -18,7 +18,7 @@ Decisão técnica do grupo sobre a stack a ser adotada na implementação: HTML,
 ### Decisão Técnica:
 HTML: Utilização para criar as páginas do site, estrutura de forme ordenada, para a criação da área de login, cadastro de sensores e visualização de rotas, relatórios, usuários. O HtML é a estrutura básica do site.
 CSS: Será usado para estilizar o site, deixando proporcional os textos e imagens, chamativo, interface organizada e também para que seja feita uma identidade visual escolhida pela equipe. Sendo o uso puro do CSS.
-JavaScript: O JavaScript ele será responsável pela funcionabilidade do sistema, como a validação de login, eventos quando for precionado um botão, atualização das informações em tempo real, a própria interação com o site (mapas, rotas, menu principal), comunicação entre outros usuários. Ele é o que deixa o site funcional.
+JavaScript: O JavaScript ele será responsável pela funcionabilidade do sistema, como a validação de login, eventos quando for precionado um botão, atualização das informações em tempo real, a própria interação com o site (mapas, rotas, menu principal), comunicação entre outros usuários. Ele é o que deixa o site funcional.  
 Bootstrap: Ele ajuda a personalizar mais o site, colocando ícones e criação de layouts. Ele ajuda a não precisar criar interfaces do zero.
 
 
