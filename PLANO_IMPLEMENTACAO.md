@@ -72,57 +72,57 @@ docs/
 ## Seção 3 - Componentes reutilizáveis identificados
 
 #### Componente:
-1botão de ação 
-2Campo de texto (input) 
-3Menu suspenso (dropdown) 
-4Card de opção/menu 
-5Barra de navegação inferior 
-6Tela de mapa 
-7Lista de informações 
-8Tabela de dados 
-9 Indicadores de status 
-10  Ícone de perfil 
-11Tela de carregamento 
-12Mensagem de erro 
-13Rodapé institucional 
-14Gráficos 
-15Calendário/Listagem de horários 
+1botão de ação   
+2Campo de texto (input)   
+3Menu suspenso (dropdown)   
+4Card de opção/menu   
+5Barra de navegação inferior   
+6Tela de mapa   
+7Lista de informações   
+8Tabela de dados   
+9 Indicadores de status    
+10  Ícone de perfil    
+11Tela de carregamento   
+12Mensagem de erro   
+13Rodapé institucional   
+14Gráficos   
+15Calendário/Listagem de horários   
 
 
 #### Telas em que aparece:
-1Login, Cadastro, Perfil, Cadastro de Sensor, Relatórios, Rotas 
-2Login, Cadastro, Perfil, Adicionar Sensor, Remover Sensor 
-3Cadastro, Relatórios, Trem de Passageiro, Trem de Carga 
-4Dashboard, Página Inicial do Gestor, Cliente e Maquinista 
-5Dashboard, Perfil, Suporte e páginas principais 
-6Buscar, Minha Rota, Relatórios, Rotas dos trens 
-7Trem de Passageiro, Trem de Carga, Linha Central
-8Lista de Sensores, Usuários, Relatórios 
-9Sensores, Usuários, Relatórios 
-10Cadastro, Perfil, Usuários 
-11Inicialização do aplicativo 
-12Cadastro de Sensor 
-13Relatórios, Sensores e gráficos 
-14Relatórios de Trem de Passageiro e Trem de Carga 
-15Trem de Passageiro e Trem de Carga 
+1Login, Cadastro, Perfil, Cadastro de Sensor, Relatórios, Rotas   
+2Login, Cadastro, Perfil, Adicionar Sensor, Remover Sensor   
+3Cadastro, Relatórios, Trem de Passageiro, Trem de Carga   
+4Dashboard, Página Inicial do Gestor, Cliente e Maquinista   
+5Dashboard, Perfil, Suporte e páginas principais   
+6Buscar, Minha Rota, Relatórios, Rotas dos trens   
+7Trem de Passageiro, Trem de Carga, Linha Central  
+8Lista de Sensores, Usuários, Relatórios   
+9Sensores, Usuários, Relatórios   
+10Cadastro, Perfil, Usuários   
+11Inicialização do aplicativo   
+12Cadastro de Sensor   
+13Relatórios, Sensores e gráficos   
+14Relatórios de Trem de Passageiro e Trem de Carga   
+15Trem de Passageiro e Trem de Carga   
 
 
 #### Variações observadas:
-1Diferentes textos (Entrar, Salvar, Confirmar, Voltar, Ver rota, Excluir conta)
-2Nome, senha, e-mail, telefone, observações, data de cadastro
-3Perfil, tipo de trem, sensor, ocorrência, linha 
-4Card com ícone e título, card apenas com texto 
-5Ícone da página atual destacado
-6Com marcadores diferentes e trajetos diferentes 
-7Quantidade de itens e informações diferentes 
-8Número de linhas e colunas varia 
-9Ativo (verde), Alerta (amarelo), Falha (vermelho) 
-10Perfil vazio ou preenchido
-11Apenas logo e identidade visual 
-12Exibição de alerta de erro do sistema 
-13Contato, suporte e logo da empresa
-14Dados diferentes para cada tipo de trem 
-15Horários e datas diferentes
+1Diferentes textos (Entrar, Salvar, Confirmar, Voltar, Ver rota, Excluir conta)  
+2Nome, senha, e-mail, telefone, observações, data de cadastro  
+3Perfil, tipo de trem, sensor, ocorrência, linha   
+4Card com ícone e título, card apenas com texto   
+5Ícone da página atual destacado  
+6Com marcadores diferentes e trajetos diferentes   
+7Quantidade de itens e informações diferentes   
+8Número de linhas e colunas varia   
+9Ativo (verde), Alerta (amarelo), Falha (vermelho)   
+10Perfil vazio ou preenchido  
+11Apenas logo e identidade visual   
+12Exibição de alerta de erro do sistema   
+13Contato, suporte e logo da empresa  
+14Dados diferentes para cada tipo de trem   
+15Horários e datas diferentes  
 
 
 ## Seção 4 — Ordem de implementação
