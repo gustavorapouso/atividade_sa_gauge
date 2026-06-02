@@ -50,7 +50,7 @@ css/
 |-suporte.css
 
 js/
-|-auth.js
+|-autentificação.js
 |-dados.js
 |-dashboard.js
 |-sensores.js
