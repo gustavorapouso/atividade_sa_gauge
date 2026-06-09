@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+</head>
+<body>
+    <h1>CADASTRA-SE</h1>
+
+    <img src="assets/perfil_usuario.png" alt="usuario">
+
+    <form>
+
+    <input type="text" id="nome" name="nome" placeholder="Nome Completo"><br>
+    <input type="text" id="nascimento" name="nascimento" placeholder="Data de nascimento"><br>
+    <input type="text" id="email" name="email" placeholder="E-mail"> <br>
+    <input type="text" id="telefone" name="telefone" placeholder="Telefone"><br>
+    <input type="password" id="senha" name="senha" placeholder="Sua senha"><br>
+    <input type="password" id="confirmar_senha" name="confirmar_senha" placeholder="Confirmar senha"><br>
+
+    <label for="perfil">Perfil</label> 
+     <select name="perfil" id="perfil">
+        <option value="cliente">Cliente</option>
+        <option value="gestor">Gestor</option>
+        <option value="maquinista">Maquinista</option>
+     </select> <br>
+     <button type="submit">Salvar</button>
+     </form>
+
+     <button onclick="alert('Botão clicado!')">Voltar ao login</button>
+
+    
+
+
+</body>
+</html>

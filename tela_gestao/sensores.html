@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sensores</title>
+</head>
+<body>
+    <header>
+        <h1>Cadastrar Sensor</h1>
+    </header>
+    
+    <main>
+        <section>
+            
+            <h4>Selecione...</h4>
+
+            <form>
+                <input type="radio" value="adicionar" id="cadastro" name="cadastro_sensores">
+                <label for="adicionar">Adicionar Sensor</label><br>
+
+                <input type="radio" value="remover" id="cadastro" name="cadastro_sensores">
+                <label for="remover">Remover Sensor</label><br>
+
+                <input type="radio" value="lista" id="cadastro" name="cadastro_sensores">
+                <label for="lista">Lista de Sensores</label><br>
+            </form>
+        </section>
+
+        <section>
+            <h4>Selecione tipo de Sensor:</h6>
+                <input type="text" id="tipo" placeholder="Escreva aqui...">
+            <h4>Selecion local do Sensor:</h4>
+            <form>
+                <select name="local_sensor" id="local">
+                    <option value="">Selecione</option>
+                    <option value="trilho1">Trilho 1</option>
+                    <option value="estacao_norte">Estação Norte</option>
+                    <option value="trilho1">Trem RP-023</option>
+                </select>
+            </form>
+
+            <h4>Data de Adição:</h4>
+            <input type="date" name="data" id="data_sensor">
+
+            <h4>Data de Remoção:</h4>
+            <input type="date" name="data" id="data_sensor">
+
+            <h4>Observações:</h4>
+            <input type="text" placeholder="Escreva aqui...">
+
+            <h3>Lista de Sensores:</h3>
+            <table>
+                <tr>
+                    <th>Sensor</th>
+                    <th>Vínculo</th>
+                    <th>Status</th>
+                </tr>
+                <tr>
+                    <th>RP-023</th>
+                    <th>Trilho 1</th>
+                    <th>Ativo</th>
+                </tr>
+                <tr>
+                    <th>RP-028</th>
+                    <th>Trem TR-1103</th>
+                    <th>Falha</th>
+                </tr>
+                <tr>
+                    <th>RP-001</th>
+                    <th>Estação Norte</th>
+                    <th>Falha</th>
+                </tr>
+            </table>
+        </section>
+    </main>
+</body>
+</html>
