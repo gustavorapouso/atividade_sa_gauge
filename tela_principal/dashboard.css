@@ -1,0 +1,75 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Fjalla One, Roboto;
+}
+
+body{
+    background: #f3efeb;;
+}
+
+.header{
+    height:60px;
+    background: #2f1e17;;
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 20px;
+}
+
+.header .left i{
+    margin-right:20px;
+    font-size:22px;
+    cursor:pointer;
+}
+
+.logo{
+    font-weight:bold;
+}
+
+.title{
+    text-align:center;
+    font-size:64px;
+    font-weight:900;
+    color:#2d1f1a;
+    margin:20px 0;
+}
+
+.container{
+    width:80%;
+    margin:auto;
+}
+
+.card{
+    background:#7a655b;
+    border:4px solid #1f1713;
+    border-radius:8px;
+    display:flex;
+    align-items:center;
+    padding:20px 30px;
+    margin-bottom:18px;
+    color:#fff;
+}
+
+.icon{
+    width:120px;
+    text-align:center;
+    font-size:58px;
+}
+
+.info{
+    flex:1;
+    text-align:center;
+}
+
+.info h2{
+    font-size:34px;
+    font-weight:700;
+    margin-bottom:5px;
+}
+
+.info p{
+    font-size:22px;
+}

@@ -1,0 +1,87 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    min-height: 100vh;
+    background-color: #f3f1ef;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.imagem{
+    width: 220px;
+    margin-bottom: 15px;
+}
+
+h1{
+    color: #7a655d;
+    font-size: 38px;
+    margin-bottom: 5px;
+}
+
+h3{
+    color: #7a655d;
+    font-size: 20px;
+    font-weight: normal;
+    margin-bottom: 15px;
+}
+
+.logo{
+    width: 100px;
+    margin-bottom: 20px;
+}
+
+form{
+    width: 320px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+input{
+    width: 100%;
+    height: 35px;
+
+    border: 1px solid #8d817a;
+    border-radius: 5px;
+
+    padding-left: 10px;
+    font-size: 14px;
+}
+
+.esqueceu{
+    text-decoration: none;
+    color: #4f87d6;
+    font-size: 12px;
+    text-align: center;
+}
+
+button{
+    width: 160px;
+    height: 35px;
+
+    margin: 10px auto;
+
+    border: none;
+    border-radius: 5px;
+
+    background-color: #2d1c17;
+    color: white;
+
+    cursor: pointer;
+}
+
+.cadastro{
+    text-decoration: none;
+    color: #4f87d6;
+    font-size: 13px;
+}
