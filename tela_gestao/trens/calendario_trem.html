@@ -1,58 +1,69 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Calendário</title>
-</head>
-<body>
+    <link rel="stylesheet" href="calendario_trem_style.css" />
+  </head>
+  <body>
     <header>
-        <h1>Calendário</h1>
-        <input type="text" placeholder="Linha Central">
+      <nav class="navbar">
+        <div class="logo">Minha Logo</div>
+        <ul class="nav-links">
+          <li><a href="#"></a></li>
+          <li><a href="#"></a></li>
+          <li><a href="#"></a></li>
+          <li><a href="#"></a></li>
+        </ul>
+      </nav>
+
+      <h1>Calendário</h1>
+      <input type="text" placeholder="Linha Central" id="pesquisa_bar" />
     </header>
     <section>
-        <table>
-            <tr>
-                <th>Data</th>
-                <th>Saída</th>
-                <th>Chegada</th>
-            </tr>
-            <tr>
-                <td>26/05/26</td>
-                <td>07:15</td>
-                <td>9:15</td>
-            </tr> 
-            <tr>
-                <td>26/05/26</td>
-                <td>12:00</td>
-                <td>14:00</td>
-            </tr>
-            <tr>
-                <td>26/05/26</td>
-                <td>18:30</td>
-                <td>20:30</td>
-            </tr>
-            <tr>
-                <td>27/05/26</td>
-                <td>07:15</td>
-                <td>09:15</td>
-            </tr>
-            <tr>
-                <td>27/05/26</td>
-                <td>12:00</td>
-                <td>14:00</td>
-            </tr>
-            <tr>
-                <td>27/05/26</td>
-                <td>18:30</td>
-                <td>20:30</td>
-            </tr>
-            <tr>
-                <td>28/05/26</td>
-                <td>07:15</td>
-                <td>09:15</td>
-            </tr>
-        </table>
+      <table class="calendario">
+        <tr>
+          <th>Data</th>
+          <th>Saída</th>
+          <th>Chegada</th>
+        </tr>
+        <tr class="linha">
+          <td><div>26/05/26</div></td>
+          <td><div>07:15</div></td>
+          <td><div>9:15</div></td>
+        </tr>
+        <tr class="linha">
+          <td><div>26/05/26</div></td>
+          <td><div>12:00</div></td>
+          <td><div>14:00</div></td>
+        </tr>
+        <tr class="linha">
+          <td><div>26/05/26</div></td>
+          <td><div>18:30</div></td>
+          <td><div>20:30</div></td>
+        </tr>
+        <tr class="linha">
+          <td><div>27/05/26</div></td>
+          <td><div>07:15</div></td>
+          <td><div>09:15</div></td>
+        </tr>
+        <tr class="linha">
+          <td><div>27/05/26</div></td>
+          <td><div>12:00</div></td>
+          <td><div>14:00</div></td>
+        </tr>
+        <tr class="linha">
+          <td><div>27/05/26</div></td>
+          <td><div>18:30</div></td>
+          <td><div>20:30</div></td>
+        </tr>
+        <tr class="linha">
+          <td><div>28/05/26</div></td>
+          <td><div>07:15</div></td>
+          <td><div>09:15</div></td>
+        </tr>
+      </table>
     </section>
-</body>
+  </body>
 </html>
