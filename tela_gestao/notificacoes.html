@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="notifcacoes.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">   
+ <title>Notificacoes</title>
+    
+
+</head>
+<body>
+<header class="header">
+        <div class="left">
+            <i class="fas fa-bars" title="Menu"></i>
+            <i class="fas fa-search" title="Pesquisar"></i>
+        </div>
+
+        <div class="logo">
+          
+            <img src="../assets/logo_gauge.png">
+
+        </div>
+    </header>
+
+
+    <main class="main-container">
+        
+        
+        <h1 class="page-title">Alerta e Notificações</h1>
+
+       
+        <div class="cards-grid">
+            
+            <!-- Card Críticos -->
+            <section class="card">
+                <div class="card-header">
+                    <div class="card-title-box">
+                        <i class="fa-solid fa-square-poll-horizontal icon-critico"></i>
+                        <h2>Críticos</h2>
+                    </div>
+                    <i class="fa-regular fa-circle-xmark close-btn"></i>
+                </div>
+                <ul>
+                    <li>Linha 4: Bloqueada.</li>
+                    <li>Sinal KM 82: Apagado.</li>
+                    <li>Trem RG-09: Falha de freio.</li>
+                    <li>Túnel 3: Via obstruída.</li>
+                </ul>
+            </section>
+
+        
+            <section class="card">
+                <div class="card-header">
+                    <div class="card-title-box">
+                        <i class="fa-solid fa-triangle-exclamation icon-alerta"></i>
+                        <h2>Alertas</h2>
+                    </div>
+                    <i class="fa-regular fa-circle-xmark close-btn"></i>
+                </div>
+                <ul>
+                    <li>Diesel Sul: Na reserva.</li>
+                    <li>Trecho Oeste: Max 40 km/h.</li>
+                    <li>Linha Tronco: Escala alterada.</li>
+                    <li>Via Serra: Manutenção às 23h.</li>
+                </ul>
+            </section>
+
+        </div>
+
+        <div class="cards-bottom">
+            <section class="card card-center">
+                <div class="card-header">
+                    <div class="card-title-box">
+                        <i class="fa-solid fa-circle-info icon-painel"></i>
+                        <h2>Painel</h2>
+                    </div>
+                    <i class="fa-regular fa-circle-xmark close-btn"></i>
+                </div>
+                <ul>
+                    <li>Almoxarifado: Dormentes entregues.</li>
+                    <li>Trem RG-88: Pátio liberado.</li>
+                    <li>Vagão 2: Oficina concluída.</li>
+                    <li>Escala: Maquinista em rota.</li>
+                </ul>
+            </section>
+        </div>
+
+    </main>
+    
+</body>
+</html>

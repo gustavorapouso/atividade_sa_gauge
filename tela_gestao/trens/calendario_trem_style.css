@@ -1,73 +1,156 @@
+:root {
+    --color-marca: #6B4732;
+    --color-titulo: #2F1E17;
+    --color-texto: #7A655B;
+    --color-fundo-claro: #F3EFEB;
+    --color-fundo-escuro: #1F1713;
+    
+    --font-titulo: 'Fjalla One', sans-serif;
+    --font-texto: 'Roboto', sans-serif;
+}
+
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: var(--font-texto);
 }
 
-.navbar{
-    background-color: #1f1713;
+body{
+    font-family: var(--font-texto);
+    background-color: var(--color-fundo-claro);
+}
+
+
+h1{
+    text-align: center;
+    font-size: 100px;
+    color: var(--color-titulo);
+    margin-top: 30px;
+    font-family: var(--font-titulo);
+    
+}
+/*Navbar*/
+.header .left {
+    display: flex;
+    gap: 20px;
+}
+
+.header .left i {
+    color: #ffffff;
+    font-size: 1.25rem;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 50px;
-    width: 100%;
-    margin: 0 auto;
+    background-color: var(--color-fundo-escuro);
+    padding: 0 30px;            /* Removemos o padding vertical (cima/baixo) */
+    height: 60px;               /* 💡 FORÇA a barra a ter sempre o mesmo tamanho fixo */
+    box-sizing: border-box;
 }
 
-body {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-}
 
-header{
+.header .logo {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    
+    width: 100px; 
 }
 
-header input{
-    width: 40%;
-    height: 45px;
+.header .logo img {
+    display: block;
+    height: 80%;                
+    max-height: 100px;          
+    width: auto;                
+    object-fit: contain;    
+}
+
+.icon{
+    width:120px;
+    text-align:center;
+    font-size:58px;
+}
+
+
+/*Navbar fim*/
+
+
+#pesquisa_bar{
+    display: block;
+    margin: 20px auto;
     border: none;
-    border-radius: 25px;
-    padding: 0 20px;
-    background-color: #ddd8d6;
-    font-size: 16px;
-}
-
-h1{
-    font-size: 80px;
-    color: #4a3128;
-}
-
-section{
-    display: flex;
-    justify-content: center;
-    margin-top: 30px;
+    border-radius: 20px;
+    background: #ddd8d6;
+    width: 100%;
+    padding: 10px 10px 10px 40px;  
 }
 
 .calendario{
-    width: 80%;
+    width: 85%;
     margin: auto;
-    border-spacing: 0 20px;
+    border-collapse: separate;
+    border-spacing: 0 15px; 
 }
+
 
 .calendario th{
-    padding-bottom: 10px;
+    color: #4b3328;
+    font-size: 22px;
+    padding-bottom: 5px;
 }
 
-.linha{
-    background-color: #7b655a;
+
+.calendario .linha{
+    background: #7b655a;
 }
 
-.linha td{
-    padding: 10px;
+
+.calendario .linha td{
+    padding: 6px 10px;
 }
 
-.linha td div{
-    background-color: white;
-    border-radius: 10px;
-    padding: 10px;
+
+.calendario .linha td div{
+    background: white;
+    border-radius: 6px;
+    text-align: center;
+    padding: 5px;
 }
+
+
+.calendario .linha td:first-child{
+    border-radius: 6px 0 0 6px;
+}
+
+.calendario .linha td:last-child{
+    border-radius: 0 6px 6px 0;
+}
+
+/*Lupa e microfone da barra de pesquisa*/
+.barra-pesquisa{
+    width: 70%;
+    margin: 20px auto;
+    position: relative;
+}
+
+
+
+.lupa{
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #666;
+}
+
+.microfone{
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #666;
+}
+/*Fim da lupa e do microfone na barra de pesquisa*/

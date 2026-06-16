@@ -4,34 +4,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recuperar senha</title>
+ 
+    <link rel="stylesheet" href="recuperacao.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
-    <img src="assets/logo_gauge.png" alt="Logo">
-
-    <h3>ESQUECI MINHA SENHA</h3>
-
-    <p>Para redefinir sua senha, informe o <br> usuário ou e-mail cadastro na sua <br> conta
-        e lhe enviaremos um link para as instruções.
-    </p>
-
-    <form>
-        <input type="text" id="email" name="email" placeholder="E-mail"> <br>
-        <button type="submit">Confirmar</button>
-    </form>
-
-    <button onclick="alert('Botão clicado!')">Cancelar</button> <br>
 
 
-    <img src="assets/logo_gauge.png" alt="Logo">
-    <h3>VERIFIQUE SEU E-MAIL</h3>
-    <P>
-        Enviamos as instruções para você. <br>
-        Um link de redefinição de senha foi <br> enviado para o endereço informado. <br>
-        Por favor, verifique sua caixa de <br>entrada e a pasta de spam.
-    </P>
+    <div class="page-container">
 
-    <button onclick="alert('Botão clicado!')">IR PARA O LOGIN</button> <br>
-    <button onclick="alert('Botão clicado!')">Não recebeu o e-mail? Reenviar</button>
+
+        <div class="section-block">
+            <div class="logo">
+                <img src="../assets/logo_gauge.png" alt="Logo Gauge">
+            </div>
+
+            <h3>ESQUECI MINHA SENHA</h3>
+
+            <p>Para redefinir sua senha, informe o<br>usuário ou e-mail cadastrado na sua<br>conta e lhe enviaremos um link com<br>as instruções.</p>
+
+            <form>
+                <input type="text" id="email" name="email" placeholder="E-mail">
+                <button type="submit" class="btn-primary">PRÓXIMO</button>
+            </form>
+
+            <button class="btn-link" onclick="alert('Botão clicado!')">cancelar</button>
+        </div>
+
+        <hr class="divider"> 
+
+        <div class="section-block">
+            <img src="../assets/logo_gauge.png" alt="Logo Gauge" class="logo">
+
+            <h3>VERIFIQUE SEU E-MAIL</h3>
+            
+            <p>
+                Enviamos as instruções para você.<br>
+                Um link de redefinição de senha foi<br>enviado para o endereço informado.<br>
+                Por favor, verifique sua caixa de<br>entrada e a pasta de spam.
+            </p>
+
+            <button class="btn-primary" onclick="alert('Botão clicado!')">IR PARA O LOGIN</button>
+            <button class="btn-subtext" onclick="alert('Botão clicado!')">Não recebeu o e-mail? Reenviar</button>
+        </div>
+
+    </div>
 
 </body>
 </html>
