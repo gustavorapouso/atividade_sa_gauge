@@ -1,40 +1,99 @@
+:root {
+  --color-marca: #6B4732;
+  --color-titulo: #2F1E17;
+  --color-texto: #7A655B;
+  --color-fundo-claro: #F3EFEB;
+  --color-fundo-escuro: #1F1713;
+  
+  --font-titulo: 'Fjalla One', sans-serif;
+  --font-texto: 'Roboto', sans-serif;
+}
+
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Roboto', sans-serif; /* MUDADO AQUI: Toda a página agora usa Roboto */
+  font-family: var(--font-texto);
 }
+
 body {
-  background-color: #f3efeb; 
+  background-color: var(--color-fundo-claro); 
   display: flex;
-  justify-content: center;
-  padding: 20px 0;
+  flex-direction: column; 
+  align-items: center;
+  padding: 0 0 40px 0;
 }
+
+.main-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--color-fundo-escuro);
+  padding: 0 30px;            
+  height: 60px;              
+  width: 100%; 
+  box-sizing: border-box;
+}
+
+.main-navbar .left {
+  display: flex;
+  gap: 20px;
+}
+
+.main-navbar .left i {
+  color: #ffffff;
+  font-size: 1.25rem;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.main-navbar .left i:hover {
+  opacity: 0.7;
+}
+
+
+.main-navbar .logo {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; 
+  width: 100px;
+  height: 100%; 
+  overflow: hidden; 
+}
+
+.main-navbar .logo img {
+  display: block;
+  height: 80%; 
+  width: auto; 
+  max-height: 48px; 
+  object-fit: contain; 
+}
+
 
 .container {
   width: 90%;
   max-width: 1000px;
   position: relative;
+  margin-top: 30px;
 }
-
 
 .header {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-bottom: 25px;
+  margin-top: 30px; 
   position: relative;
 }
 
 .titulo-pagina {
-  font-family: 'Fjalla One', sans-serif; 
+  font-family: var(--font-titulo); 
   font-size: 3.5rem;
-  color: #4a3b32;
+  color: var(--color-titulo);
   font-weight: normal; 
   letter-spacing: 1px;
 }
-
-
 
 .lista-usuarios {
   display: flex;
@@ -43,7 +102,7 @@ body {
 }
 
 .linha-usuario {
-  background-color: #7a655b; 
+  background-color: var(--color-texto); 
   padding: 10px 15px;
   border-radius: 10px;
   display: flex;
@@ -51,9 +110,8 @@ body {
   align-items: center;
 }
 
-
 .bloco-info {
-  background-color: #f3efeb;
+  background-color: var(--color-fundo-claro);
   flex: 2; 
   height: 40px;
   border-radius: 20px;
@@ -64,18 +122,17 @@ body {
 }
 
 .bloco-cargo {
-  background-color: #f3efeb;
+  background-color: var(--color-fundo-claro);
   flex: 1; 
   height: 40px;
   border-radius: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #4a3b32;
+  color: var(--color-titulo);
   font-weight: 500;
   font-size: 0.95rem;
 }
-
 
 .usuario-detalhes {
   display: flex;
@@ -84,7 +141,7 @@ body {
 }
 
 .icone-user {
-  color: #4a3b32; 
+  color: var(--color-titulo); 
   font-size: 1.5rem; 
   line-height: 1;
 }
@@ -100,25 +157,26 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  
-
   width: auto !important; 
   height: auto !important;
 }
 
 .status-online {
   color: #00ff37 !important; 
-  
 }
 
 .status-offline {
   color: #ff0000 !important; 
-  
+}
+
+
+.secao-perfil {
+  margin-top: 40px;
 }
 
 .perfil-grande {
   font-size: 8.5rem; 
-  color: #735d52; 
+  color: var(--color-marca); 
   line-height: 1;
 }
 
@@ -132,19 +190,25 @@ body {
   display: flex;
   flex-direction: column;
   gap: 5px; 
+  margin-bottom: 15px; 
+}
+
+.grupo-campo label {
+  color: var(--color-titulo);
+  font-weight: 500;
+  font-size: 0.9rem;
 }
 
 .input-perfil-campo {
   width: 100%;
   height: 42px;
-  background-color: #f3efeb; 
+  background-color: var(--color-fundo-claro); 
   border: 1px solid #9e8e84; 
   border-radius: 8px;
   padding: 0 15px;
   font-size: 1rem;
-  color: #4a3b32;
-  font-family: 'Roboto', sans-serif !important;
-  
+  color: var(--color-titulo);
+  font-family: var(--font-texto) !important;
 }
 
 .botao-excluir {
@@ -152,18 +216,24 @@ body {
   max-width: 340px; 
   height: 36px;
   background-color: #fcfaf7;
-  border: 1px solid #7a655b; 
+  border: 1px solid var(--color-texto); 
   border-radius: 8px;
-  color: #4a3b32;
+  color: var(--color-titulo);
   font-size: 0.95rem;
   font-weight: bold;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
+.botao-excluir:hover {
+  background-color: var(--color-texto);
+  color: var(--color-fundo-claro);
+}
+
 .centro-botao-excluir {
   width: 100%;       
   display: flex;      
   justify-content: center;
-  margin-top: 15px;  
+  margin-top: 20px;
+  margin-bottom: 20px;  
 }

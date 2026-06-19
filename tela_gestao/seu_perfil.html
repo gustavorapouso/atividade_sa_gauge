@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="seu_perfil.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"> 
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <title>Seu perfil</title>
+</head>
+<header class="main-navbar">
+        <div class="left">
+            <i class="fas fa-bars" title="Menu"></i>
+            <i class="fas fa-search" title="Pesquisar"></i>
+        </div>
+        <div class="logo">
+            <img src="../assets/logo_gauge_menor.png" alt="Logo">
+        </div>
+    </header>
+
+    <div class="container-perfil">
+        <header class="header-perfil"> 
+            <h1 class="titulo-pagina">Seu Perfil</h1>
+        </header>
+        
+        <div class="perfil-centro">
+            <i class="bi bi-person-circle perfil-grande"></i> 
+        </div>
+
+        <form class="formulario-perfil">
+            <div class="grupo-campo">
+                <label for="nome-perfil">Nome Completo</label>
+                <input type="text" id="nome-perfil" class="input-perfil-campo" value="Davi Felski de Vargas">
+            </div>
+
+            <div class="grupo-campo">
+                <label for="nascimento-perfil">Data de Nascimento</label>
+                <input type="text" id="nascimento-perfil" class="input-perfil-campo" value="09/01/2009">
+            </div>
+
+            <div class="grupo-campo">
+                <label for="telefone-perfil">Telefone</label>
+                <input type="text" id="telefone-perfil" class="input-perfil-campo" value="47 99710-4608">
+            </div>
+
+            <div class="grupo-campo">
+                <label for="email-perfil">Email</label>
+                <input type="email" id="email-perfil" class="input-perfil-campo" value="davifelski0maismais@gmail.com">
+            </div>
+
+            <div class="grupo-campo">
+                <label for="senha">Senha</label>
+                <input type="password" id="senha" class="input-perfil-campo" value="************">
+            </div>
+
+            <div class="centro-botao-excluir">
+                <button type="submit" class="botao-excluir">Excluir Conta</button>
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>

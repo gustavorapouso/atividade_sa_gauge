@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="usuarios.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"> 
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,181 +13,188 @@
     <title>Usuários</title>
 </head>
 <body>
-    <div class="container">
-    <header class="header">
-      <h1 class="titulo-pagina">Usuários</h1>
-    
+
+    <header class="main-navbar">
+        <div class="left">
+            <i class="fas fa-bars" title="Menu"></i>
+            <i class="fas fa-search" title="Pesquisar"></i>
+        </div>
+        <div class="logo">
+            <img src="../assets/logo_gauge_menor.png" alt="Logo">
+        </div>
     </header>
 
-    <main class="lista-usuarios">
-      
-      <div class="linha-usuario">
-        <div class="bloco-info">
-       <div class="usuario-detalhes">
-     <i class="bi bi-person-circle icone-user"></i> 
-        <span class="nome-user">Usuário1</span>
-        </div>
-          <i class="bi bi-circle-fill status-online"></i>
-        </div>
-        <div class="bloco-cargo">Operador</div>
-      </div>
+    <div class="container">
+        <header class="header">
+            <h1 class="titulo-pagina">Usuários</h1>
+        </header>
 
-      <div class="linha-usuario">
-        <div class="bloco-info">
-           <div class="usuario-detalhes">
-    <i class="bi bi-person-circle icone-user"></i> 
-    <span class="nome-user">Usuário2</span>
+        <main class="lista-usuarios">
+            <div class="linha-usuario">
+                <div class="bloco-info">
+                    <div class="usuario-detalhes">
+                        <i class="bi bi-person-circle icone-user"></i> 
+                        <span class="nome-user">Usuário1</span>
+                    </div>
+                    <i class="bi bi-circle-fill status-online"></i>
+                </div>
+                <div class="bloco-cargo">Operador</div>
+            </div>
+
+            <div class="linha-usuario">
+                <div class="bloco-info">
+                    <div class="usuario-detalhes">
+                        <i class="bi bi-person-circle icone-user"></i> 
+                        <span class="nome-user">Usuário2</span>
+                    </div>
+                    <i class="bi bi-circle-fill status-online"></i>
+                </div>
+                <div class="bloco-cargo">Técnico</div>
+            </div>
+
+            <div class="linha-usuario">
+                <div class="bloco-info">
+                    <div class="usuario-detalhes">
+                        <i class="bi bi-person-circle icone-user"></i> 
+                        <span class="nome-user">Usuário3</span>
+                    </div>
+                    <i class="bi bi-circle-fill status-offline"></i>
+                </div>
+                <div class="bloco-cargo">Operador</div>
+            </div>
+
+            <div class="linha-usuario">
+                <div class="bloco-info">
+                    <div class="usuario-detalhes">
+                        <i class="bi bi-person-circle icone-user"></i> 
+                        <span class="nome-user">Usuário4</span>
+                    </div>
+                    <i class="bi bi-circle-fill status-online"></i>
+                </div>
+                <div class="bloco-cargo">Operador</div>
+            </div>
+
+            <div class="linha-usuario">
+                <div class="bloco-info">
+                    <div class="usuario-detalhes">
+                        <i class="bi bi-person-circle icone-user"></i> 
+                        <span class="nome-user">Usuário5</span>
+                    </div>
+                    <i class="bi bi-circle-fill status-online"></i>
+                </div>
+                <div class="bloco-cargo">Cliente</div>
+            </div>
+
+            <div class="linha-usuario">
+                <div class="bloco-info">
+                    <div class="usuario-detalhes">
+                        <i class="bi bi-person-circle icone-user"></i> 
+                        <span class="nome-user">Usuário6</span>
+                    </div>
+                    <i class="bi bi-circle-fill status-offline"></i>
+                </div>
+                <div class="bloco-cargo">Cliente</div>
+            </div>
+
+            <div class="linha-usuario">
+                <div class="bloco-info">
+                    <div class="usuario-detalhes">
+                        <i class="bi bi-person-circle icone-user"></i> 
+                        <span class="nome-user">Usuário7</span>
+                    </div>
+                    <i class="bi bi-circle-fill status-online"></i>
+                </div>
+                <div class="bloco-cargo">Cliente</div>
+            </div>
+
+            <div class="linha-usuario">
+                <div class="bloco-info">
+                    <div class="usuario-detalhes">
+                        <i class="bi bi-person-circle icone-user"></i> 
+                        <span class="nome-user">Usuário8</span>
+                    </div>
+                    <i class="bi bi-circle-fill status-offline"></i>
+                </div>
+                <div class="bloco-cargo">Cliente</div>
+            </div>
+
+            <div class="secao-perfil">
+                <header class="header"> 
+                    <h1 class="titulo-pagina">Usuário6</h1>
+                </header>
+                
+                <div class="perfil-centro">
+                    <i class="bi bi-person-circle perfil-grande"></i> 
+                </div>
+
+                <form>
+                    <div class="grupo-campo">
+                        <label for="nome">Nome Completo</label>
+                        <input type="text" id="nome" class="input-perfil-campo">
+                    </div>
+
+                    <div class="grupo-campo">
+                        <label for="nascimento">Data de nascimento</label>
+                        <input type="text" id="nascimento" class="input-perfil-campo">
+                    </div>
+
+                    <div class="grupo-campo">
+                        <label for="telefone">Telefone</label>
+                        <input type="text" id="telefone" class="input-perfil-campo">
+                    </div>
+
+                    <div class="grupo-campo">
+                        <label for="email">E-mail</label>
+                        <input type="text" id="email" class="input-perfil-campo">
+                    </div>
+                    
+                    <div class="centro-botao-excluir">
+                        <button type="submit" class="botao-excluir">Excluir conta</button>
+                    </div>
+                </form>
+            </div>
+           
+            <div class="secao-perfil">
+                <header class="header"> 
+                    <h1 class="titulo-pagina">Seu perfil</h1>
+                </header>
+                
+                <div class="perfil-centro">
+                    <i class="bi bi-person-circle perfil-grande"></i> 
+                </div>
+
+                <form>
+                    <div class="grupo-campo">
+                        <label for="nome-perfil">Nome Completo</label>
+                        <input type="text" id="nome-perfil" class="input-perfil-campo">
+                    </div>
+
+                    <div class="grupo-campo">
+                        <label for="nascimento-perfil">Data de nascimento</label>
+                        <input type="text" id="nascimento-perfil" class="input-perfil-campo">
+                    </div>
+
+                    <div class="grupo-campo">
+                        <label for="telefone-perfil">Telefone</label>
+                        <input type="text" id="telefone-perfil" class="input-perfil-campo">
+                    </div>
+
+                    <div class="grupo-campo">
+                        <label for="email-perfil">E-mail</label>
+                        <input type="text" id="email-perfil" class="input-perfil-campo">
+                    </div>
+
+                    <div class="grupo-campo">
+                        <label for="senha">Senha</label>
+                        <input type="password" id="senha" class="input-perfil-campo">
+                    </div>
+
+                    <div class="centro-botao-excluir">
+                        <button type="submit" class="botao-excluir">Excluir conta</button>
+                    </div>
+                </form>
+            </div>
+        </main>
     </div>
-          <i class="bi bi-circle-fill status-online"></i>
-        </div>
-        <div class="bloco-cargo">Técnico</div>
-      </div>
-
-      <div class="linha-usuario">
-        <div class="bloco-info">
-            <div class="usuario-detalhes">
-        <i class="bi bi-person-circle icone-user"></i> 
-        <span class="nome-user">Usuário3</span>
-        </div>
-        <i class="bi bi-circle-fill status-offline"></i>
-        </div>
-        <div class="bloco-cargo">Operador</div>
-      </div>
-
-      <div class="linha-usuario">
-        <div class="bloco-info">
-            <div class="usuario-detalhes">
-        <i class="bi bi-person-circle icone-user"></i> 
-        <span class="nome-user">Usuário4</span>
-        </div>
-          <i class="bi bi-circle-fill status-online"></i>
-        </div>
-        <div class="bloco-cargo">Operador</div>
-      </div>
-
-      <div class="linha-usuario">
-        <div class="bloco-info">
-          <div class="usuario-detalhes">
-        <i class="bi bi-person-circle icone-user"></i> 
-        <span class="nome-user">Usuário5</span>
-        </div>
-          <i class="bi bi-circle-fill status-online"></i>
-        </div>
-        <div class="bloco-cargo">Cliente</div>
-      </div>
-
-      <div class="linha-usuario">
-        <div class="bloco-info">
-            <div class="usuario-detalhes">
-        <i class="bi bi-person-circle icone-user"></i> 
-        <span class="nome-user">Usuário6</span>
-        </div>
-        <i class="bi bi-circle-fill status-offline"></i>
-        </div>
-        <div class="bloco-cargo">Cliente</div>
-      </div>
-
-      <div class="linha-usuario">
-        <div class="bloco-info">
-           <div class="usuario-detalhes">
-        <i class="bi bi-person-circle icone-user"></i> 
-        <span class="nome-user">Usuário7</span>
-        </div>
-          <i class="bi bi-circle-fill status-online"></i>
-        </div>
-        <div class="bloco-cargo">Cliente</div>
-      </div>
-
-      <div class="linha-usuario">
-        <div class="bloco-info">
-           <div class="usuario-detalhes">
-        <i class="bi bi-person-circle icone-user"></i> 
-        <span class="nome-user">Usuário8</span>
-        </div>
-          <i class="bi bi-circle-fill status-offline"></i>
-        </div>
-        <div class="bloco-cargo">Cliente</div>
-      </div>
-
-  <div>
-     <header class="header"> 
-        <h1 class="titulo-pagina">Usuário6</h1>
-        </header>
-        
-        <div class="perfil-centro">
-        <i class="bi bi-person-circle perfil-grande"></i> 
-        </div>
-
-        <form>
-        <div class="grupo-campo">
-        <label for="nome">Nome Completo</label>
-        <input type="text" id="nome" class="input-perfil-campo">
-      </div>
-
-       <div class="grupo-campo">
-        <label for="nome">Data de nascimento</label>
-        <input type="text" id="nascimento" class="input-perfil-campo">
-      </div>
-
-       <div class="grupo-campo">
-        <label for="nome">Telefone</label>
-        <input type="text" id="telefone" class="input-perfil-campo">
-      </div>
-
-       <div class="grupo-campo">
-        <label for="nome">E-mail</label>
-        <input type="text" id="email" class="input-perfil-campo">
-      </div>
-      <div class="centro-botao-excluir">
-      <button type="submit" class="botao-excluir">Excluir conta</button>
-      </div>
-    </form>
-  </div>
-   
-   <header class="header"> 
-        <h1 class="titulo-pagina">Seu perfil</h1>
-        </header>
-        
-        <div class="perfil-centro">
-        <i class="bi bi-person-circle perfil-grande"></i> 
-        </div>
-
-        <form>
-        <div class="grupo-campo">
-        <label for="nome">Nome Completo</label>
-        <input type="text" id="nome" class="input-perfil-campo">
-      </div>
-
-       <div class="grupo-campo">
-        <label for="nome">Data de nascimento</label>
-        <input type="text" id="nascimento" class="input-perfil-campo">
-      </div>
-
-       <div class="grupo-campo">
-        <label for="nome">Telefone</label>
-        <input type="text" id="telefone" class="input-perfil-campo">
-      </div>
-
-       <div class="grupo-campo">
-        <label for="nome">E-mail</label>
-        <input type="text" id="email" class="input-perfil-campo">
-      </div>
-
-       <div class="grupo-campo">
-        <label for="nome">Senha</label>
-        <input type="text" id="senha" class="input-perfil-campo">
-      </div>
-
-      <div class="centro-botao-excluir">
-      <button type="submit" class="botao-excluir">Excluir conta</button>
-      </div>
-    </form>
-  </div>
-
-    </main>
-  </div>
-
-
-
 </body>
 </html>

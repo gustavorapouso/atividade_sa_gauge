@@ -31,16 +31,17 @@ h1{
     
 }
 /*Navbar*/
-.header .left {
+.left {
     display: flex;
     gap: 20px;
+    align-items: center;
 }
 
-.header .left i {
+.left i {
     color: #ffffff;
-    font-size: 1.25rem;
+    font-size: 22px;
     cursor: pointer;
-    transition: opacity 0.2s;
+    
 }
 
 .header {
@@ -48,10 +49,11 @@ h1{
     justify-content: space-between;
     align-items: center;
     background-color: var(--color-fundo-escuro);
-    padding: 0 30px;            /* Removemos o padding vertical (cima/baixo) */
-    height: 60px;               /* 💡 FORÇA a barra a ter sempre o mesmo tamanho fixo */
-    box-sizing: border-box;
+    padding: 0 30px;            
+    height: 60px;               
+    
 }
+
 
 
 .header .logo {
@@ -63,7 +65,7 @@ h1{
 .header .logo img {
     display: block;
     height: 80%;                
-    max-height: 100px;          
+    max-height: 50px;          
     width: auto;                
     object-fit: contain;    
 }
@@ -78,6 +80,7 @@ h1{
 /*Navbar fim*/
 
 
+
 #pesquisa_bar{
     display: block;
     margin: 20px auto;
@@ -87,6 +90,8 @@ h1{
     width: 100%;
     padding: 10px 10px 10px 40px;  
 }
+
+
 
 .calendario{
     width: 85%;
