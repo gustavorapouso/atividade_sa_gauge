@@ -1,0 +1,124 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#f3efeb;
+    font-family:'Roboto', sans-serif;
+}
+
+/* TÍTULO */
+
+header h1{
+    text-align:center;
+    font-family:'Fjalla One', sans-serif;
+    font-size:72px;
+    color:#5b4032;
+    margin-top:10px;
+    line-height:1;
+}
+
+header h3{
+    text-align:center;
+    font-family:'Fjalla One', sans-serif;
+    font-size:28px;
+    color:#5b4032;
+    margin-bottom:20px;
+}
+
+.header{
+    height:60px;
+    background: #2f1e17;;
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 20px;
+}
+
+.header .left i{
+    margin-right:20px;
+    font-size:22px;
+    cursor:pointer;
+}
+
+.logo{
+    font-weight:bold;
+}
+
+
+
+/* CONTEÚDO */
+
+section{
+    width:1100px;
+    margin:0 auto;
+}
+
+.conteudo-principal{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    margin-bottom:30px;
+}
+
+/* CARD */
+
+.info{
+    width:420px;
+    background:#3b251c;
+    color:white;
+    padding:18px 22px;
+    border-radius:6px;
+}
+
+.info p{
+    font-size:17px;
+    margin-bottom:7px;
+}
+
+.info strong{
+    font-weight:700;
+}
+
+/* MAPA */
+
+.mapa{
+    width:620px;
+}
+
+.mapa svg{
+    width:100%;
+    height:auto;
+    display:block;
+}
+
+.registro{
+    background:#7b655a;
+    padding:10px;
+    border-radius:4px;
+    margin-bottom:12px;
+
+    display:flex;
+    align-items:center;
+    gap:25px;
+}
+
+.hora{
+    width:140px;
+    background:white;
+    border-radius:5px;
+    text-align:center;
+    padding:6px;
+}
+
+.descricao{
+    flex:1;
+    background:white;
+    border-radius:5px;
+    text-align:center;
+    padding:6px;
+}
+
