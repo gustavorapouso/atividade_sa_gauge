@@ -30,19 +30,6 @@ h1{
     font-family: var(--font-titulo);
     
 }
-/*Navbar*/
-.left {
-    display: flex;
-    gap: 20px;
-    align-items: center;
-}
-
-.left i {
-    color: #ffffff;
-    font-size: 22px;
-    cursor: pointer;
-    
-}
 
 .header {
     display: flex;
@@ -50,11 +37,25 @@ h1{
     align-items: center;
     background-color: var(--color-fundo-escuro);
     padding: 0 30px;            
-    height: 60px;               
-    
+    height: 60px;            
+    width: 100%;
 }
 
+.header .left {
+    display: flex;
+    gap: 20px;
+}
 
+.header .left i {
+    color: #ffffff;
+    font-size: 1.25rem;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.header .left i:hover {
+    opacity: 0.8;
+}
 
 .header .logo {
     display: flex;
@@ -69,13 +70,6 @@ h1{
     width: auto;                
     object-fit: contain;    
 }
-
-.icon{
-    width:120px;
-    text-align:center;
-    font-size:58px;
-}
-
 
 /*Navbar fim*/
 

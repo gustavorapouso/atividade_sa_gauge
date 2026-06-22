@@ -1,10 +1,230 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family: Fjalla One, Roboto;
+:root {
+    --color-marca: #6B4732;
+    --color-titulo: #2F1E17;
+    --color-texto: #7A655B;
+    --color-fundo-claro: #F3EFEB;
+    --color-fundo-escuro: #1F1713;
+    --color-contato: #C49E7A; 
+    
+    --font-titulo: 'Fjalla One', sans-serif;
+    --font-texto: 'Roboto', sans-serif;
 }
 
-body{
-    background: #f3efeb;;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--color-fundo-claro);
+    font-family: var(--font-texto);
+}
+
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--color-fundo-escuro);
+    padding: 0 30px;            
+    height: 60px;            
+    width: 100%;
+}
+
+.header .left {
+    display: flex;
+    gap: 20px;
+}
+
+.header .left i {
+    color: #ffffff;
+    font-size: 1.25rem;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.header .left i:hover {
+    opacity: 0.8;
+}
+
+.header .logo {
+    display: flex;
+    align-items: center;
+    width: 100px; 
+}
+
+.header .logo img {
+    display: block;
+    height: 80%;                
+    max-height: 50px;          
+    width: auto;                
+    object-fit: contain;    
+}
+
+
+.content-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 20px;
+    gap: 60px;
+}
+
+.screen-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 700px;
+}
+
+
+
+
+.select-wrapper {
+    position: relative;
+    margin-bottom: 15px;
+    display: inline-block;
+}
+
+/* Elemento pseudo-clássico para fazer o desenho do ícone de seta para baixo v */
+.select-wrapper::after {
+    content: '\f078'; /* Código do ícone chevron-down no Font Awesome */
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    font-size: 0.65rem;
+    color: #333;
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none; /* Garante que o clique passe direto para o select */
+}
+
+
+.select-badge {
+    appearance: none; /* Remove a seta padrão do sistema operacional */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    
+    background: white;
+    padding: 5px 28px 5px 14px; /* Espaço extra na direita por causa da seta */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    color: #333;
+    font-weight: bold;
+    cursor: pointer;
+    outline: none;
+    font-family: var(--font-texto);
+}
+
+.select-badge:focus {
+    border-color: var(--color-marca);
+}
+.search-bar {
+    background: white;
+    width: 100%;
+    max-width: 500px;
+    height: 40px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.search-bar .menu-icon, .search-bar .search-icon {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.search-bar input {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 0 10px;
+    font-size: 0.9rem;
+    color: #444;
+}
+
+
+.map-placeholder {
+    width: 100%;
+    max-width: 700px;
+    height: 400px;
+    margin-bottom: 30px;
+}
+
+
+.timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 400px;
+    width: 100%;
+    padding-left: 20px;
+}
+
+.timeline-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    text-align: left;
+}
+
+.radio-circle {
+    width: 16px;
+    height: 16px;
+    border: 2px solid #555;
+    border-radius: 50%;
+    flex-shrink: 0;
+    background: transparent;
+}
+
+.active-circle {
+    background: #444;
+    box-shadow: inset 0 0 0 3px white;
+}
+
+.timeline-item p {
+    font-size: 0.95rem;
+    color: var(--color-titulo);
+    line-height: 1.3;
+}
+
+.timeline-item.active p {
+    font-weight: bold;
+}
+
+.eta-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.eta-title {
+    font-family: var(--font-titulo);
+    font-size: 2rem;
+    color: var(--color-titulo);
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+
+.eta-time {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: var(--font-titulo);
+    font-size: 3.5rem;
+    color: var(--color-titulo);
+}
+
+.eta-time i {
+    font-size: 2.8rem;
 }

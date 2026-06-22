@@ -1,0 +1,190 @@
+:root {
+    --color-marca: #6B4732;
+    --color-titulo: #2F1E17;
+    --color-texto: #7A655B;
+    --color-fundo-claro: #F3EFEB;
+    --color-fundo-escuro: #1F1713;
+
+    --font-titulo: 'Fjalla One', sans-serif;
+    --font-texto: 'Roboto', sans-serif;
+}
+
+/* RESET */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+/* BODY */
+
+body{
+    background: var(--color-fundo-claro);
+    font-family: var(--font-texto);
+}
+
+/* NAVBAR */
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--color-fundo-escuro);
+    padding: 0 30px;            
+    height: 60px;            
+    width: 100%;
+}
+
+.header .left {
+    display: flex;
+    gap: 20px;
+}
+
+.header .left i {
+    color: #ffffff;
+    font-size: 1.25rem;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.header .left i:hover {
+    opacity: 0.8;
+}
+
+.header .logo {
+    display: flex;
+    align-items: center;
+    width: 100px; 
+}
+
+.header .logo img {
+    display: block;
+    height: 80%;                
+    max-height: 50px;          
+    width: auto;                
+    object-fit: contain;    
+}
+
+/* TÍTULO */
+
+header h1{
+    text-align:center;
+    font-family: var(--font-titulo);
+    font-size:72px;
+    color: var(--color-marca);
+    margin-top:10px;
+    line-height:1;
+}
+
+header h3{
+    text-align:center;
+    font-family: var(--font-titulo);
+    font-size:28px;
+    color: var(--color-marca);
+    margin-bottom:25px;
+}
+
+/* CONTEÚDO */
+
+section {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.conteudo-principal {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    gap: 30px;
+    margin-top: 20px; 
+    margin-bottom: 30px;
+}
+
+/* CARD DE INFORMAÇÕES */
+
+.info {
+    flex: 0 0 420px; 
+    background: var(--color-titulo);
+    color: white;
+    padding: 18px 22px;
+    border-radius: 6px;
+    margin: 0;
+}
+
+.info p{
+    margin-bottom: 15px;
+    font-size:17px;
+}
+
+.info strong{
+    font-weight:00;
+}
+
+/* MAPA */
+
+.mapa {
+    flex: 1;
+    max-width: 620px;
+    margin: 0; 
+}
+
+.mapa svg {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.mapa svg rect{
+    stroke: var(--color-titulo);
+}
+
+/* HISTÓRICO */
+
+.historico h3{
+    font-family: var(--font-titulo);
+    font-size:48px;
+    color: var(--color-marca);
+    margin-bottom:15px;
+}
+
+/* REGISTROS */
+
+.registro{
+    background: var(--color-texto);
+    padding:10px;
+    border-radius:5px;
+    margin-bottom:12px;
+
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
+
+/* HORÁRIO */
+
+.hora{
+    width:140px;
+    background:white;
+    border-radius:5px;
+    text-align:center;
+    padding:8px;
+}
+
+/* DESCRIÇÃO */
+
+.descricao{
+    flex:1;
+    background:white;
+    border-radius:5px;
+    text-align:center;
+    padding:8px;
+}
+
+.hora p,
+.descricao p{
+    margin:0;
+}
+

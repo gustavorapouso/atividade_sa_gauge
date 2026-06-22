@@ -1,0 +1,177 @@
+:root {
+    --color-marca: #6B4732;
+    --color-titulo: #2F1E17;
+    --color-texto: #7A655B;
+    --color-fundo-claro: #F3EFEB;
+    --color-fundo-escuro: #1F1713;
+    
+    --font-titulo: 'Fjalla One', sans-serif;
+    --font-texto: 'Roboto', sans-serif;
+}
+
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--color-fundo-claro);
+    font-family: var(--font-texto);
+    color: #ffffff; /* O texto de dentro dos cards é branco */
+}
+
+/* 1. BARRA SUPERIOR ESCURA (NAVBAR) */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--color-fundo-escuro);
+    padding: 0 30px;            
+    height: 60px;            
+    width: 100%;
+}
+
+.header .left {
+    display: flex;
+    gap: 20px;
+}
+
+.header .left i {
+    color: #ffffff;
+    font-size: 1.25rem;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.header .left i:hover {
+    opacity: 0.8;
+}
+
+.header .logo {
+    display: flex;
+    align-items: center;
+    width: 100px; 
+}
+
+.header .logo img {
+    display: block;
+    height: 80%;                
+    max-height: 50px;          
+    width: auto;                
+    object-fit: contain;    
+}
+
+/* 2. CABEÇALHO (TÍTULO E PESQUISA) */
+header {
+    text-align: center;
+    padding: 30px 20px 20px 20px;
+}
+
+header h1 {
+    font-family: var(--font-titulo);
+    font-size: 76px;
+    color: var(--color-titulo);
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+
+/* Container do input para controlar a largura máxima */
+.search-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.search-input {
+    width: 100%;
+    padding: 10px 20px;
+    border-radius: 25px; /* Deixa bem arredondado como na foto */
+    border: none;
+    background-color: #E6DFD9; /* Tom cinza claro/bege de fundo do input */
+    font-family: var(--font-texto);
+    font-size: 15px;
+    color: var(--color-texto);
+    outline: none;
+}
+
+.search-input::placeholder {
+    color: var(--color-texto);
+    opacity: 0.8;
+}
+
+/* 3. SECTION DOS CARDS (ALINHAMENTO CENTRAL) */
+.container-cards {
+    max-width: 750px; /* Largura idêntica à do layout da foto */
+    margin: 20px auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Espaçamento idêntico entre um card e outro */
+}
+
+/* 4. OS CARDS DE TREM */
+.card-trem {
+    background-color: var(--color-titulo); /* Usa o tom marrom bem escuro */
+    padding: 20px 25px;
+    border-radius: 8px; /* Arredondamento suave das bordas */
+}
+
+.card-trem h3 {
+    font-family: var(--font-titulo);
+    font-size: 28px;
+    font-weight: 400;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+}
+
+.card-trem p {
+    font-size: 17px;
+    line-height: 1.4;
+    font-weight: 400;
+    color: #EAEAEA; /* Branco levemente suavizado para os dados internos */
+}
+
+.card-trem p strong {
+    font-weight: 500;
+    color: #ffffff;
+}
+
+.titulo{
+    font-family: var(--font-titulo); 
+    color: var(--color-titulo);     
+    font-size: 76px;                
+    font-weight: 400;               
+    text-transform: capitalize;     
+    letter-spacing: -1px;           
+    margin-bottom: 25px;
+    margin: auto;
+    text-align: center;
+}
+
+.barra-pesquisa{
+    width: 70%;
+    margin: 20px auto;
+    position: relative;
+    text-align: center;
+}
+
+.procurar-trem{
+    
+}
+
+.lupa{
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #666;
+}
+
+.microfone{
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #666;
+}

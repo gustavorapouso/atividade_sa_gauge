@@ -3,76 +3,225 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="sensores_style.css">
     <title>Sensores</title>
 </head>
 <body>
-    <header>
-        <h1>Cadastrar Sensor</h1>
+    <header class="header">
+        <div class="left">
+            <i class="fas fa-bars" title="Menu"></i>
+            <i class="fas fa-search" title="Pesquisar"></i>
+        </div>
+        <div class="logo">
+            <img src="../assets/logo_gauge_menor.png" alt="Gauge Logo">
+        </div>
     </header>
     
-    <main>
-        <section>
-            
-            <h4>Selecione...</h4>
+    <main class="fluxo-conteudo">
 
-            <form>
-                <input type="radio" value="adicionar" id="cadastro" name="cadastro_sensores">
-                <label for="adicionar">Adicionar Sensor</label><br>
+        <section class="tela-container">
+            <h1 class="titulo-tela">Cadastrar Sensor</h1>
+            <div class="conteudo-flex">
+                <form class="menu-radios">
+                    <div class="radio-group">
+                        <input type="radio" value="adicionar" id="add1" name="fluxo1">
+                        <label for="add1">Adicionar Sensor</label>
+                    </div>
+                    <div class="radio-group">
+                        <input type="radio" value="remover" id="rem1" name="fluxo1">
+                        <label for="rem1">Remover Sensor</label>
+                    </div>
+                    <div class="radio-group">
+                        <input type="radio" value="lista" id="list1" name="fluxo1">
+                        <label for="list1">Lista de Sensores</label>
+                    </div>
+                </form>
 
-                <input type="radio" value="remover" id="cadastro" name="cadastro_sensores">
-                <label for="remover">Remover Sensor</label><br>
-
-                <input type="radio" value="lista" id="cadastro" name="cadastro_sensores">
-                <label for="lista">Lista de Sensores</label><br>
-            </form>
+                <div class="painel-lateral">
+                    <div class="select-wrapper">
+                        <select class="select-filtro">
+                            <option value="">Selecione...</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
         </section>
 
-        <section>
-            <h4>Selecione tipo de Sensor:</h6>
-                <input type="text" id="tipo" placeholder="Escreva aqui...">
-            <h4>Selecion local do Sensor:</h4>
-            <form>
-                <select name="local_sensor" id="local">
-                    <option value="">Selecione</option>
-                    <option value="trilho1">Trilho 1</option>
-                    <option value="estacao_norte">Estação Norte</option>
-                    <option value="trilho1">Trem RP-023</option>
-                </select>
-            </form>
+        
 
-            <h4>Data de Adição:</h4>
-            <input type="date" name="data" id="data_sensor">
+        <section class="tela-container">
+            <h1 class="titulo-tela">Cadastrar Sensor</h1>
+            <div class="conteudo-flex">
+                <form class="menu-radios">
+                    <div class="radio-group">
+                        <input type="radio" value="adicionar" id="add2" name="fluxo2" checked>
+                        <label for="add2">Adicionar Sensor</label>
+                    </div>
+                    <div class="radio-group">
+                        <input type="radio" value="remover" id="rem2" name="fluxo2">
+                        <label for="rem2">Remover Sensor</label>
+                    </div>
+                    <div class="radio-group">
+                        <input type="radio" value="lista" id="list2" name="fluxo2">
+                        <label for="list2">Lista de Sensores</label>
+                    </div>
+                </form>
 
-            <h4>Data de Remoção:</h4>
-            <input type="date" name="data" id="data_sensor">
-
-            <h4>Observações:</h4>
-            <input type="text" placeholder="Escreva aqui...">
-
-            <h3>Lista de Sensores:</h3>
-            <table>
-                <tr>
-                    <th>Sensor</th>
-                    <th>Vínculo</th>
-                    <th>Status</th>
-                </tr>
-                <tr>
-                    <th>RP-023</th>
-                    <th>Trilho 1</th>
-                    <th>Ativo</th>
-                </tr>
-                <tr>
-                    <th>RP-028</th>
-                    <th>Trem TR-1103</th>
-                    <th>Falha</th>
-                </tr>
-                <tr>
-                    <th>RP-001</th>
-                    <th>Estação Norte</th>
-                    <th>Falha</th>
-                </tr>
-            </table>
+                <div class="painel-lateral painel-formulario">
+                    <div class="campo-grupo">
+                        <label>Selecione tipo de Sensor:</label>
+                        <div class="select-wrapper">
+                            <select class="select-filtro">
+                                <option>Sensor RP-023</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="campo-grupo">
+                        <label>Selecione local do Sensor:</label>
+                        <div class="select-wrapper">
+                            <select class="select-filtro">
+                                <option>Trilho 2</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="campo-grupo">
+                        <label>Data da Adição:</label>
+                        <input type="text" class="input-form" value="25/12/2024">
+                    </div>
+                    <div class="campo-grupo">
+                        <label>Observações:</label>
+                        <input type="text" class="input-form" placeholder="Escreva aqui...">
+                    </div>
+                    <button type="button" class="btn-salvar">Salvar</button>
+                </div>
+            </div>
         </section>
+
+        
+
+        <section class="tela-container">
+            <h1 class="titulo-tela">Cadastrar Sensor</h1>
+            <div class="conteudo-flex">
+                <form class="menu-radios">
+                    <div class="radio-group">
+                        <input type="radio" value="adicionar" id="add3" name="fluxo3">
+                        <label for="add3">Adicionar Sensor</label>
+                    </div>
+                    <div class="radio-group">
+                        <input type="radio" value="remover" id="rem3" name="fluxo3" checked>
+                        <label for="rem3">Remover Sensor</label>
+                    </div>
+                    <div class="radio-group">
+                        <input type="radio" value="lista" id="list3" name="fluxo3">
+                        <label for="list3">Lista de Sensores</label>
+                    </div>
+                </form>
+
+                <div class="painel-lateral painel-formulario">
+                    <div class="campo-grupo">
+                        <label>Selecione tipo de Sensor:</label>
+                        <div class="select-wrapper">
+                            <select class="select-filtro">
+                                <option>Sensor RP-029</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="campo-grupo">
+                        <label>Selecione local do Sensor:</label>
+                        <div class="select-wrapper">
+                            <select class="select-filtro">
+                                <option>Trilho 1</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="campo-grupo">
+                        <label>Data da Adição:</label>
+                        <input type="text" class="input-form" value="02/02/2025">
+                    </div>
+                    <div class="campo-grupo">
+                        <label>Observações:</label>
+                        <input type="text" class="input-form" placeholder="Escreva aqui...">
+                    </div>
+                    <button type="button" class="btn-salvar">Salvar</button>
+                </div>
+            </div>
+        </section>
+
+      
+
+        <section class="tela-container">
+            <h1 class="titulo-tela">Cadastrar Sensor</h1>
+            <div class="conteudo-flex">
+                <form class="menu-radios">
+                    <div class="radio-group">
+                        <input type="radio" value="adicionar" id="add4" name="fluxo4">
+                        <label for="add4">Adicionar Sensor</label>
+                    </div>
+                    <div class="radio-group">
+                        <input type="radio" value="remover" id="rem4" name="fluxo4">
+                        <label for="rem4">Remover Sensor</label>
+                    </div>
+                    <div class="radio-group">
+                        <input type="radio" value="lista" id="list4" name="fluxo4" checked>
+                        <label for="list4">Lista de Sensores</label>
+                    </div>
+                </form>
+
+                <div class="painel-lateral">
+                    <table class="tabela-sensores">
+                        <thead>
+                            <tr>
+                                <th>Sensor</th>
+                                <th>Vínculo</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>RP-023</td>
+                                <td>Trilho 1</td>
+                                <td><span class="badge status-ativo">Ativo</span></td>
+                            </tr>
+                            <tr>
+                                <td>RP-028</td>
+                                <td>Trem TR-1103</td>
+                                <td><span class="badge status-falha">Falha</span></td>
+                            </tr>
+                            <tr>
+                                <td>RP-020</td>
+                                <td>Trem TR-0726</td>
+                                <td><span class="badge status-alerta">Alerta</span></td>
+                            </tr>
+                            <tr>
+                                <td>RP-029</td>
+                                <td>Trilho 2</td>
+                                <td><span class="badge status-alerta">Alerta</span></td>
+                            </tr>
+                            <tr>
+                                <td>RP-001</td>
+                                <td>Estação Norte</td>
+                                <td><span class="badge status-falha">Falha</span></td>
+                            </tr>
+                            <tr>
+                                <td>RP-002</td>
+                                <td>Estação Leste</td>
+                                <td><span class="badge status-ativo">Ativo</span></td>
+                            </tr>
+                            <tr>
+                                <td>RP-004</td>
+                                <td>Estação Sul</td>
+                                <td><span class="badge status-ativo">Ativo</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
     </main>
 </body>
 </html>

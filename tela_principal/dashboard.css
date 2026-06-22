@@ -1,3 +1,18 @@
+:root {
+    
+    --color-marca: #6B4732;
+    --color-titulo: #2F1E17;
+    --color-texto: #7A655B;
+    --color-fundo-claro: #F3EFEB;
+    --color-fundo-escuro: #1F1713;
+    
+    
+    --color-contato: #C49E7A; 
+    
+    --font-titulo: 'Fjalla One', sans-serif;
+    --font-texto: 'Roboto', sans-serif;
+}
+
 *{
     margin:0;
     padding:0;
@@ -9,24 +24,44 @@ body{
     background: #f3efeb;;
 }
 
-.header{
-    height:60px;
-    background: #2f1e17;;
-    color:#fff;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:0 20px;
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--color-fundo-escuro);
+    padding: 0 30px;            
+    height: 60px;            
+    width: 100%;
 }
 
-.header .left i{
-    margin-right:20px;
-    font-size:22px;
-    cursor:pointer;
+.header .left {
+    display: flex;
+    gap: 20px;
 }
 
-.logo{
-    font-weight:bold;
+.header .left i {
+    color: #ffffff;
+    font-size: 1.25rem;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.header .left i:hover {
+    opacity: 0.8;
+}
+
+.header .logo {
+    display: flex;
+    align-items: center;
+    width: 100px; 
+}
+
+.header .logo img {
+    display: block;
+    height: 80%;                
+    max-height: 50px;          
+    width: auto;                
+    object-fit: contain;    
 }
 
 .title{

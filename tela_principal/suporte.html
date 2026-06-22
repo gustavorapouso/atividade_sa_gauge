@@ -3,29 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="suporte.css">
     <title>Suporte</title>
 </head>
 <body>
-    <header>
-        <h1>SUPORTE</h1>
+    <header class="header">
+        <div class="left">
+            <i class="fas fa-bars" title="Menu"></i>
+            <i class="fas fa-search" title="Pesquisar"></i>
+        </div>
+        <div class="logo">
+            <img src="../assets/logo_gauge_menor.png" alt="Gauge Logo">
+        </div>
     </header>
-    <section>
-        <div>
-            <div>
-                <h4>Precisa de Suporte?</h4>
-            </div>
-            <div>
-                <h3>contato@gauge.com.br</h3>
-            </div>
-        </div>
-        <div>
-            <div>
-                <h4>Entre em contato</h4>
-            </div>
-            <div>
-                <h3>(47) 99917-4896</h3>
+    
+    <main class="container-suporte">
+        <h1 class="titulo-principal">SUPORTE</h1>
+        
+        
+        <div class="bloco-contato">
+            <p class="subtitulo">Precisa de Suporte?</p>
+            <div class="info-link">
+                <i class="far fa-envelope icone-contato"></i>
+                <a href="mailto:contato@gauge.com.br" class="detalhe-contato underline">contato@gauge.com.br</a>
             </div>
         </div>
-    </section>
+        
+        
+        <div class="bloco-contato">
+            <p class="subtitulo">Entre em contato</p>
+            <div class="info-link">
+                <i class="fas fa-phone-alt icone-contato"></i>
+                <span class="detalhe-contato">(47) 99917-4896</span>
+            </div>
+        </div>
+    </main>
 </body>
 </html>

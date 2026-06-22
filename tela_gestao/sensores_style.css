@@ -1,0 +1,262 @@
+:root {
+    --color-marca: #6B4732;
+    --color-titulo: #2F1E17;
+    --color-texto: #7A655B;
+    --color-fundo-claro: #F3EFEB;
+    --color-fundo-escuro: #1F1713;
+    --color-contato: #C49E7A; 
+    
+    --font-titulo: 'Fjalla One', sans-serif;
+    --font-texto: 'Roboto', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--color-fundo-claro);
+    font-family: var(--font-texto);
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--color-fundo-escuro);
+    padding: 0 30px;            
+    height: 60px;            
+    width: 100%;
+}
+
+.header .left {
+    display: flex;
+    gap: 20px;
+}
+
+.header .left i {
+    color: var(--color-fundo-claro);
+    font-size: 1.25rem;
+    cursor: pointer;
+}
+
+.header .logo {
+    display: flex;
+    align-items: center;
+    width: 100px; 
+}
+
+.header .logo img {
+    display: block;
+    height: 80%;                
+    max-height: 50px;          
+    width: auto;                
+    object-fit: contain;    
+}
+
+/* Estrutura de Fluxo Um Embaixo do Outro */
+.fluxo-conteudo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    gap: 60px;
+}
+
+.tela-container {
+    width: 100%;
+    max-width: 900px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+.titulo-tela {
+    font-family: var(--font-titulo);
+    font-size: 3.5rem;
+    color: var(--color-titulo);
+    margin-bottom: 40px;
+    font-weight: 400;
+}
+
+/* Alinhamento de colunas do fluxo */
+.conteudo-flex {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 50px;
+}
+
+/* Menu de Escolha Radio (Esquerda) */
+.menu-radios {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-top: 20px;
+    flex: 1;
+}
+
+.radio-group {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.radio-group input[type="radio"] {
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--color-titulo);
+    border-radius: 50%;
+    outline: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.radio-group input[type="radio"]:checked {
+    background-color: #007bff; /* Azul padrão de seleção da imagem */
+    border-color: #007bff;
+    box-shadow: inset 0 0 0 3px var(--color-fundo-claro);
+}
+
+.radio-group label {
+    font-size: 1.1rem;
+    color: var(--color-titulo);
+    font-weight: 500;
+    cursor: pointer;
+}
+
+/* Painel do Formulário / Tabela (Direita) */
+.painel-lateral {
+    flex: 1.2;
+    width: 100%;
+    max-width: 420px;
+}
+
+.painel-formulario {
+    background-color: var(--color-titulo);
+    padding: 25px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.campo-grupo {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.painel-formulario label {
+    font-size: 0.95rem;
+    color: var(--color-fundo-claro);
+    font-weight: 500;
+}
+
+/* Wrapper e Elementos Select / Input */
+.select-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.select-wrapper::after {
+    content: '\f0d7';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--color-titulo);
+    pointer-events: none;
+}
+
+.painel-formulario .select-wrapper::after {
+    color: var(--color-fundo-escuro);
+}
+
+.select-filtro, .input-form {
+    width: 100%;
+    height: 38px;
+    background-color: var(--color-fundo-claro);
+    border: 1px solid var(--color-marca);
+    border-radius: 6px;
+    padding: 0 35px 0 12px;
+    font-family: var(--font-texto);
+    font-size: 1rem;
+    color: var(--color-titulo);
+    outline: none;
+}
+
+.input-form::placeholder {
+    color: var(--color-texto);
+    opacity: 0.6;
+}
+
+/* Botão Salvar Interno */
+.btn-salvar {
+    align-self: center;
+    width: 120px;
+    height: 30px;
+    background-color: var(--color-fundo-claro);
+    border: none;
+    border-radius: 6px;
+    color: var(--color-titulo);
+    font-family: var(--font-texto);
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+/* Tabela de Sensores */
+.tabela-sensores {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--color-titulo);
+    border-radius: 8px;
+    overflow: hidden;
+    color: var(--color-fundo-claro);
+    font-family: var(--font-texto);
+}
+
+.tabela-sensores th, .tabela-sensores td {
+    padding: 10px 15px;
+    text-align: left;
+    font-size: 0.9rem;
+    border-bottom: 1px solid var(--color-fundo-escuro);
+}
+
+.tabela-sensores th {
+    background-color: var(--color-fundo-escuro);
+    font-weight: bold;
+}
+
+/* Badges Redondos de Status */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+}
+
+.badge::before {
+    content: '';
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.status-ativo::before { background-color: #28a745; }
+.status-falha::before { background-color: #dc3545; }
+.status-alerta::before { background-color: #ffc107; }
