@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 :root {
     --color-marca: #6B4732;
     --color-titulo: #2F1E17;
@@ -11,12 +12,15 @@
 
 /* RESET */
 
+=======
+>>>>>>> 7d8a617803f2210a34baf419f1559341326bbccb
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
 }
 
+<<<<<<< HEAD
 /* BODY */
 
 body{
@@ -64,21 +68,33 @@ body{
     max-height: 50px;          
     width: auto;                
     object-fit: contain;    
+=======
+body{
+    background:#f3efeb;
+    font-family:'Roboto', sans-serif;
+>>>>>>> 7d8a617803f2210a34baf419f1559341326bbccb
 }
 
 /* TÍTULO */
 
 header h1{
     text-align:center;
+<<<<<<< HEAD
     font-family: var(--font-titulo);
     font-size:72px;
     color: var(--color-marca);
+=======
+    font-family:'Fjalla One', sans-serif;
+    font-size:72px;
+    color:#5b4032;
+>>>>>>> 7d8a617803f2210a34baf419f1559341326bbccb
     margin-top:10px;
     line-height:1;
 }
 
 header h3{
     text-align:center;
+<<<<<<< HEAD
     font-family: var(--font-titulo);
     font-size:28px;
     color: var(--color-marca);
@@ -121,10 +137,72 @@ section {
 
 .info strong{
     font-weight:00;
+=======
+    font-family:'Fjalla One', sans-serif;
+    font-size:28px;
+    color:#5b4032;
+    margin-bottom:20px;
+}
+
+.header{
+    height:60px;
+    background: #2f1e17;;
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 20px;
+}
+
+.header .left i{
+    margin-right:20px;
+    font-size:22px;
+    cursor:pointer;
+}
+
+.logo{
+    font-weight:bold;
+}
+
+
+
+/* CONTEÚDO */
+
+section{
+    width:1100px;
+    margin:0 auto;
+}
+
+.conteudo-principal{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    margin-bottom:30px;
+}
+
+/* CARD */
+
+.info{
+    width:420px;
+    background:#3b251c;
+    color:white;
+    padding:18px 22px;
+    border-radius:6px;
+}
+
+.info p{
+    font-size:17px;
+    margin-bottom:7px;
+}
+
+.info strong{
+    font-weight:700;
+>>>>>>> 7d8a617803f2210a34baf419f1559341326bbccb
 }
 
 /* MAPA */
 
+<<<<<<< HEAD
 .mapa {
     flex: 1;
     max-width: 620px;
@@ -156,35 +234,67 @@ section {
     background: var(--color-texto);
     padding:10px;
     border-radius:5px;
+=======
+.mapa{
+    width:620px;
+}
+
+.mapa svg{
+    width:100%;
+    height:auto;
+    display:block;
+}
+
+.registro{
+    background:#7b655a;
+    padding:10px;
+    border-radius:4px;
+>>>>>>> 7d8a617803f2210a34baf419f1559341326bbccb
     margin-bottom:12px;
 
     display:flex;
     align-items:center;
+<<<<<<< HEAD
     gap:20px;
 }
 
 /* HORÁRIO */
 
+=======
+    gap:25px;
+}
+
+>>>>>>> 7d8a617803f2210a34baf419f1559341326bbccb
 .hora{
     width:140px;
     background:white;
     border-radius:5px;
     text-align:center;
+<<<<<<< HEAD
     padding:8px;
 }
 
 /* DESCRIÇÃO */
 
+=======
+    padding:6px;
+}
+
+>>>>>>> 7d8a617803f2210a34baf419f1559341326bbccb
 .descricao{
     flex:1;
     background:white;
     border-radius:5px;
     text-align:center;
+<<<<<<< HEAD
     padding:8px;
 }
 
 .hora p,
 .descricao p{
     margin:0;
+=======
+    padding:6px;
+>>>>>>> 7d8a617803f2210a34baf419f1559341326bbccb
 }
 

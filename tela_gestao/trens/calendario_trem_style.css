@@ -31,6 +31,7 @@ h1{
     
 }
 
+
 .header {
     display: flex;
     justify-content: space-between;
@@ -63,12 +64,8 @@ h1{
     width: 100px; 
 }
 
-.header .logo img {
-    display: block;
-    height: 80%;                
-    max-height: 50px;          
-    width: auto;                
-    object-fit: contain;    
+.logo{
+    font-weight:bold;
 }
 
 /*Navbar fim*/
