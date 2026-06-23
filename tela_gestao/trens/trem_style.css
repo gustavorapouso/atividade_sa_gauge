@@ -77,28 +77,22 @@ header h1 {
     margin-bottom: 20px;
 }
 
-/* Container do input para controlar a largura máxima */
-.search-container {
-    max-width: 600px;
-    margin: 0 auto;
-}
 
-.search-input {
-    width: 100%;
-    padding: 10px 20px;
-    border-radius: 25px; /* Deixa bem arredondado como na foto */
+
+.procurar-input {
+    width: 250%;
+    padding: 12px 48px; 
+    border-radius: 25px; 
     border: none;
-    background-color: #E6DFD9; /* Tom cinza claro/bege de fundo do input */
+    background-color: #E6DFD9; 
     font-family: var(--font-texto);
     font-size: 15px;
     color: var(--color-texto);
     outline: none;
+
 }
 
-.search-input::placeholder {
-    color: var(--color-texto);
-    opacity: 0.8;
-}
+
 
 /* 3. SECTION DOS CARDS (ALINHAMENTO CENTRAL) */
 .container-cards {
@@ -149,16 +143,27 @@ header h1 {
     text-align: center;
 }
 
-.barra-pesquisa{
-    width: 70%;
+
+
+#pesquisa_bar{
+    display: block;
     margin: 20px auto;
-    position: relative;
-    text-align: center;
+    border: none;
+    border-radius: 20px;
+    background: #ddd8d6;
+    width: 100%;
+    padding: 10px 10px 10px 40px;  
 }
 
-.procurar-trem{
-    
+
+
+.barra-pesquisa{
+    width: 30%;
+    margin: 20px auto;
+    position: relative;
 }
+
+
 
 .lupa{
     position: absolute;

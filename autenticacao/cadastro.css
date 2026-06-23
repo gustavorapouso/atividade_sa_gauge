@@ -27,8 +27,8 @@ h1{
 }
 
 .perfil{
-    width: 80px;
-    height: 80px;
+    width: 200px;
+    height: 200px;
 
     border: 3px solid #7A655B;
     border-radius: 50%;
@@ -41,12 +41,12 @@ h1{
 }
 
 .perfil i{
-    font-size: 40px;
+    font-size: 100px;
     color: #7A655B;
 }
 
 form{
-    width: 350px;
+    width: 800px;
 
     display: flex;
     flex-direction: column;

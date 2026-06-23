@@ -162,27 +162,6 @@ body {
     font-weight: 500;
 }
 
-/* Wrapper e Elementos Select / Input */
-.select-wrapper {
-    position: relative;
-    width: 100%;
-}
-
-.select-wrapper::after {
-    content: '\f0d7';
-    font-family: 'Font Awesome 6 Free';
-    font-weight: 900;
-    position: absolute;
-    right: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--color-titulo);
-    pointer-events: none;
-}
-
-.painel-formulario .select-wrapper::after {
-    color: var(--color-fundo-escuro);
-}
 
 .select-filtro, .input-form {
     width: 100%;
