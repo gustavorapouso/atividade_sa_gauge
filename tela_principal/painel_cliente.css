@@ -1,146 +1,131 @@
-:root{
-    --color-marca:#6B4732;
-    --color-titulo:#2F1E17;
-    --color-texto:#7A655B;
-    --color-fundo-claro:#F3EFEB;
-    --color-fundo-escuro:#1F1713;
-    --color-contato:#C49E7A;
-
-    --font-titulo:'Fjalla One', sans-serif;
-    --font-texto:'Roboto', sans-serif;
+:root {
+    --color-marca: #6B4732; 
+    --color-titulo: #2F1E17; 
+    --color-texto: #7A655B;
+    --color-fundo-claro: #F3EFEB;
+    --color-fundo-escuro: #1F1713;
+    --color-contato: #C49E7A; 
+    
+    --font-titulo: 'Fjalla One', sans-serif;
+    --font-texto: 'Roboto', sans-serif;
 }
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-body{
-    font-family:var(--font-texto);
-    height:100vh;
-    overflow:hidden;
+body {
+    font-family: var(--font-texto);
+    min-height: 100vh;
+    background-color: #ffffff; 
+    overflow: hidden;
 }
 
-.container{
-    display:flex;
-    width:100%;
-    height:100vh;
+
+.layout-wrapper {
+    display: flex;
+    width: 100%;
+    height: 100vh;
 }
 
-/* MENU LATERAL */
 
-.sidebar{
-    width:35%;
-    min-width:430px;
-    background:linear-gradient(180deg,#7A513B 0%,var(--color-marca) 100%);
-    display:flex;
-    flex-direction:column;
+.sidebar {
+    width: 320px;
+    background-color: var(--color-marca);
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    height: 100%;
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.05);
+    flex-shrink: 0;
 }
 
-.menu-icon{
-    margin:25px 30px;
-    font-size:42px;
-    color:var(--color-fundo-escuro);
+
+.menu-trigger-container {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    margin-bottom: 30px;
 }
 
-.menu{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    gap:65px;
-    margin-top:25px;
+
+.icone-menu-custom {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 28px;  
+    height: 18px;  
+    cursor: pointer;
 }
 
-.menu-btn{
-    width:82%;
-    height:115px;
 
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    text-decoration:none;
-
-    background:#2A1D18;
-    color:var(--color-fundo-claro);
-
-    border:4px solid #000;
-    border-radius:15px;
-
-    font-family:var(--font-titulo);
-    font-size:2.1rem;
-
-    transition:.3s;
+.linha-menu {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    height: 2px; 
 }
 
-.menu-btn:hover{
-    background:#3A2720;
-    border-color:var(--color-contato);
-    transform:scale(1.03);
+
+.linha-menu::before {
+    content: '';
+    width: 3px;
+    height: 3px;
+    background-color: var(--color-fundo-escuro);
+    border-radius: 50%;
+    position: absolute;
+    left: 0;
 }
 
-/* CONTEÚDO */
 
-.content{
-    flex:1;
-    background:linear-gradient(90deg,#ECE8E4,var(--color-fundo-claro),#ECE8E4);
-
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
+.linha-menu::after {
+    content: '';
+    height: 2px;
+    background-color: var(--color-fundo-escuro); 
+    position: absolute;
+    left: 8px; 
+    right: 0;
 }
 
-.content h1{
-    font-family:var(--font-titulo);
-    color:var(--color-titulo);
-    font-size:4.5rem;
-    margin-bottom:10px;
+
+.nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 35px; 
 }
 
-.content p{
-    color:var(--color-texto);
-    font-size:1.4rem;
+
+.btn-menu-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-titulo);
+    color: var(--color-fundo-claro);
+    text-decoration: none;
+    font-family: var(--font-titulo);
+    font-size: 1.4rem;
+    font-weight: 400;
+    letter-spacing: 1px;
+    height: 65px;
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid var(--color-fundo-escuro);
+    text-align: center;
+    padding: 0 15px;
+    transition: transform 0.1s ease;
 }
 
-@media(max-width:900px){
+.btn-menu-item:active {
+    transform: scale(0.98);
+}
 
-    body{
-        overflow:auto;
-    }
 
-    .container{
-        flex-direction:column;
-    }
-
-    .sidebar{
-        width:100%;
-        min-width:100%;
-        padding-bottom:30px;
-    }
-
-    .menu{
-        gap:20px;
-    }
-
-    .menu-btn{
-        width:90%;
-        height:90px;
-        font-size:1.5rem;
-    }
-
-    .content{
-        min-height:400px;
-    }
-
-    .content h1{
-        font-size:2.8rem;
-        text-align:center;
-    }
-
-    .content p{
-        text-align:center;
-    }
-
+.main-content-blank {
+    flex: 1;
+    background-color: #ffffff; 
+    height: 100%;
 }
