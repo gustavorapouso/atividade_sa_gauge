@@ -1,0 +1,97 @@
+:root{
+
+    --color-marca:#6B4732;
+    --color-titulo:#2F1E17;
+    --color-texto:#7A655B;
+    --color-fundo-claro:#F3EFEB;
+    --color-fundo-escuro:#1F1713;
+    --color-contato:#FF8D8D;
+
+    --font-titulo:'Fjalla One', sans-serif;
+    --font-texto:'Roboto', sans-serif;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:var(--font-texto);
+}
+
+.sidebar{
+
+    width:420px;
+    height:100vh;
+
+    background:linear-gradient(
+        180deg,
+        #8A5E47,
+        var(--color-marca)
+    );
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.menu{
+
+    width:100%;
+
+    display:flex;
+    flex-direction:column;
+
+    gap:70px;
+}
+
+.menu-btn{
+
+    position:relative;
+
+    width:100%;
+    height:80px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:var(--color-fundo-escuro);
+
+    border-top:3px solid #000;
+    border-bottom:3px solid #000;
+
+    color:var(--color-fundo-claro);
+
+    text-decoration:none;
+
+    font-family:var(--font-titulo);
+    font-size:2.1rem;
+
+    transition:.3s;
+}
+
+.menu-btn::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    top:50%;
+
+    width:35px;
+    height:4px;
+
+    background:var(--color-contato);
+
+    transform:translateY(-50%);
+}
+
+.menu-btn:hover{
+
+    background:#30231d;
+    color:#fff;
+}

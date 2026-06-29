@@ -129,7 +129,6 @@ h1{
     border-radius: 0 6px 6px 0;
 }
 
-/*Lupa e microfone da barra de pesquisa*/
 .barra-pesquisa{
     width: 70%;
     margin: 20px auto;
@@ -153,4 +152,3 @@ h1{
     transform: translateY(-50%);
     color: #666;
 }
-/*Fim da lupa e do microfone na barra de pesquisa*/

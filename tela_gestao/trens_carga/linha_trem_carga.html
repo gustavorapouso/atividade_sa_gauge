@@ -1,11 +1,98 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Linha do Trem de Carga</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Linha Trens</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="linha_trem_carga_style.css" />
+  </head>
+  <body>
+
+    <header class="header">
+        <div class="left">
+            <i class="fas fa-bars" title="Menu"></i>
+            <i class="fas fa-search" title="Pesquisar"></i>
+        </div>
+        <div class="logo">
+            <img src="../../assets/logo_gauge_menor.png" alt="Gauge Logo">
+        </div>
     
-</body>
+    </header>
+
+          <h1 class="titulo">Linha Central</h1>
+          <h3 class="sub-titulo">06:30</h3>
+
+
+
+    <section>
+        <div class="conteudo-principal">
+            <div class="info">
+                <p><strong>Linha: </strong>Central</p>
+                <p><strong>Horário de saída: </strong>06:30</p>
+                <p><strong>Horário de chegada: </strong>11:00</p>
+                <p><strong>ID do trem: </strong>TR-104</p>
+                <p><strong>Status: </strong>Já Partiu</p>
+                <p><strong>Carga: </strong>Grãos</p>
+                <p><strong>Origem: </strong>Estação Central</p>
+                <p><strong>Destino: </strong>Estação Oeste</p>
+                <p><strong>Velocidade atual: </strong>78km/h</p>
+                <p><strong>Previsão de chegada: </strong>11:02</p>
+            </div>
+            <div class="mapa">
+                <svg width="700" height="520" viewBox="0 0 500 320">
+                <rect
+                    x="1"
+                    y="1"
+                    width="498"
+                    height="318"
+                    fill="white"
+                    stroke="black"
+                    stroke-width="2"
+                />
+                </svg>
+            </div>
+        </div>
+
+      <div class="historico">
+        <h3>Histórico Recente</h3>
+        <div class="registro">
+          <div class="hora">
+            <p>06:15</p>
+          </div>
+          <div class="descricao">
+            <p>Trem sendo preparado</p>
+          </div>
+        </div>
+
+        <div class="registro">
+          <div class="hora">
+            <p>06:31</p>
+          </div>
+          <div class="descricao">
+            <p>Partida</p>
+          </div>
+        </div>
+
+        <div class="registro">
+          <div class="hora">
+            <p>09:47</p>
+          </div>
+          <div class="descricao">
+            <p>Velocidade reduzida por imprevisto</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+
 </html>
+
+

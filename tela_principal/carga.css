@@ -88,9 +88,8 @@ body {
     display: inline-block;
 }
 
-/* Elemento pseudo-clássico para fazer o desenho do ícone de seta para baixo v */
 .select-wrapper::after {
-    content: '\f078'; /* Código do ícone chevron-down no Font Awesome */
+    content: '\f078'; 
     font-family: 'Font Awesome 6 Free';
     font-weight: 900;
     font-size: 0.65rem;
@@ -99,17 +98,17 @@ body {
     right: 12px;
     top: 50%;
     transform: translateY(-50%);
-    pointer-events: none; /* Garante que o clique passe direto para o select */
+    pointer-events: none; 
 }
 
 
 .select-badge {
-    appearance: none; /* Remove a seta padrão do sistema operacional */
+    appearance: none; 
     -webkit-appearance: none;
     -moz-appearance: none;
     
     background: white;
-    padding: 5px 28px 5px 14px; /* Espaço extra na direita por causa da seta */
+    padding: 5px 28px 5px 14px; 
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 0.75rem;
