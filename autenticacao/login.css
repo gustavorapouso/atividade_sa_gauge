@@ -195,24 +195,3 @@ button:hover{
     color: #0A66C2;
 }
 
-@media(max-width: 900px){
-
-    .container{
-        flex-direction: column;
-        height: auto;
-    }
-
-    .lado-esquerdo,
-    .lado-direito{
-        width: 100%;
-    }
-
-    .card-login{
-        width: 95%;
-        margin: 20px 0;
-    }
-
-    h1{
-        font-size: 45px;
-    }
-}

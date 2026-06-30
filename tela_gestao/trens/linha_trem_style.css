@@ -1,15 +1,18 @@
 :root {
+    
     --color-marca: #6B4732;
     --color-titulo: #2F1E17;
     --color-texto: #7A655B;
     --color-fundo-claro: #F3EFEB;
     --color-fundo-escuro: #1F1713;
-
+    
+    
+    --color-contato: #C49E7A; 
+    
     --font-titulo: 'Fjalla One', sans-serif;
     --font-texto: 'Roboto', sans-serif;
 }
 
-/* RESET */
 
 *{
     margin:0;
@@ -17,14 +20,20 @@
     box-sizing:border-box;
 }
 
-/* BODY */
+
 
 body{
     background: var(--color-fundo-claro);
     font-family: var(--font-texto);
+        min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
-/* NAVBAR */
+main {
+    flex: 1; 
+    width: 100%;
+}
 
 .header {
     display: flex;
@@ -66,7 +75,7 @@ body{
     object-fit: contain;    
 }
 
-/* TÍTULO */
+
 
 .titulo{
     text-align:center;
@@ -85,7 +94,7 @@ body{
     margin-bottom:25px;
 }
 
-/* CONTEÚDO */
+
 
 section {
     width: 100%;
@@ -103,7 +112,7 @@ section {
     margin-bottom: 30px;
 }
 
-/* CARD DE INFORMAÇÕES */
+
 
 .info {
     flex: 0 0 420px; 
@@ -123,7 +132,7 @@ section {
     font-weight:00;
 }
 
-/* MAPA */
+
 
 .mapa {
     flex: 1;
@@ -141,7 +150,7 @@ section {
     stroke: var(--color-titulo);
 }
 
-/* HISTÓRICO */
+
 
 .historico h3{
     font-family: var(--font-titulo);
@@ -150,7 +159,7 @@ section {
     margin-bottom:15px;
 }
 
-/* REGISTROS */
+
 
 .registro{
     background: var(--color-texto);
@@ -163,7 +172,7 @@ section {
     gap:20px;
 }
 
-/* HORÁRIO */
+
 
 .hora{
     width:140px;
@@ -173,7 +182,7 @@ section {
     padding:8px;
 }
 
-/* DESCRIÇÃO */
+
 
 .descricao{
     flex:1;
@@ -188,3 +197,79 @@ section {
     margin:0;
 }
 
+.footer-gauge {
+    background-color: var(--color-fundo-escuro);
+    border-top: 2px solid var(--color-contato); 
+    padding: 30px 20px 15px 20px;
+    width: 100%;
+    margin-top: auto; 
+}
+
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+
+.footer-bloco {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.bloco-esquerda {
+    align-items: flex-start;
+    padding-left: 40px;
+}
+
+.bloco-centro {
+    align-items: center;
+    gap: 15px;
+}
+
+.bloco-direita {
+    align-items: flex-end;
+    padding-right: 40px;
+}
+
+
+.footer-label {
+    color: #ffffff;
+    font-family: var(--font-texto);
+    font-size: 0.95rem;
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+
+.footer-link {
+    color: var(--color-contato);
+    font-family: var(--font-texto);
+    font-size: 0.95rem;
+    text-decoration: none;
+    font-weight: 400;
+}
+
+.link-sublinhado {
+    text-decoration: underline;
+}
+
+
+.footer-logo {
+    max-height: 45px;
+    width: auto;
+    object-fit: contain;
+}
+
+.footer-copyright {
+    color: var(--color-texto);
+    font-size: 0.65rem;
+    font-family: var(--font-texto);
+    opacity: 0.7;
+    margin-top: 5px;
+}

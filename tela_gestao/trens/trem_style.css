@@ -1,15 +1,19 @@
 :root {
+    
     --color-marca: #6B4732;
     --color-titulo: #2F1E17;
     --color-texto: #7A655B;
     --color-fundo-claro: #F3EFEB;
     --color-fundo-escuro: #1F1713;
     
+    
+    --color-contato: #C49E7A; 
+    
     --font-titulo: 'Fjalla One', sans-serif;
     --font-texto: 'Roboto', sans-serif;
 }
 
-/* Reset básico */
+
 * {
     margin: 0;
     padding: 0;
@@ -19,10 +23,17 @@
 body {
     background-color: var(--color-fundo-claro);
     font-family: var(--font-texto);
-    color: #ffffff; /* O texto de dentro dos cards é branco */
+    color: #ffffff; 
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
-/* 1. BARRA SUPERIOR ESCURA (NAVBAR) */
+main {
+    flex: 1; 
+    width: 100%;
+}
+
 .header {
     display: flex;
     justify-content: space-between;
@@ -63,7 +74,7 @@ body {
     object-fit: contain;    
 }
 
-/* 2. CABEÇALHO (TÍTULO E PESQUISA) */
+
 header {
     text-align: center;
     padding: 30px 20px 20px 20px;
@@ -94,21 +105,20 @@ header h1 {
 
 
 
-/* 3. SECTION DOS CARDS (ALINHAMENTO CENTRAL) */
+
 .container-cards {
-    max-width: 750px; /* Largura idêntica à do layout da foto */
+    max-width: 750px; 
     margin: 20px auto;
     padding: 0 20px;
     display: flex;
     flex-direction: column;
-    gap: 20px; /* Espaçamento idêntico entre um card e outro */
+    gap: 20px; 
 }
 
-/* 4. OS CARDS DE TREM */
 .card-trem {
-    background-color: var(--color-titulo); /* Usa o tom marrom bem escuro */
+    background-color: var(--color-titulo); 
     padding: 20px 25px;
-    border-radius: 8px; /* Arredondamento suave das bordas */
+    border-radius: 8px; 
 }
 
 .card-trem h3 {
@@ -123,7 +133,7 @@ header h1 {
     font-size: 17px;
     line-height: 1.4;
     font-weight: 400;
-    color: #EAEAEA; /* Branco levemente suavizado para os dados internos */
+    color: #EAEAEA; 
 }
 
 .card-trem p strong {
@@ -179,4 +189,81 @@ header h1 {
     top: 50%;
     transform: translateY(-50%);
     color: #666;
+}
+
+.footer-gauge {
+    background-color: var(--color-fundo-escuro);
+    border-top: 2px solid var(--color-contato); 
+    padding: 30px 20px 15px 20px;
+    width: 100%;
+    margin-top: auto; 
+}
+
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+
+.footer-bloco {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.bloco-esquerda {
+    align-items: flex-start;
+    padding-left: 40px;
+}
+
+.bloco-centro {
+    align-items: center;
+    gap: 15px;
+}
+
+.bloco-direita {
+    align-items: flex-end;
+    padding-right: 40px;
+}
+
+
+.footer-label {
+    color: #ffffff;
+    font-family: var(--font-texto);
+    font-size: 0.95rem;
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+
+.footer-link {
+    color: var(--color-contato);
+    font-family: var(--font-texto);
+    font-size: 0.95rem;
+    text-decoration: none;
+    font-weight: 400;
+}
+
+.link-sublinhado {
+    text-decoration: underline;
+}
+
+
+.footer-logo {
+    max-height: 45px;
+    width: auto;
+    object-fit: contain;
+}
+
+.footer-copyright {
+    color: var(--color-texto);
+    font-size: 0.65rem;
+    font-family: var(--font-texto);
+    opacity: 0.7;
+    margin-top: 5px;
 }
