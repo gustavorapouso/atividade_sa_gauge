@@ -9,12 +9,42 @@
     $senha = $_POST['senha'];
     $confirmar_senha = $_POST['confirmar_senha'];
 
-    // Proteger a senha -> IA
+    if(isset($_POST['perfil'])){
+        $perfil = $_POST['perfil'];
+    } else{
+        echo "Erro: nenhum perfil selecionado";
+    }
 
-    $senha_hash = password_hash($senha, PASSWORD_DEFAULT);
+   
+    if($senha === $confirmar_senha){
+         // Proteger a senha -> IA
+        $senha_hash = password_hash($senha, PASSWORD_DEFAULT);
+    } else {
+        echo "Erro: senha incorreta.";
+    }
+    
 
     $sql = "INSERT INTO PESSOA
-        (nome, nascimento, email, telefone, senha, confirmar_senha, id_perfil)
-        VALUES (?, ?, ?, ?, ?, ?, ?)";
+        (nome, nascimento, email, telefone, senha, perfil)
+        VALUES (?, ?, ?, ?, ?, ?)";
 
+    $stmt = $conexao->prepare($sql);  
+
+    $stmt->bind_param("sssssss",
+        $nome,
+        $nascimento,
+        $email,
+        $telefone,
+        $senha,
+        $perfil
+    );
+
+    if ($stmt->execute()){
+        echo "Cadastro realizado com sucesso.";
+    } else {
+        echo "Erro ao cadastrar: " . $stmt->error;
+    }
+
+    $stmt->close();
+    $conexao->close();
 ?>
