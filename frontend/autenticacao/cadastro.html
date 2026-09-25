@@ -31,12 +31,17 @@
 
         <input type="password" id="confirmar_senha" name="confirmar_senha" placeholder="Confirmar senha">
 
-        <select name="perfil" id="perfil">
-            <option value="">Perfil</option>
-            <option value="cliente" name="cliente">Cliente</option>
-            <option value="gestor" name="gestor" >Gestor</option>
-            <option value="maquinista" name="maquinista">Maquinista</option>
-        </select>
+        <select name="FK_id_perfil" id="FK_id_perfil" required>
+
+    <option value="">Selecione o perfil</option>
+
+    <option value="1">Cliente</option>
+
+    <option value="2">Gestor</option>
+
+    <option value="3">Maquinista</option>
+
+</select>
 
         <button type="submit">Salvar</button>
 

@@ -10,6 +10,7 @@
     $confirmar_senha = $_POST['confirmar_senha'];
     $FK_id_perfil = $_POST['FK_id_perfil'];
 
+
     if(isset($_POST['FK_id_perfil'])){
         $FK_id_perfil = $_POST['FK_id_perfil'];
     } else{
@@ -36,7 +37,7 @@
         $data_nascimento,
         $email,
         $telefone,
-        $senha,
+        $senha_hash,
         $FK_id_perfil
     );
 
