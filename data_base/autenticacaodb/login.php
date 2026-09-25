@@ -27,19 +27,20 @@ $sql = "SELECT
     
     if ($usuario && password_verify($senha, $usuario['senha'])) {
     
-    $_SESSION['id_pessoa'] = $usuario['id_pessoa'];
-    $_SESSION['nome'] = $usuario['nome'];
-    $_SESSION['email'] = $usuario['email'];
-    $_SESSION['id_perfil'] = $usuario['id_perfil'];
+        $_SESSION['id_pessoa'] = $usuario['id_pessoa'];
+        $_SESSION['nome'] = $usuario['nome'];
+        $_SESSION['email'] = $usuario['email'];
+        $_SESSION['id_perfil'] = $usuario['id_perfil'];
 
-    header("Location: dashboard.php");
-    exit;
-
+        header("Location: dashboard.html");
+        exit;
     } else {
 
         echo "E-mail ou senha incorretos.";
 
     }
+
+    
 
 
     $stmt->close();
