@@ -30,7 +30,7 @@
 
     $stmt = $conexao->prepare($sql);  
 
-    $stmt->bind_param("sssssss",
+    $stmt->bind_param("ssssss",
         $nome,
         $nascimento,
         $email,
