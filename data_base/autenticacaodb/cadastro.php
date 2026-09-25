@@ -35,7 +35,7 @@
         $nascimento,
         $email,
         $telefone,
-        $senha,
+        $senha_hash,
         $perfil
     );
 

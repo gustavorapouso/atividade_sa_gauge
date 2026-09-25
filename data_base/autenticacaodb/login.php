@@ -13,7 +13,7 @@ $sql = "SELECT
             nome,
             email,
             senha,
-            perfil
+            fk_id_perfil
         FROM PESSOA
         WHERE nome = ?";
 
@@ -30,7 +30,7 @@ $sql = "SELECT
     $_SESSION['id_pessoa'] = $usuario['id_pessoa'];
     $_SESSION['nome'] = $usuario['nome'];
     $_SESSION['email'] = $usuario['email'];
-    $_SESSION['id_perfil'] = $usuario['id_perfil'];
+    $_SESSION['id_perfil'] = $usuario['fk_id_perfil'];
 
     header("Location: dashboard.php");
     exit;
