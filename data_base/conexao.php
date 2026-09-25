@@ -1,7 +1,7 @@
 <?php
     $servidor = 'localhost';
     $usuario = 'root';
-    $senha = 'root';
+    $senha = '';
     $banco = 'ferrorama_gauge';
 
     $conexao = new mysqli($servidor, $usuario, $senha, $banco);
