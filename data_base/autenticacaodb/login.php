@@ -2,7 +2,7 @@
 
 session_start();
 
-require 'conexao.php';
+require '../conexao.php';
 
 $nome = $_POST['nome'];
 $senha = $_POST['senha'];
@@ -32,7 +32,7 @@ $sql = "SELECT
         $_SESSION['email'] = $usuario['email'];
         $_SESSION['FK_id_perfil'] = $usuario['FK_id_perfil'];
 
-        header("Location: dashboard.html");
+        header("Location: ../../frontend/tela_principal/dashboard.html");
         exit;
 
     } else {
