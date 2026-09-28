@@ -44,7 +44,7 @@
     if ($stmt->execute()){
         echo "Cadastro realizado com sucesso.";
 
-        header("Location: login.html");
+        header("Location: ../../frontend/autenticacao/login.html");
     } else {
         echo "Erro ao cadastrar: " . $stmt->error;
     }
