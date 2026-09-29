@@ -1,0 +1,75 @@
+<?php
+
+session_start();
+
+require 'includes/proteger.php';
+require 'includes/permissao.php';
+
+if (!temPapel([1])) {
+    echo "Acesso negado.";
+    exit;
+}
+
+?>
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Cliente</title>
+
+    <link rel="stylesheet" href="painel.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="layout-wrapper">
+
+    <aside class="sidebar" id="sidebar">
+
+        <div class="menu-trigger-container">
+            <div class="icone-menu-custom" id="menuBtn">
+                <div class="linha-menu"></div>
+                <div class="linha-menu"></div>
+                <div class="linha-menu"></div>
+            </div>
+        </div>
+        
+        <nav class="nav-links">
+
+            <a href="#" class="btn-menu-item">PERFIL</a>
+
+            <a href="#" class="btn-menu-item">TREM DE CARGA</a>
+
+            <a href="#" class="btn-menu-item">TREM DE PASSAGEIRO</a>
+
+            <a href="#" class="btn-menu-item">SUPORTE</a>
+
+            <a href="#" class="btn-menu-item">ALERTAS</a>
+
+        </nav>
+
+    </aside>
+
+    <main class="main-content-blank">
+    </main>
+
+</div>
+
+<script>
+const menuBtn = document.getElementById("menuBtn");
+const sidebar = document.getElementById("sidebar");
+
+menuBtn.addEventListener("click", function() {
+    sidebar.classList.toggle("aberto");
+});
+</script>
+
+</body>
+</html>
