@@ -166,105 +166,61 @@ if (!temPapel([2])) {
 
     <!-- CONTEÚDO PRINCIPAL -->
 
-    <main class="main-content">
+        <main>
+    
+    <div class="title">
 
-        <h1>
-            Painel de Disponibilidade
-        </h1>
+    <h1 class="title">Painel de Disponibilidade</h1>
 
+    </div>
 
-        <div class="container">
+    <div class="container">
 
-
-            <div class="card">
-
-                <div class="icon">
-                    🚆
-                </div>
-
-                <div class="info">
-
-                    <h2>
-                        TRENS DE PASSAGEIRO
-                    </h2>
-
-                    <p>
-                        Ativos: 3
-                    </p>
-
-                </div>
-
+        <div class="card">
+            <div class="icon">
+                <i class="fas fa-train"></i>
             </div>
 
-
-
-            <div class="card">
-
-                <div class="icon">
-                    📦
-                </div>
-
-                <div class="info">
-
-                    <h2>
-                        TRENS DE CARGA
-                    </h2>
-
-                    <p>
-                        Ativos: 4
-                    </p>
-
-                </div>
-
+            <div class="info">
+                <h2>TRENS DE PASSAGEIRO</h2>
+                <p>Ativos: 3</p>
             </div>
-
-
-
-            <div class="card">
-
-                <div class="icon">
-                    🔧
-                </div>
-
-                <div class="info">
-
-                    <h2>
-                        EM MANUTENÇÃO
-                    </h2>
-
-                    <p>
-                        Quantidade: 2
-                    </p>
-
-                </div>
-
-            </div>
-
-
-
-            <div class="card">
-
-                <div class="icon">
-                    ⛔
-                </div>
-
-                <div class="info">
-
-                    <h2>
-                        TRENS INATIVOS
-                    </h2>
-
-                    <p>
-                        Quantidade: 2
-                    </p>
-
-                </div>
-
-            </div>
-
-
         </div>
 
+        <div class="card">
+            <div class="icon">
+                <i class="fas fa-box"></i>
+            </div>
+
+            <div class="info">
+                <h2>TRENS DE CARGA</h2>
+                <p>Ativos: 4</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="icon">
+                <i class="fas fa-wrench"></i>
+            </div>
+
+            <div class="info">
+                <h2>EM MANUTENÇÃO</h2>
+                <p>Quantidade: 2</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="icon">
+                <i class="fas fa-ban"></i>
+            </div>
+
+            <div class="info">
+                <h2>TRENS INATIVOS</h2>
+                <p>Quantidade: 2</p>
+            </div>
+        </div>
+
+    </div>
     </main>
 
 
