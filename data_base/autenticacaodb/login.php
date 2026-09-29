@@ -13,7 +13,7 @@ $sql = "SELECT
             nome,
             email,
             senha,
-            fk_id_perfil
+            FK_id_perfil
         FROM PESSOA
         WHERE nome = ?";
 
@@ -32,8 +32,33 @@ $sql = "SELECT
         $_SESSION['email'] = $usuario['email'];
         $_SESSION['FK_id_perfil'] = $usuario['FK_id_perfil'];
 
-        header("Location: ../../frontend/tela_principal/dashboard.php");
+        $perfil = $usuario['FK_id_perfil'];
+
+        if ($perfil == 1) {
+
+        header("Location: ../../frontend/tela_principal/painel_cliente.php");
         exit;
+
+    }
+
+
+    // GESTOR
+    elseif ($perfil == 2) {
+
+        header("Location: ../../frontend/tela_principal/painel_gestor.php");
+        exit;
+
+    }
+
+
+    // MAQUINISTA
+    elseif ($perfil == 3) {
+
+        header("Location: ../../frontend/tela_principal/painel_maquinista.php");
+        exit;
+
+    }
+        
 
     } else {
 
