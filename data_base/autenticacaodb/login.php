@@ -32,7 +32,7 @@ $sql = "SELECT
         $_SESSION['email'] = $usuario['email'];
         $_SESSION['FK_id_perfil'] = $usuario['FK_id_perfil'];
 
-        header("Location: ../../frontend/tela_principal/dashboard.html");
+        header("Location: ../../frontend/tela_principal/dashboard.php");
         exit;
 
     } else {
