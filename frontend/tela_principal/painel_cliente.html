@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Painel Cliente</title>
 
-    <link rel="stylesheet" href="painel_cliente.css">
+    <link rel="stylesheet" href="painel.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,9 +16,9 @@
 <body>
 
 <div class="layout-wrapper">
-        <aside class="sidebar">
+        <aside class="sidebar" id="sidebar">
             <div class="menu-trigger-container">
-                <div class="icone-menu-custom">
+                <div class="icone-menu-custom" id="menuBtn">
         <div class="linha-menu"></div>
         <div class="linha-menu"></div>
         <div class="linha-menu"></div>
@@ -37,6 +37,15 @@
         <main class="main-content-blank">
             </main>
     </div>
+
+    <script>
+    const menuBtn = document.getElementById("menuBtn");
+    const sidebar = document.getElementById("sidebar");
+
+    menuBtn.addEventListener("click", function() {
+        sidebar.classList.toggle("aberto");
+    });
+    </script>
 
 </body>
 </html>
