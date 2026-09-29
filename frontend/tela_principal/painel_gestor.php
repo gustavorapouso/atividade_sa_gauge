@@ -37,6 +37,8 @@ if (!temPapel([2])) {
         href="menu.css"
     >
 
+    <link rel="stylesheet" href="dashboard.css">
+
     <link
         rel="preconnect"
         href="https://fonts.googleapis.com"

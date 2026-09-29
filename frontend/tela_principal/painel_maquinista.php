@@ -39,6 +39,8 @@ if (!temPapel([1])) {
         href="painel.css"
     >
 
+    <link rel="stylesheet" href="dashboard.css">
+
     <link
         rel="stylesheet"
         href="menu.css"
