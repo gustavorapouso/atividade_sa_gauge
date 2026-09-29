@@ -93,7 +93,7 @@ if (!temPapel([1])) {
     <div class="logo">
 
         <img
-            src="../../assets/logo_gauge_menor.png"
+            src="../../frontend/assets/logo_gauge_menor.png"
             alt="Gauge Logo"
         >
 
