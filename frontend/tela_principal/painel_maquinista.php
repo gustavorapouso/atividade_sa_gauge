@@ -9,10 +9,12 @@ require '../../data_base/includes/proteger.php';
 require '../../data_base/includes/permissao.php';
 
 
-if (!temPapel([3])) {
+/*
+if (!temPapel([1])) {
     echo "Acesso negado.";
     exit;
 }
+*/
 
 
 ?>
