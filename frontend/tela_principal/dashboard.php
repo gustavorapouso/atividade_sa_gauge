@@ -23,11 +23,29 @@ if (session_status() === PHP_SESSION_NONE) {
 
      <header class="header">
         <div class="left">
+
+    <?php if ($_SESSION['FK_id_perfil'] == 1): ?>
+
+        <a href="painel_cliente.php">
             <i class="fas fa-bars" title="Menu"></i>
-            <i class="fas fa-search" title="Pesquisar"></i>
-        </div>
-        <div class="logo">
-            <img src="../assets/logo_gauge_menor.png" alt="Gauge Logo">
+        </a>
+
+    <?php elseif ($_SESSION['FK_id_perfil'] == 2): ?>
+
+        <a href="painel_gestor.php">
+            <i class="fas fa-bars" title="Menu"></i>
+        </a>
+
+    <?php elseif ($_SESSION['FK_id_perfil'] == 3): ?>
+
+        <a href="painel_maquinista.php">
+            <i class="fas fa-bars" title="Menu"></i>
+        </a>
+
+    <?php endif; ?>
+
+    <i class="fas fa-search" title="Pesquisar"></i>
+
         </div>
     </header>
     
