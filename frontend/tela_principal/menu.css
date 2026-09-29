@@ -1,0 +1,105 @@
+:root {
+
+    --color-marca: #6b4732;
+    --color-titulo: #2f1e17;
+    --color-texto: #7a655b;
+    --color-fundo-claro: #f3efeb;
+    --color-fundo-escuro: #1f1713;
+    --color-contato: #c49e7a;
+
+    --font-titulo: "Fjalla One", sans-serif;
+    --font-texto: "Roboto", sans-serif;
+
+}
+
+.sidebar {
+
+    width: 0;
+
+    overflow: hidden;
+
+    flex-shrink: 0;
+
+    background-color: var(--color-marca);
+
+    transition: width 0.3s ease;
+
+}
+
+
+/* MENU ABERTO */
+
+.sidebar.aberto {
+
+    width: 300px;
+
+}
+
+
+/* ================================= */
+/* LINKS DO MENU                     */
+/* ================================= */
+
+.nav-links {
+
+    width: 300px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 25px;
+
+    padding: 40px 20px;
+
+}
+
+.btn-menu-item {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 100%;
+
+    height: 65px;
+
+    padding: 0 15px;
+
+    background-color: var(--color-titulo);
+
+    color: var(--color-fundo-claro);
+
+    text-decoration: none;
+
+    font-family: var(--font-titulo);
+
+    font-size: 1.4rem;
+
+    letter-spacing: 1px;
+
+    border-radius: 8px;
+
+    border: 1px solid var(--color-fundo-escuro);
+
+    text-align: center;
+
+    transition: transform 0.1s ease;
+
+}
+
+
+.btn-menu-item:hover {
+
+    opacity: 0.9;
+
+}
+
+
+.btn-menu-item:active {
+
+    transform: scale(0.98);
+
+}

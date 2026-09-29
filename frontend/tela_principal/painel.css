@@ -1,144 +1,256 @@
 :root {
-    --color-marca: #6B4732; 
-    --color-titulo: #2F1E17; 
-    --color-texto: #7A655B;
-    --color-fundo-claro: #F3EFEB;
-    --color-fundo-escuro: #1F1713;
-    --color-contato: #C49E7A; 
-    
-    --font-titulo: 'Fjalla One', sans-serif;
-    --font-texto: 'Roboto', sans-serif;
+
+    --color-marca: #6b4732;
+    --color-titulo: #2f1e17;
+    --color-texto: #7a655b;
+    --color-fundo-claro: #f3efeb;
+    --color-fundo-escuro: #1f1713;
+    --color-contato: #c49e7a;
+
+    --font-titulo: "Fjalla One", sans-serif;
+    --font-texto: "Roboto", sans-serif;
+
 }
+
 
 * {
+
     margin: 0;
     padding: 0;
+
     box-sizing: border-box;
+
 }
+
 
 body {
+
     font-family: var(--font-texto);
+
     min-height: 100vh;
-    background-color: #ffffff; 
-    overflow: hidden;
+
+    background-color: var(--color-fundo-claro);
+
 }
 
+
+/* ================================= */
+/* CABEÇALHO                         */
+/* ================================= */
+
+.header {
+
+    width: 100%;
+    height: 60px;
+
+    background-color: var(--color-fundo-escuro);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 0 25px;
+
+}
+
+
+.header-left {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 20px;
+
+}
+
+
+.pagina-nome {
+
+    color: white;
+
+    font-family: var(--font-titulo);
+
+    font-size: 20px;
+
+}
+
+
+/* ================================= */
+/* BOTÃO HAMBÚRGUER                  */
+/* ================================= */
+
+.menu-button {
+
+    width: 35px;
+    height: 35px;
+
+    border: none;
+
+    background: transparent;
+
+    cursor: pointer;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    gap: 5px;
+
+    padding: 5px;
+
+}
+
+
+.menu-button span {
+
+    display: block;
+
+    width: 25px;
+
+    height: 3px;
+
+    background-color: white;
+
+    border-radius: 2px;
+
+}
+
+
+.logo img {
+
+    width: 70px;
+
+}
+
+
+/* ================================= */
+/* LAYOUT                            */
+/* ================================= */
 
 .layout-wrapper {
+
     display: flex;
+
     width: 100%;
-    height: 100vh;
+
+    min-height: calc(100vh - 60px);
+
 }
 
+/* ================================= */
+/* CONTEÚDO                          */
+/* ================================= */
 
-.sidebar { 
-    width: 320px; 
-    background-color: var(--color-marca); 
-    display: flex; 
-    flex-direction: column; 
-    padding: 20px; 
-    height: 100vh; 
-    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.05); 
-    flex-shrink: 0;
+.main-content {
 
-    position: fixed;
-    top: 0;
-    left: 0;
-
-    transform: translateX(-100%);
-    transition: transform 0.3s ease;  /* Feito com ajuda de IA */
-
-    z-index: 1000;
-}
-
-.sidebar.aberto {
-    transform: translateX(0); /* Feito com ajuda de IA */
-}
-
-
-.menu-trigger-container {
-    height: 50px;
-    display: flex;
-    align-items: center;
-    padding-left: 10px;
-    margin-bottom: 30px;
-}
-
-
-.icone-menu-custom {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 28px;  
-    height: 18px;  
-    cursor: pointer;
-}
-
-
-.linha-menu {
-    display: flex;
-    align-items: center;
-    position: relative;
-    width: 100%;
-    height: 2px; 
-}
-
-
-.linha-menu::before {
-    content: '';
-    width: 3px;
-    height: 3px;
-    background-color: var(--color-fundo-escuro);
-    border-radius: 50%;
-    position: absolute;
-    left: 0;
-}
-
-
-.linha-menu::after {
-    content: '';
-    height: 2px;
-    background-color: var(--color-fundo-escuro); 
-    position: absolute;
-    left: 8px; 
-    right: 0;
-}
-
-
-.nav-links {
-    display: flex;
-    flex-direction: column;
-    gap: 35px; 
-}
-
-
-.btn-menu-item {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--color-titulo);
-    color: var(--color-fundo-claro);
-    text-decoration: none;
-    font-family: var(--font-titulo);
-    font-size: 1.4rem;
-    font-weight: 400;
-    letter-spacing: 1px;
-    height: 65px;
-    width: 100%;
-    border-radius: 8px;
-    border: 1px solid var(--color-fundo-escuro);
-    text-align: center;
-    padding: 0 15px;
-    transition: transform 0.1s ease;
-}
-
-.btn-menu-item:active {
-    transform: scale(0.98);
-}
-
-
-.main-content-blank {
     flex: 1;
-    background-color: #ffffff; 
-    height: 100%;
+
+    padding: 40px;
+
+    min-width: 0;
+
+}
+
+
+.main-content h1 {
+
+    font-family: var(--font-titulo);
+
+    color: var(--color-titulo);
+
+    font-size: 42px;
+
+    text-align: center;
+
+    margin-bottom: 40px;
+
+}
+
+
+/* ================================= */
+/* CARDS                             */
+/* ================================= */
+
+.container {
+
+    width: 100%;
+
+    max-width: 1000px;
+
+    margin: 0 auto;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 20px;
+
+}
+
+
+.card {
+
+    width: 100%;
+
+    min-height: 110px;
+
+    background-color: #806e64;
+
+    border: 3px solid var(--color-titulo);
+
+    border-radius: 8px;
+
+    display: flex;
+
+    align-items: center;
+
+    padding: 20px;
+
+}
+
+
+.icon {
+
+    width: 100px;
+
+    font-size: 45px;
+
+    text-align: center;
+
+}
+
+
+.info {
+
+    flex: 1;
+
+    text-align: center;
+
+}
+
+
+.info h2 {
+
+    color: white;
+
+    font-family: var(--font-titulo);
+
+    font-size: 28px;
+
+}
+
+
+.info p {
+
+    color: white;
+
+    font-size: 18px;
+
+    margin-top: 8px;
+
 }
