@@ -3,12 +3,12 @@
 require '../../data_base/includes/proteger.php';
 require '../../data_base/includes/permissao.php';
 
-/*
+
 if (!temPapel([2])) {
     echo "Acesso negado.";
     exit;
 }
-*/
+
 
 ?>
 
@@ -155,12 +155,25 @@ if (!temPapel([2])) {
 
 
             <a
+                href="../tela_gestao/trens/trem.php"
+                class="btn-menu-item"
+            >
+                TREM
+            </a>
+
+            <a
+                href="../tela_gestao/trens_carga/trem_carga.php"
+                class="btn-menu-item"
+            >
+                TREM DE CARGA
+            </a>
+
+            <a
                 href="#"
                 class="btn-menu-item"
             >
                 ALERTAS
             </a>
-
 
         </nav>
 
