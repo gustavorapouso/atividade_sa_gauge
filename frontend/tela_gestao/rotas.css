@@ -1,0 +1,236 @@
+@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&family=Roboto:wght@400;500;700&display=swap');
+
+:root {
+    --color-marca: #6B4732;
+    --color-titulo: #2F1E17;
+    --color-texto: #7A655B;
+    --color-fundo-claro: #F3EFEB;
+    --color-fundo-escuro: #1F1713;
+
+    --color-contato: #C49E7A;
+
+    --font-titulo: 'Fjalla One', sans-serif;
+    --font-texto: 'Roboto', sans-serif;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    font-family: var(--font-texto);
+    background-color: var(--color-fundo-claro);
+    color: var(--color-texto);
+}
+
+
+/* NAVBAR */
+
+header {
+    background-color: var(--color-marca);
+    height: 80px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 40px;
+
+    color: white;
+}
+
+
+header img {
+    height: 50px;
+}
+
+
+header a {
+    color: white;
+    text-decoration: none;
+    font-size: 22px;
+}
+
+
+header i {
+    font-size: 20px;
+}
+
+
+/* CONTEÚDO */
+
+main {
+    padding: 40px;
+}
+
+
+h1 {
+    font-family: var(--font-titulo);
+    color: var(--color-titulo);
+    font-size: 32px;
+    margin-bottom: 25px;
+}
+
+
+/* BOTÃO NOVA ROTA */
+
+.botao-nova {
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+
+.botao,
+button {
+    padding: 10px 16px;
+
+    border: none;
+    border-radius: 6px;
+
+    background-color: var(--color-marca);
+    color: white;
+
+    cursor: pointer;
+    text-decoration: none;
+
+    font-family: var(--font-texto);
+}
+
+
+.botao:hover,
+button:hover {
+    background-color: var(--color-fundo-escuro);
+}
+
+
+/* FILTROS */
+
+.filtros {
+    background-color: white;
+
+    padding: 20px;
+
+    border-radius: 10px;
+
+    margin-bottom: 25px;
+}
+
+
+.filtros form {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 12px;
+
+    align-items: end;
+}
+
+
+.campo {
+    display: flex;
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+
+.campo label {
+    font-size: 14px;
+    font-weight: 700;
+
+    color: var(--color-titulo);
+}
+
+
+input,
+select {
+    padding: 10px;
+
+    border: 1px solid #ccc;
+    border-radius: 6px;
+
+    font-family: var(--font-texto);
+
+    color: var(--color-texto);
+}
+
+
+input:focus,
+select:focus {
+    outline: none;
+
+    border-color: var(--color-contato);
+}
+
+
+/* TABELA */
+
+table {
+    width: 100%;
+
+    border-collapse: collapse;
+
+    background-color: white;
+
+    border-radius: 10px;
+
+    overflow: hidden;
+}
+
+
+th,
+td {
+    padding: 14px;
+
+    text-align: left;
+
+    border-bottom: 1px solid #ddd;
+}
+
+
+th {
+    background-color: var(--color-marca);
+
+    color: white;
+
+    font-family: var(--font-titulo);
+    font-weight: normal;
+}
+
+
+td {
+    color: var(--color-texto);
+}
+
+
+/* AÇÕES */
+
+.acoes a {
+    margin-right: 10px;
+
+    text-decoration: none;
+}
+
+
+.editar {
+    color: var(--color-marca);
+}
+
+
+.excluir {
+    color: #b00020;
+}
+
+
+.editar:hover {
+    color: var(--color-fundo-escuro);
+}
+
+
+.excluir:hover {
+    color: #7a0015;
+}
