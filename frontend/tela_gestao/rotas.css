@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Fjalla+One&family=Roboto:wght@400;500;700&display=swap');
 
 :root {
+
     --color-marca: #6B4732;
     --color-titulo: #2F1E17;
     --color-texto: #7A655B;
@@ -32,6 +33,7 @@ body {
 
 header {
     background-color: var(--color-marca);
+
     height: 80px;
 
     display: flex;
@@ -70,16 +72,20 @@ main {
 
 h1 {
     font-family: var(--font-titulo);
+
     color: var(--color-titulo);
+
     font-size: 32px;
+
     margin-bottom: 25px;
 }
 
 
-/* BOTÃO NOVA ROTA */
+/* BOTÕES */
 
 .botao-nova {
     display: inline-block;
+
     margin-bottom: 20px;
 }
 
@@ -89,12 +95,15 @@ button {
     padding: 10px 16px;
 
     border: none;
+
     border-radius: 6px;
 
     background-color: var(--color-marca);
+
     color: white;
 
     cursor: pointer;
+
     text-decoration: none;
 
     font-family: var(--font-texto);
@@ -122,6 +131,7 @@ button:hover {
 
 .filtros form {
     display: flex;
+
     flex-wrap: wrap;
 
     gap: 12px;
@@ -132,6 +142,7 @@ button:hover {
 
 .campo {
     display: flex;
+
     flex-direction: column;
 
     gap: 5px;
@@ -140,6 +151,7 @@ button:hover {
 
 .campo label {
     font-size: 14px;
+
     font-weight: 700;
 
     color: var(--color-titulo);
@@ -151,6 +163,7 @@ select {
     padding: 10px;
 
     border: 1px solid #ccc;
+
     border-radius: 6px;
 
     font-family: var(--font-texto);
@@ -198,6 +211,7 @@ th {
     color: white;
 
     font-family: var(--font-titulo);
+
     font-weight: normal;
 }
 

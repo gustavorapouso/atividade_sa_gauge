@@ -5,9 +5,9 @@ session_start();
 require '../../data_base/conexao.php';
 
 
-// ===============================
+// =====================================
 // FILTROS
-// ===============================
+// =====================================
 
 $status = $_GET['status'] ?? '';
 
@@ -22,9 +22,9 @@ $data_fim = $_GET['data_fim'] ?? '';
 $busca = $_GET['busca'] ?? '';
 
 
-// ===============================
-// MONTAGEM DOS FILTROS
-// ===============================
+// =====================================
+// CONDIÇÕES DOS FILTROS
+// =====================================
 
 $condicoes = [];
 
@@ -36,7 +36,7 @@ $tipos = '';
 // Filtro por status
 if ($status !== '') {
 
-    $condicoes[] = 'rotas.status = ?';
+    $condicoes[] = 'viagem.status_trem = ?';
 
     $valores[] = $status;
 
@@ -47,7 +47,7 @@ if ($status !== '') {
 // Filtro por trem
 if ($id_trem > 0) {
 
-    $condicoes[] = 'rotas.id_trem = ?';
+    $condicoes[] = 'viagem.FK_id_trem = ?';
 
     $valores[] = $id_trem;
 
@@ -58,7 +58,7 @@ if ($id_trem > 0) {
 // Filtro por período
 if ($data_inicio !== '' && $data_fim !== '') {
 
-    $condicoes[] = 'rotas.data_viagem BETWEEN ? AND ?';
+    $condicoes[] = 'DATE(viagem.data_hora_saida) BETWEEN ? AND ?';
 
     $valores[] = $data_inicio;
 
@@ -71,7 +71,12 @@ if ($data_inicio !== '' && $data_fim !== '') {
 // Filtro por origem ou destino
 if ($busca !== '') {
 
-    $condicoes[] = '(rotas.origem LIKE ? OR rotas.destino LIKE ?)';
+    $condicoes[] = '
+        (
+            viagem.origem LIKE ?
+            OR viagem.destino LIKE ?
+        )
+    ';
 
     $termo = '%' . $busca . '%';
 
@@ -83,9 +88,9 @@ if ($busca !== '') {
 }
 
 
-// ===============================
+// =====================================
 // WHERE
-// ===============================
+// =====================================
 
 $where = '';
 
@@ -95,23 +100,25 @@ if (!empty($condicoes)) {
 }
 
 
-// ===============================
-// CONSULTA DAS ROTAS
-// ===============================
+// =====================================
+// CONSULTA DAS VIAGENS
+// =====================================
 
 $sql = "
     SELECT
-        rotas.*,
-        trem.nome,
+        viagem.*,
+        trem.nome AS nome_trem,
         trem.modelo,
         trem.tipo
-    FROM rotas
+    FROM viagem
+
     INNER JOIN trem
-        ON trem.id_trem = rotas.id_trem
+        ON trem.id_trem = viagem.FK_id_trem
+
     $where
+
     ORDER BY
-        rotas.data_viagem DESC,
-        rotas.hora_partida
+        viagem.data_hora_saida DESC
 ";
 
 
@@ -119,17 +126,23 @@ $sql = "
 $stmt = $conexao->prepare($sql);
 
 
-// Verifica se conseguiu preparar
+// Verifica se houve erro
 if (!$stmt) {
 
-    die('Erro na consulta: ' . $conexao->error);
+    die(
+        'Erro na consulta: ' .
+        $conexao->error
+    );
 }
 
 
-// Adiciona os valores dos filtros
+// Coloca os valores dos filtros
 if (!empty($valores)) {
 
-    $stmt->bind_param($tipos, ...$valores);
+    $stmt->bind_param(
+        $tipos,
+        ...$valores
+    );
 }
 
 
@@ -141,9 +154,9 @@ $stmt->execute();
 $resultado = $stmt->get_result();
 
 
-// ===============================
+// =====================================
 // BUSCAR TRENS PARA O FILTRO
-// ===============================
+// =====================================
 
 $sql_trens = "
     SELECT
@@ -154,13 +167,18 @@ $sql_trens = "
     ORDER BY nome
 ";
 
-$resultado_trens = $conexao->query($sql_trens);
+
+$resultado_trens = $conexao->query(
+    $sql_trens
+);
 
 
-// Verifica erro
 if (!$resultado_trens) {
 
-    die('Erro ao buscar os trens: ' . $conexao->error);
+    die(
+        'Erro ao buscar os trens: ' .
+        $conexao->error
+    );
 }
 
 ?>
@@ -178,7 +196,7 @@ if (!$resultado_trens) {
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>Rotas - Ferrorama Gauge</title>
+    <title>Viagens - Ferrorama Gauge</title>
 
 
     <!-- Font Awesome -->
@@ -189,7 +207,7 @@ if (!$resultado_trens) {
     >
 
 
-    <!-- CSS da página -->
+    <!-- CSS -->
 
     <link
         rel="stylesheet"
@@ -202,9 +220,9 @@ if (!$resultado_trens) {
 <body>
 
 
-<!-- ===============================
+<!-- =====================================
      NAVBAR
-=============================== -->
+===================================== -->
 
 <header>
 
@@ -226,36 +244,35 @@ if (!$resultado_trens) {
 </header>
 
 
-<!-- ===============================
+<!-- =====================================
      CONTEÚDO
-=============================== -->
+===================================== -->
 
 <main>
 
 
-    <h1>Rotas</h1>
+    <h1>Viagens</h1>
 
 
-    <!-- BOTÃO NOVA ROTA -->
+    <!-- NOVA VIAGEM -->
 
     <a
-        href="formulario_rota.php"
+        href="formulario_viagem.php"
         class="botao botao-nova"
     >
 
         <i class="fas fa-plus"></i>
 
-        Nova rota
+        Nova viagem
 
     </a>
 
 
-    <!-- ===============================
+    <!-- =====================================
          FILTROS
-    ================================ -->
+    ====================================== -->
 
     <div class="filtros">
-
 
         <form method="GET">
 
@@ -334,18 +351,29 @@ if (!$resultado_trens) {
                     </option>
 
 
-                    <?php while ($trem = $resultado_trens->fetch_assoc()): ?>
+                    <?php
+                    while (
+                        $trem =
+                        $resultado_trens->fetch_assoc()
+                    ):
+                    ?>
 
                         <option
                             value="<?= $trem['id_trem'] ?>"
-                            <?= $id_trem == $trem['id_trem'] ? 'selected' : '' ?>
+                            <?= $id_trem == $trem['id_trem']
+                                ? 'selected'
+                                : '' ?>
                         >
 
-                            <?= htmlspecialchars($trem['nome']) ?>
+                            <?= htmlspecialchars(
+                                $trem['nome']
+                            ) ?>
 
                             -
 
-                            <?= htmlspecialchars($trem['modelo']) ?>
+                            <?= htmlspecialchars(
+                                $trem['modelo']
+                            ) ?>
 
                         </option>
 
@@ -369,7 +397,9 @@ if (!$resultado_trens) {
                     type="date"
                     name="data_inicio"
                     id="data_inicio"
-                    value="<?= htmlspecialchars($data_inicio) ?>"
+                    value="<?= htmlspecialchars(
+                        $data_inicio
+                    ) ?>"
                 >
 
             </div>
@@ -388,13 +418,15 @@ if (!$resultado_trens) {
                     type="date"
                     name="data_fim"
                     id="data_fim"
-                    value="<?= htmlspecialchars($data_fim) ?>"
+                    value="<?= htmlspecialchars(
+                        $data_fim
+                    ) ?>"
                 >
 
             </div>
 
 
-            <!-- BUSCA -->
+            <!-- ORIGEM / DESTINO -->
 
             <div class="campo">
 
@@ -408,13 +440,15 @@ if (!$resultado_trens) {
                     name="busca"
                     id="busca"
                     placeholder="Ex: Joinville"
-                    value="<?= htmlspecialchars($busca) ?>"
+                    value="<?= htmlspecialchars(
+                        $busca
+                    ) ?>"
                 >
 
             </div>
 
 
-            <!-- BOTÃO FILTRAR -->
+            <!-- FILTRAR -->
 
             <button type="submit">
 
@@ -424,15 +458,14 @@ if (!$resultado_trens) {
 
             </button>
 
-
         </form>
 
     </div>
 
 
-    <!-- ===============================
-         TABELA DE ROTAS
-    ================================ -->
+    <!-- =====================================
+         TABELA
+    ====================================== -->
 
     <table>
 
@@ -458,10 +491,6 @@ if (!$resultado_trens) {
                 </th>
 
                 <th>
-                    Data
-                </th>
-
-                <th>
                     Saída
                 </th>
 
@@ -471,6 +500,10 @@ if (!$resultado_trens) {
 
                 <th>
                     Status
+                </th>
+
+                <th>
+                    Velocidade
                 </th>
 
                 <th>
@@ -488,7 +521,12 @@ if (!$resultado_trens) {
         <?php if ($resultado->num_rows > 0): ?>
 
 
-            <?php while ($rota = $resultado->fetch_assoc()): ?>
+            <?php
+            while (
+                $viagem =
+                $resultado->fetch_assoc()
+            ):
+            ?>
 
 
                 <tr>
@@ -498,7 +536,9 @@ if (!$resultado_trens) {
 
                     <td>
 
-                        <?= htmlspecialchars($rota['nome']) ?>
+                        <?= htmlspecialchars(
+                            $viagem['nome_trem']
+                        ) ?>
 
                     </td>
 
@@ -507,7 +547,9 @@ if (!$resultado_trens) {
 
                     <td>
 
-                        <?= htmlspecialchars($rota['modelo']) ?>
+                        <?= htmlspecialchars(
+                            $viagem['modelo']
+                        ) ?>
 
                     </td>
 
@@ -516,7 +558,9 @@ if (!$resultado_trens) {
 
                     <td>
 
-                        <?= htmlspecialchars($rota['origem']) ?>
+                        <?= htmlspecialchars(
+                            $viagem['origem']
+                        ) ?>
 
                     </td>
 
@@ -525,49 +569,37 @@ if (!$resultado_trens) {
 
                     <td>
 
-                        <?= htmlspecialchars($rota['destino']) ?>
+                        <?= htmlspecialchars(
+                            $viagem['destino']
+                        ) ?>
 
                     </td>
 
 
-                    <!-- DATA -->
+                    <!-- SAÍDA -->
 
                     <td>
 
                         <?= date(
-                            'd/m/Y',
-                            strtotime($rota['data_viagem'])
+                            'd/m/Y H:i',
+                            strtotime(
+                                $viagem['data_hora_saida']
+                            )
                         ) ?>
 
                     </td>
 
 
-                    <!-- HORA DE PARTIDA -->
+                    <!-- CHEGADA -->
 
                     <td>
 
-                        <?= htmlspecialchars(
-                            $rota['hora_partida']
+                        <?= date(
+                            'd/m/Y H:i',
+                            strtotime(
+                                $viagem['data_hora_chegada']
+                            )
                         ) ?>
-
-                    </td>
-
-
-                    <!-- HORA DE CHEGADA -->
-
-                    <td>
-
-                        <?php if (!empty($rota['hora_chegada'])): ?>
-
-                            <?= htmlspecialchars(
-                                $rota['hora_chegada']
-                            ) ?>
-
-                        <?php else: ?>
-
-                            -
-
-                        <?php endif; ?>
 
                     </td>
 
@@ -577,8 +609,21 @@ if (!$resultado_trens) {
                     <td>
 
                         <?= htmlspecialchars(
-                            $rota['status']
+                            $viagem['status_trem']
                         ) ?>
+
+                    </td>
+
+
+                    <!-- VELOCIDADE -->
+
+                    <td>
+
+                        <?= htmlspecialchars(
+                            $viagem['velocidade_km_h']
+                        ) ?>
+
+                        km/h
 
                     </td>
 
@@ -591,7 +636,7 @@ if (!$resultado_trens) {
                         <!-- EDITAR -->
 
                         <a
-                            href="formulario_rota.php?id=<?= $rota['id_rota'] ?>"
+                            href="formulario_viagem.php?id=<?= $viagem['id_viagem'] ?>"
                             class="editar"
                             title="Editar"
                         >
@@ -604,10 +649,10 @@ if (!$resultado_trens) {
                         <!-- EXCLUIR -->
 
                         <a
-                            href="excluir_rota.php?id=<?= $rota['id_rota'] ?>"
+                            href="excluir_viagem.php?id=<?= $viagem['id_viagem'] ?>"
                             class="excluir"
                             title="Excluir"
-                            onclick="return confirm('Deseja realmente excluir esta rota?')"
+                            onclick="return confirm('Deseja realmente excluir esta viagem?')"
                         >
 
                             <i class="fas fa-trash"></i>
@@ -631,7 +676,7 @@ if (!$resultado_trens) {
 
                 <td colspan="9">
 
-                    Nenhuma rota encontrada.
+                    Nenhuma viagem encontrada.
 
                 </td>
 
@@ -642,7 +687,6 @@ if (!$resultado_trens) {
 
 
         </tbody>
-
 
     </table>
 
