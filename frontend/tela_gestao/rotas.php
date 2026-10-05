@@ -224,25 +224,15 @@ if (!$resultado_trens) {
      NAVBAR
 ===================================== -->
 
-<header>
-
-    <a href="dashboard.php">
-
-        <i class="fas fa-bars"></i>
-
-    </a>
-
-
-    <img
-        src="../assets/logo_gauge_menor.png"
-        alt="Gauge"
-    >
-
-
-    <i class="fas fa-search"></i>
-
-</header>
-
+    <header class="header">
+        <div class="left">
+            <i class="fas fa-bars" title="Menu"></i>
+            <i class="fas fa-search" title="Pesquisar"></i>
+        </div>
+        <div class="logo">
+            <img src="../assets/logo_gauge_menor.png" alt="Gauge Logo">
+        </div>
+    </header>
 
 <!-- =====================================
      CONTEÚDO
@@ -256,16 +246,10 @@ if (!$resultado_trens) {
 
     <!-- NOVA VIAGEM -->
 
-    <a
-        href="formulario_viagem.php"
-        class="botao botao-nova"
-    >
-
-        <i class="fas fa-plus"></i>
-
-        Nova viagem
-
-    </a>
+<a href="formulario_rota.php" class="botao botao-nova">
+    <i class="fas fa-plus"></i>
+    Nova viagem
+</a>
 
 
     <!-- =====================================
@@ -692,6 +676,27 @@ if (!$resultado_trens) {
 
 
 </main>
+
+        <footer class="footer-gauge">
+    <div class="footer-container">
+        
+        <div class="footer-bloco bloco-esquerda">
+            <span class="footer-label">Entre em contato</span>
+            <a href="tel:47999174896" class="footer-link">(47) 99917-4896</a>
+        </div>
+
+        <div class="footer-bloco bloco-centro">
+            <img src="../assets/logo_gauge_menor.png" alt="Gauge Logo" class="footer-logo">
+            <p class="footer-copyright">&copy; 2026 Gauge. Todos os direitos reservados.</p>
+        </div>
+
+        <div class="footer-bloco bloco-direita">
+            <span class="footer-label">Precisa de Suporte?</span>
+            <a href="mailto:contato@gauge.com.br" class="footer-link link-sublinhado">contato@gauge.com.br</a>
+        </div>
+
+    </div>
+</footer>
 
 
 </body>
