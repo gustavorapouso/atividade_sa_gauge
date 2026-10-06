@@ -6,5 +6,5 @@ session_unset();
 
 session_destroy();
 
-header("Location: login.html");
+header("Location: ../autenticacao/login.html");
 exit;
