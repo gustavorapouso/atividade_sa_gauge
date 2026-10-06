@@ -329,3 +329,61 @@ td {
     opacity: 0.7;
     margin-top: 5px;
 }
+
+/* ==============================
+   AÇÕES DA TABELA
+============================== */
+
+.acoes {
+    text-align: center;
+    white-space: nowrap;
+}
+
+.acoes a {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 35px;
+    height: 35px;
+
+    margin: 0 4px;
+
+    border-radius: 5px;
+
+    text-decoration: none;
+
+    transition: 0.2s;
+}
+
+
+/* EDITAR */
+
+.acoes .editar {
+    color: #6B4732;
+}
+
+.acoes .editar:hover {
+    background-color: #6B4732;
+    color: white;
+}
+
+
+/* EXCLUIR */
+
+.acoes .excluir {
+    color: #b02a37;
+}
+
+.acoes .excluir:hover {
+    background-color: #b02a37;
+    color: white;
+}
+
+
+/* ÍCONES */
+
+.acoes i {
+    font-size: 15px;
+}

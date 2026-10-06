@@ -348,16 +348,13 @@ if (!$resultado) {
                             <!-- EXCLUIR -->
 
                             <a
-                                href="excluir_trem.php?id=<?= $trem['id_trem'] ?>"
-                                class="excluir"
-                                title="Excluir"
-                                onclick="return confirm('Deseja realmente excluir este trem?')"
+                            href="excluir_trem.php?id=<?= $trem['id_trem'] ?>"
+                            class="excluir"
+                            title="Excluir"
+                            onclick="return confirm('Deseja realmente excluir este trem?')"
                             >
-
-                                <i class="fas fa-trash"></i>
-
+                            <i class="fas fa-trash"></i>
                             </a>
-
 
                         </td>
 
