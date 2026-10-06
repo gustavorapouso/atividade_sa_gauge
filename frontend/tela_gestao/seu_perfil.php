@@ -62,8 +62,8 @@
             <div class="centro-botao-excluir">
                 <button type="submit" class="botao-excluir">Excluir Conta</button>
 
-                <a href="login.php" class="botao-logout">Sair</a>
-            </div>
+                <a href="logout.php" class="botao-logout">Sair</a>
+        </div>
         </form>
     </div>
     
