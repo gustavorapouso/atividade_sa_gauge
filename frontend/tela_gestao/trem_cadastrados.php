@@ -118,7 +118,7 @@ if (!$resultado) {
     ====================================== -->
 
     <a
-        href="trens.forms.php"
+        href="formulario_trem.php.php"
         class="botao botao-nova"
     >
 
