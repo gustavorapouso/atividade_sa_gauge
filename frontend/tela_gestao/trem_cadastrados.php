@@ -12,11 +12,14 @@ require '../../data_base/conexao.php';
 $sql = "
     SELECT
         id_trem,
-        nome,
+        prefixo,
         modelo,
-        tipo
+        ano,
+        status,
+        capacidade,
+        ultima_inspecao
     FROM trem
-    ORDER BY nome
+    ORDER BY prefixo
 ";
 
 $resultado = $conexao->query($sql);
@@ -82,6 +85,7 @@ if (!$resultado) {
             title="Menu"
         ></i>
 
+
         <i
             class="fas fa-search"
             title="Pesquisar"
@@ -118,7 +122,7 @@ if (!$resultado) {
     ====================================== -->
 
     <a
-        href="trens.forms.php"
+        href="formulario_trem.php"
         class="botao botao-nova"
     >
 
@@ -140,21 +144,56 @@ if (!$resultado) {
 
             <tr>
 
+                <!-- IDENTIFICADOR -->
+
                 <th>
                     ID
                 </th>
 
+
+                <!-- PREFIXO -->
+
                 <th>
-                    Nome
+                    Prefixo
                 </th>
+
+
+                <!-- MODELO -->
 
                 <th>
                     Modelo
                 </th>
 
+
+                <!-- ANO -->
+
                 <th>
-                    Tipo
+                    Ano
                 </th>
+
+
+                <!-- STATUS -->
+
+                <th>
+                    Status
+                </th>
+
+
+                <!-- CAPACIDADE -->
+
+                <th>
+                    Capacidade
+                </th>
+
+
+                <!-- ÚLTIMA INSPEÇÃO -->
+
+                <th>
+                    Última inspeção
+                </th>
+
+
+                <!-- AÇÕES -->
 
                 <th>
                     Ações
@@ -176,7 +215,9 @@ if (!$resultado) {
                     <tr>
 
 
-                        <!-- ID -->
+                        <!-- =================================
+                             ID
+                        ================================== -->
 
                         <td>
 
@@ -187,18 +228,24 @@ if (!$resultado) {
                         </td>
 
 
-                        <!-- NOME -->
+
+                        <!-- =================================
+                             PREFIXO
+                        ================================== -->
 
                         <td>
 
                             <?= htmlspecialchars(
-                                $trem['nome']
+                                $trem['prefixo']
                             ) ?>
 
                         </td>
 
 
-                        <!-- MODELO -->
+
+                        <!-- =================================
+                             MODELO
+                        ================================== -->
 
                         <td>
 
@@ -209,18 +256,77 @@ if (!$resultado) {
                         </td>
 
 
-                        <!-- TIPO -->
+
+                        <!-- =================================
+                             ANO
+                        ================================== -->
 
                         <td>
 
                             <?= htmlspecialchars(
-                                $trem['tipo']
+                                $trem['ano']
                             ) ?>
 
                         </td>
 
 
-                        <!-- AÇÕES -->
+
+                        <!-- =================================
+                             STATUS
+                        ================================== -->
+
+                        <td>
+
+                            <?= htmlspecialchars(
+                                $trem['status']
+                            ) ?>
+
+                        </td>
+
+
+
+                        <!-- =================================
+                             CAPACIDADE
+                        ================================== -->
+
+                        <td>
+
+                            <?= htmlspecialchars(
+                                $trem['capacidade']
+                            ) ?>
+
+                            t
+
+                        </td>
+
+
+
+                        <!-- =================================
+                             ÚLTIMA INSPEÇÃO
+                        ================================== -->
+
+                        <td>
+
+                            <?php if (!empty($trem['ultima_inspecao'])): ?>
+
+                                <?= date(
+                                    'd/m/Y',
+                                    strtotime($trem['ultima_inspecao'])
+                                ) ?>
+
+                            <?php else: ?>
+
+                                Não realizada
+
+                            <?php endif; ?>
+
+                        </td>
+
+
+
+                        <!-- =================================
+                             AÇÕES
+                        ================================== -->
 
                         <td class="acoes">
 
@@ -238,19 +344,17 @@ if (!$resultado) {
                             </a>
 
 
+
                             <!-- EXCLUIR -->
 
                             <a
-                                href="excluir_trem.php?id=<?= $trem['id_trem'] ?>"
-                                class="excluir"
-                                title="Excluir"
-                                onclick="return confirm('Deseja realmente excluir este trem?')"
+                            href="excluir_trem.php?id=<?= $trem['id_trem'] ?>"
+                            class="excluir"
+                            title="Excluir"
+                            onclick="return confirm('Deseja realmente excluir este trem?')"
                             >
-
-                                <i class="fas fa-trash"></i>
-
+                            <i class="fas fa-trash"></i>
                             </a>
-
 
                         </td>
 
@@ -265,7 +369,7 @@ if (!$resultado) {
 
                 <tr>
 
-                    <td colspan="5">
+                    <td colspan="8">
 
                         Nenhum trem cadastrado.
 
@@ -285,6 +389,7 @@ if (!$resultado) {
 </main>
 
 
+
 <!-- =====================================
      FOOTER
 ===================================== -->
@@ -300,14 +405,18 @@ if (!$resultado) {
                 Entre em contato
             </span>
 
+
             <a
                 href="tel:47999174896"
                 class="footer-link"
             >
+
                 (47) 99917-4896
+
             </a>
 
         </div>
+
 
 
         <div class="footer-bloco bloco-centro">
@@ -318,24 +427,34 @@ if (!$resultado) {
                 class="footer-logo"
             >
 
+
             <p class="footer-copyright">
-                &copy; 2026 Gauge. Todos os direitos reservados.
+
+                &copy; 2026 Gauge.
+                Todos os direitos reservados.
+
             </p>
 
         </div>
 
 
+
         <div class="footer-bloco bloco-direita">
 
             <span class="footer-label">
+
                 Precisa de Suporte?
+
             </span>
+
 
             <a
                 href="mailto:contato@gauge.com.br"
                 class="footer-link link-sublinhado"
             >
+
                 contato@gauge.com.br
+
             </a>
 
         </div>

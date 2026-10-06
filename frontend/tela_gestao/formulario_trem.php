@@ -8,61 +8,292 @@ $mensagem = '';
 
 
 // =====================================
-// CADASTRAR TREM
+// VERIFICAR SE É EDIÇÃO
+// =====================================
+
+$id_trem = isset($_GET['id'])
+    ? intval($_GET['id'])
+    : 0;
+
+$modo_edicao = ($id_trem > 0);
+
+
+// =====================================
+// VALORES INICIAIS
+// =====================================
+
+$prefixo = '';
+$modelo = '';
+$ano = '';
+$status = '';
+$capacidade = '';
+$ultima_inspecao = '';
+
+
+// =====================================
+// BUSCAR TREM PARA EDITAR
+// =====================================
+
+if ($modo_edicao) {
+
+    $sql = "
+        SELECT
+            id_trem,
+            prefixo,
+            modelo,
+            ano,
+            status,
+            capacidade,
+            ultima_inspecao
+        FROM trem
+        WHERE id_trem = ?
+    ";
+
+    $stmt = $conexao->prepare($sql);
+
+    if (!$stmt) {
+
+        die(
+            "Erro ao preparar consulta: " .
+            $conexao->error
+        );
+    }
+
+    $stmt->bind_param(
+        "i",
+        $id_trem
+    );
+
+    $stmt->execute();
+
+    $resultado = $stmt->get_result();
+
+
+    // =====================================
+    // VERIFICAR SE O TREM EXISTE
+    // =====================================
+
+    if ($resultado->num_rows === 0) {
+
+        header('Location: trem_cadastrados.php');
+        exit;
+    }
+
+
+    // =====================================
+    // PEGAR DADOS DO TREM
+    // =====================================
+
+    $trem = $resultado->fetch_assoc();
+
+
+    $prefixo = $trem['prefixo'];
+    $modelo = $trem['modelo'];
+    $ano = $trem['ano'];
+    $status = $trem['status'];
+    $capacidade = $trem['capacidade'];
+    $ultima_inspecao = $trem['ultima_inspecao'];
+
+
+    $stmt->close();
+}
+
+
+// =====================================
+// CADASTRAR OU EDITAR
 // =====================================
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    $nome = $_POST['nome'];
-    $modelo = $_POST['modelo'];
-    $tipo = $_POST['tipo'];
+
+    // =====================================
+    // RECEBER DADOS
+    // =====================================
+
+    $prefixo = trim($_POST['prefixo'] ?? '');
+
+    $modelo = trim($_POST['modelo'] ?? '');
+
+    $ano = intval($_POST['ano'] ?? 0);
+
+    $status = $_POST['status'] ?? '';
+
+    $capacidade = floatval(
+        $_POST['capacidade'] ?? 0
+    );
 
 
     // =====================================
-    // INSERIR NO BANCO
+    // ÚLTIMA INSPEÇÃO
     // =====================================
 
-    $sql = "
-        INSERT INTO trem (
-            nome,
-            modelo,
-            tipo
-        )
-        VALUES (?, ?, ?)
-    ";
+    $ultima_inspecao = !empty(
+        $_POST['ultima_inspecao'] ?? ''
+    )
+        ? $_POST['ultima_inspecao']
+        : null;
 
 
-    $stmt = $conexao->prepare($sql);
+    // =====================================
+    // VALIDAÇÃO
+    // =====================================
 
+    if (
+        $prefixo === '' ||
+        $modelo === '' ||
+        $ano <= 0 ||
+        $status === '' ||
+        $capacidade < 0
+    ) {
 
-    if ($stmt) {
+        $mensagem = 'Preencha todos os campos obrigatórios.';
 
-        $stmt->bind_param(
-            "sss",
-            $nome,
-            $modelo,
-            $tipo
-        );
-
-
-        if ($stmt->execute()) {
-
-            header('Location: trens.php');
-            exit;
-        } else {
-
-            $mensagem =
-                'Erro ao cadastrar o trem: ' .
-                $stmt->error;
-        }
-
-
-        $stmt->close();
     } else {
 
-        $mensagem =
-            'Erro na preparação da consulta: ' .
-            $conexao->error;
+
+        // =====================================
+        // EDITAR TREM
+        // =====================================
+
+        if ($modo_edicao) {
+
+
+            $sql = "
+                UPDATE trem
+                SET
+                    prefixo = ?,
+                    modelo = ?,
+                    ano = ?,
+                    status = ?,
+                    capacidade = ?,
+                    ultima_inspecao = ?
+                WHERE id_trem = ?
+            ";
+
+
+            $stmt = $conexao->prepare($sql);
+
+
+            if (!$stmt) {
+
+                $mensagem =
+                    'Erro ao preparar atualização: ' .
+                    $conexao->error;
+
+            } else {
+
+
+                // s = prefixo
+                // s = modelo
+                // i = ano
+                // s = status
+                // d = capacidade
+                // s = última inspeção
+                // i = id do trem
+
+                $stmt->bind_param(
+                    "ssisdsi",
+                    $prefixo,
+                    $modelo,
+                    $ano,
+                    $status,
+                    $capacidade,
+                    $ultima_inspecao,
+                    $id_trem
+                );
+
+
+                if ($stmt->execute()) {
+
+                    $stmt->close();
+
+                    header(
+                        'Location: trem_cadastrados.php'
+                    );
+
+                    exit;
+
+                } else {
+
+                    $mensagem =
+                        'Erro ao atualizar o trem: ' .
+                        $stmt->error;
+
+                    $stmt->close();
+                }
+            }
+
+
+        // =====================================
+        // CADASTRAR TREM
+        // =====================================
+
+        } else {
+
+
+            $sql = "
+                INSERT INTO trem (
+                    prefixo,
+                    modelo,
+                    ano,
+                    status,
+                    capacidade,
+                    ultima_inspecao
+                )
+                VALUES (?, ?, ?, ?, ?, ?)
+            ";
+
+
+            $stmt = $conexao->prepare($sql);
+
+
+            if (!$stmt) {
+
+                $mensagem =
+                    'Erro ao preparar cadastro: ' .
+                    $conexao->error;
+
+            } else {
+
+
+                // s = prefixo
+                // s = modelo
+                // i = ano
+                // s = status
+                // d = capacidade
+                // s = última inspeção
+
+                $stmt->bind_param(
+                    "ssisds",
+                    $prefixo,
+                    $modelo,
+                    $ano,
+                    $status,
+                    $capacidade,
+                    $ultima_inspecao
+                );
+
+
+                if ($stmt->execute()) {
+
+                    $stmt->close();
+
+                    header(
+                        'Location: trem_cadastrados.php'
+                    );
+
+                    exit;
+
+                } else {
+
+                    $mensagem =
+                        'Erro ao cadastrar o trem: ' .
+                        $stmt->error;
+
+                    $stmt->close();
+                }
+            }
+        }
     }
 }
 
@@ -79,23 +310,37 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <meta
         name="viewport"
-        content="width=device-width, initial-scale=1.0">
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <title>Novo Trem - Gauge</title>
+    <title>
+
+        <?= $modo_edicao
+            ? 'Editar Trem - Gauge'
+            : 'Novo Trem - Gauge'
+        ?>
+
+    </title>
 
 
-    <!-- Font Awesome -->
+    <!-- =====================================
+         FONT AWESOME
+    ====================================== -->
 
     <link
         rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    >
 
 
-    <!-- CSS -->
+    <!-- =====================================
+         CSS
+    ====================================== -->
 
     <link
         rel="stylesheet"
-        href="formulario_rota.css">
+        href="formulario_rota.css"
+    >
 
 </head>
 
@@ -103,278 +348,444 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
 
 
-    <!-- =====================================
+<!-- =====================================
      NAVBAR
 ===================================== -->
 
-    <header>
-
-        <a
-            href="trens.php"
-            class="menu"
-            title="Voltar">
-
-            <i class="fas fa-arrow-left"></i>
-
-        </a>
+<header>
 
 
-        <img
-            src="../assets/logo_gauge_menor.png"
-            alt="Gauge">
+    <!-- VOLTAR -->
+
+    <a
+        href="trem_cadastrados.php"
+        class="menu"
+        title="Voltar"
+    >
+
+        <i class="fas fa-arrow-left"></i>
+
+    </a>
 
 
-        <i
-            class="fas fa-search"
-            title="Pesquisar"></i>
+    <!-- LOGO -->
 
-    </header>
+    <img
+        src="../assets/logo_gauge_menor.png"
+        alt="Gauge"
+    >
+
+
+    <!-- PESQUISA -->
+
+    <i
+        class="fas fa-search"
+        title="Pesquisar"
+    ></i>
+
+
+</header>
 
 
 
-    <!-- =====================================
+<!-- =====================================
      CONTEÚDO
 ===================================== -->
 
-    <main>
-
-        <h1>Novo trem</h1>
+<main>
 
 
-        <p class="descricao">
-
-            Cadastre um novo trem para o sistema
-            Ferrorama Gauge.
-
-        </p>
-
-
-        <!-- =====================================
-         MENSAGEM
+    <!-- =====================================
+         TÍTULO
     ====================================== -->
 
-        <?php if ($mensagem !== ''): ?>
+    <h1>
 
-            <div class="mensagem">
+        <?= $modo_edicao
+            ? 'Editar trem'
+            : 'Novo trem'
+        ?>
 
-                <?= htmlspecialchars($mensagem) ?>
-
-            </div>
-
-        <?php endif; ?>
-
+    </h1>
 
 
-        <!-- =====================================
-         FORMULÁRIO
+    <!-- =====================================
+         DESCRIÇÃO
     ====================================== -->
 
-        <form method="POST">
+    <p class="descricao">
 
+        <?= $modo_edicao
+            ? 'Altere os dados do trem cadastrado.'
+            : 'Cadastre um novo trem para o sistema Ferrorama Gauge.'
+        ?>
 
-            <div class="formulario">
-
-
-                <!-- NOME -->
-
-                <div class="campo">
-
-                    <label for="nome">
-
-                        Nome do trem
-
-                    </label>
-
-
-                    <input
-                        type="text"
-                        name="nome"
-                        id="nome"
-                        placeholder="Ex: Trem Gauge 01"
-                        maxlength="45"
-                        required>
-
-                </div>
-
-
-
-                <!-- MODELO -->
-
-                <div class="campo">
-
-                    <label for="modelo">
-
-                        Modelo
-
-                    </label>
-
-
-                    <input
-                        type="text"
-                        name="modelo"
-                        id="modelo"
-                        placeholder="Ex: Vectron"
-                        maxlength="45"
-                        required>
-
-                </div>
-
-
-
-                <!-- TIPO -->
-
-                <div class="campo">
-
-                    <label for="tipo">
-
-                        Tipo de trem
-
-                    </label>
-
-
-                    <select
-                        name="tipo"
-                        id="tipo"
-                        required>
-
-                        <option value="">
-
-                            Selecione o tipo
-
-                        </option>
-
-
-                        <option value="passageiro">
-
-                            Passageiro
-
-                        </option>
-
-
-                        <option value="carga">
-
-                            Carga
-
-                        </option>
-
-
-                    </select>
-
-                </div>
-
-
-            </div>
-
-
-
-            <!-- =====================================
-             BOTÕES
-        ====================================== -->
-
-            <div class="botoes">
-
-
-                <a
-                    href="trens.php"
-                    class="botao cancelar">
-
-                    Cancelar
-
-                </a>
-
-
-                <button
-                    type="submit"
-                    class="botao salvar">
-
-                    <i class="fas fa-check"></i>
-
-                    Cadastrar trem
-
-                </button>
-
-
-            </div>
-
-
-        </form>
-
-    </main>
+    </p>
 
 
 
     <!-- =====================================
-     FOOTER
-===================================== -->
+         MENSAGEM
+    ====================================== -->
 
-    <footer class="footer-gauge">
+    <?php if ($mensagem !== ''): ?>
 
-        <div class="footer-container">
+        <div class="mensagem">
 
+            <?= htmlspecialchars($mensagem) ?>
 
-            <div class="footer-bloco bloco-esquerda">
+        </div>
 
-                <span class="footer-label">
-
-                    Entre em contato
-
-                </span>
+    <?php endif; ?>
 
 
-                <a
-                    href="tel:47999174896"
-                    class="footer-link">
 
-                    (47) 99917-4896
+    <!-- =====================================
+         FORMULÁRIO
+    ====================================== -->
 
-                </a>
+    <form method="POST">
+
+
+        <div class="formulario">
+
+
+            <!-- =================================
+                 PREFIXO
+            ================================== -->
+
+            <div class="campo">
+
+                <label for="prefixo">
+
+                    Prefixo
+
+                </label>
+
+
+                <input
+                    type="text"
+                    name="prefixo"
+                    id="prefixo"
+                    placeholder="Ex: TR-204"
+                    maxlength="20"
+                    value="<?= htmlspecialchars($prefixo) ?>"
+                    required
+                >
 
             </div>
 
 
 
-            <div class="footer-bloco bloco-centro">
+            <!-- =================================
+                 MODELO
+            ================================== -->
 
-                <img
-                    src="../assets/logo_gauge_menor.png"
-                    alt="Gauge Logo"
-                    class="footer-logo">
+            <div class="campo">
+
+                <label for="modelo">
+
+                    Modelo
+
+                </label>
 
 
-                <p class="footer-copyright">
-
-                    &copy; 2026 Gauge.
-                    Todos os direitos reservados.
-
-                </p>
+                <input
+                    type="text"
+                    name="modelo"
+                    id="modelo"
+                    placeholder="Ex: Vectron"
+                    maxlength="45"
+                    value="<?= htmlspecialchars($modelo) ?>"
+                    required
+                >
 
             </div>
 
 
 
-            <div class="footer-bloco bloco-direita">
+            <!-- =================================
+                 ANO
+            ================================== -->
 
-                <span class="footer-label">
+            <div class="campo">
 
-                    Precisa de Suporte?
+                <label for="ano">
 
-                </span>
+                    Ano
+
+                </label>
 
 
-                <a
-                    href="mailto:contato@gauge.com.br"
-                    class="footer-link link-sublinhado">
+                <input
+                    type="number"
+                    name="ano"
+                    id="ano"
+                    placeholder="Ex: 2024"
+                    min="1900"
+                    max="2100"
+                    value="<?= htmlspecialchars($ano) ?>"
+                    required
+                >
 
-                    contato@gauge.com.br
+            </div>
 
-                </a>
+
+
+            <!-- =================================
+                 STATUS
+            ================================== -->
+
+            <div class="campo">
+
+                <label for="status">
+
+                    Status
+
+                </label>
+
+
+                <select
+                    name="status"
+                    id="status"
+                    required
+                >
+
+                    <option value="">
+
+                        Selecione o status
+
+                    </option>
+
+
+                    <option
+                        value="ativo"
+                        <?= $status === 'ativo'
+                            ? 'selected'
+                            : ''
+                        ?>
+                    >
+
+                        Ativo
+
+                    </option>
+
+
+                    <option
+                        value="manutencao"
+                        <?= $status === 'manutencao'
+                            ? 'selected'
+                            : ''
+                        ?>
+                    >
+
+                        Em manutenção
+
+                    </option>
+
+
+                    <option
+                        value="inativo"
+                        <?= $status === 'inativo'
+                            ? 'selected'
+                            : ''
+                        ?>
+                    >
+
+                        Inativo
+
+                    </option>
+
+                </select>
+
+            </div>
+
+
+
+            <!-- =================================
+                 CAPACIDADE
+            ================================== -->
+
+            <div class="campo">
+
+                <label for="capacidade">
+
+                    Capacidade (toneladas)
+
+                </label>
+
+
+                <input
+                    type="number"
+                    name="capacidade"
+                    id="capacidade"
+                    placeholder="Ex: 6200.50"
+                    step="0.01"
+                    min="0"
+                    value="<?= htmlspecialchars($capacidade) ?>"
+                    required
+                >
+
+            </div>
+
+
+
+            <!-- =================================
+                 ÚLTIMA INSPEÇÃO
+            ================================== -->
+
+            <div class="campo">
+
+                <label for="ultima_inspecao">
+
+                    Última inspeção
+
+                </label>
+
+
+                <input
+                    type="date"
+                    name="ultima_inspecao"
+                    id="ultima_inspecao"
+                    value="<?= htmlspecialchars($ultima_inspecao ?? '') ?>"
+                >
 
             </div>
 
 
         </div>
 
-    </footer>
+
+
+        <!-- =====================================
+             BOTÕES
+        ====================================== -->
+
+        <div class="botoes">
+
+
+            <!-- CANCELAR -->
+
+            <a
+                href="trem_cadastrados.php"
+                class="botao cancelar"
+            >
+
+                Cancelar
+
+            </a>
+
+
+
+            <!-- SALVAR -->
+
+            <button
+                type="submit"
+                class="botao salvar"
+            >
+
+                <i class="fas fa-check"></i>
+
+
+                <?= $modo_edicao
+                    ? 'Salvar alterações'
+                    : 'Cadastrar trem'
+                ?>
+
+            </button>
+
+
+        </div>
+
+
+    </form>
+
+
+</main>
+
+
+
+<!-- =====================================
+     FOOTER
+===================================== -->
+
+<footer class="footer-gauge">
+
+    <div class="footer-container">
+
+
+        <!-- CONTATO -->
+
+        <div class="footer-bloco bloco-esquerda">
+
+            <span class="footer-label">
+
+                Entre em contato
+
+            </span>
+
+
+            <a
+                href="tel:47999174896"
+                class="footer-link"
+            >
+
+                (47) 99917-4896
+
+            </a>
+
+        </div>
+
+
+
+        <!-- LOGO -->
+
+        <div class="footer-bloco bloco-centro">
+
+            <img
+                src="../assets/logo_gauge_menor.png"
+                alt="Gauge Logo"
+                class="footer-logo"
+            >
+
+
+            <p class="footer-copyright">
+
+                &copy; 2026 Gauge.
+                Todos os direitos reservados.
+
+            </p>
+
+        </div>
+
+
+
+        <!-- SUPORTE -->
+
+        <div class="footer-bloco bloco-direita">
+
+            <span class="footer-label">
+
+                Precisa de Suporte?
+
+            </span>
+
+
+            <a
+                href="mailto:contato@gauge.com.br"
+                class="footer-link link-sublinhado"
+            >
+
+                contato@gauge.com.br
+
+            </a>
+
+        </div>
+
+
+    </div>
+
+</footer>
 
 
 </body>
