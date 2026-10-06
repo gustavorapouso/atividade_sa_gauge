@@ -75,7 +75,7 @@ if (!temPapel([1, 2, 3])) {
 
 
                 <a
-                    href="#"
+                    href="../seu_perfil.php"
                     class="btn-menu-item"
                 >
                     PERFIL
@@ -110,12 +110,6 @@ if (!temPapel([1, 2, 3])) {
                 </a>
 
 
-                <a
-                    href="trem.php"
-                    class="btn-menu-item"
-                >
-                    TREM
-                </a>
 
                 <a
                     href="../trens_carga/trem_carga.php"
