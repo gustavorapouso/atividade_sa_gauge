@@ -118,7 +118,7 @@ if (!$resultado) {
     ====================================== -->
 
     <a
-        href="formulario_trem.php.php"
+        href="formulario_trem.php"
         class="botao botao-nova"
     >
 
