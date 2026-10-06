@@ -1,14 +1,23 @@
+/* =====================================================
+   CORES E FONTES
+===================================================== */
+
 :root {
     --color-marca: #6B4732;
-    --color-titulo: #2F1E17;
+    --color-titulo: #4A3026;
     --color-texto: #7A655B;
     --color-fundo-claro: #F3EFEB;
-    --color-fundo-escuro: #1F1713;
-    --color-contato: #C49E7A; 
-    
+    --color-fundo-escuro: #241914;
+    --color-contato: #C49E7A;
+
     --font-titulo: 'Fjalla One', sans-serif;
     --font-texto: 'Roboto', sans-serif;
 }
+
+
+/* =====================================================
+   RESET
+===================================================== */
 
 * {
     margin: 0;
@@ -16,306 +25,509 @@
     box-sizing: border-box;
 }
 
+
+/* =====================================================
+   BODY
+===================================================== */
+
 body {
-    background: var(--color-fundo-claro);
+    background-color: var(--color-fundo-claro);
+
     font-family: var(--font-texto);
+
+    color: var(--color-titulo);
+
     min-height: 100vh;
-    display: flex;
-    flex-direction: column;
 }
 
-main {
-    flex: 1; 
-    width: 100%;
-}
+
+/* =====================================================
+   HEADER
+===================================================== */
 
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: var(--color-fundo-escuro);
-    padding: 0 30px;            
-    height: 60px;            
     width: 100%;
+    height: 60px;
+
+    background-color: var(--color-fundo-escuro);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 0 28px;
 }
+
+
+/* Menu e pesquisa */
 
 .header .left {
     display: flex;
-    gap: 20px;
+
+    align-items: center;
+
+    gap: 14px;
 }
+
 
 .header .left i {
     color: var(--color-fundo-claro);
-    font-size: 1.25rem;
+
+    font-size: 14px;
+
     cursor: pointer;
 }
+
+
+/* Logo */
 
 .header .logo {
+    height: 100%;
+
     display: flex;
+
     align-items: center;
-    width: 100px; 
-}
 
-.header .logo img {
-    display: block;
-    height: 80%;                
-    max-height: 50px;          
-    width: auto;                
-    object-fit: contain;    
-}
-
-
-.fluxo-conteudo {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 40px 20px;
-    gap: 60px;
-}
-
-.tela-container {
-    width: 100%;
-    max-width: 900px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-
-
-.titulo-tela {
-    font-family: var(--font-titulo);
-    font-size: 3.5rem;
-    color: var(--color-titulo);
-    margin-bottom: 40px;
-    font-weight: 400;
-}
-
-
-.conteudo-flex {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 50px;
-}
-
-
-.menu-radios {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    padding-top: 20px;
-    flex: 1;
-}
-
-.radio-group {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.radio-group input[type="radio"] {
-    appearance: none;
-    width: 18px;
-    height: 18px;
-    border: 2px solid var(--color-titulo);
-    border-radius: 50%;
-    outline: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
     justify-content: center;
 }
 
-.radio-group input[type="radio"]:checked {
-    background-color: #007bff; 
-    border-color: #007bff;
-    box-shadow: inset 0 0 0 3px var(--color-fundo-claro);
+
+.header .logo img {
+    height: 42px;
+
+    width: auto;
+
+    object-fit: contain;
 }
 
-.radio-group label {
-    font-size: 1.1rem;
-    color: var(--color-titulo);
-    font-weight: 500;
-    cursor: pointer;
-}
 
-.painel-lateral {
-    flex: 1.2;
+/* =====================================================
+   CONTEÚDO
+===================================================== */
+
+.fluxo-conteudo {
     width: 100%;
-    max-width: 420px;
-}
 
-.painel-formulario {
-    background-color: var(--color-titulo);
-    padding: 25px;
-    border-radius: 8px;
+    min-height: calc(100vh - 60px);
+
     display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
 
-.campo-grupo {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-}
+    justify-content: center;
 
-.painel-formulario label {
-    font-size: 0.95rem;
-    color: var(--color-fundo-claro);
-    font-weight: 500;
-}
-
-
-.select-filtro, .input-form {
-    width: 100%;
-    height: 38px;
-    background-color: var(--color-fundo-claro);
-    border: 1px solid var(--color-marca);
-    border-radius: 6px;
-    padding: 0 35px 0 12px;
-    font-family: var(--font-texto);
-    font-size: 1rem;
-    color: var(--color-titulo);
-    outline: none;
-}
-
-.input-form::placeholder {
-    color: var(--color-texto);
-    opacity: 0.6;
-}
-
-.btn-salvar {
-    align-self: center;
-    width: 120px;
-    height: 30px;
-    background-color: var(--color-fundo-claro);
-    border: none;
-    border-radius: 6px;
-    color: var(--color-titulo);
-    font-family: var(--font-texto);
-    font-size: 0.9rem;
-    font-weight: 500;
-    cursor: pointer;
-    margin-top: 10px;
-}
-
-.tabela-sensores {
-    width: 100%;
-    border-collapse: collapse;
-    background-color: var(--color-titulo);
-    border-radius: 8px;
-    overflow: hidden;
-    color: var(--color-fundo-claro);
-    font-family: var(--font-texto);
-}
-
-.tabela-sensores th, .tabela-sensores td {
-    padding: 10px 15px;
-    text-align: left;
-    font-size: 0.9rem;
-    border-bottom: 1px solid var(--color-fundo-escuro);
-}
-
-.tabela-sensores th {
-    background-color: var(--color-fundo-escuro);
-    font-weight: bold;
-}
-
-.badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-weight: 500;
-}
-
-.badge::before {
-    content: '';
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    display: inline-block;
-}
-
-.status-ativo::before { background-color: #28a745; }
-.status-falha::before { background-color: #dc3545; }
-.status-alerta::before { background-color: #ffc107; }
-
-.footer-gauge {
-    background-color: var(--color-fundo-escuro);
-    border-top: 2px solid var(--color-contato); 
-    padding: 30px 20px 15px 20px;
-    width: 100%;
-    margin-top: auto; 
-}
-
-
-.footer-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 20px;
-}
-
-
-.footer-bloco {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-}
-
-.bloco-esquerda {
     align-items: flex-start;
-    padding-left: 40px;
+
+    padding: 55px 20px 80px;
 }
 
-.bloco-centro {
+
+.tela-container {
+    width: 100%;
+
+    max-width: 720px;
+
+    display: flex;
+
+    flex-direction: column;
+
     align-items: center;
-    gap: 15px;
-}
-
-.bloco-direita {
-    align-items: flex-end;
-    padding-right: 40px;
 }
 
 
-.footer-label {
-    color: #ffffff;
-    font-family: var(--font-texto);
-    font-size: 0.95rem;
-    font-weight: 500;
-    margin-bottom: 4px;
+/* =====================================================
+   TÍTULO
+===================================================== */
+
+.titulo-tela {
+    font-family: var(--font-titulo);
+
+    font-size: 40px;
+
+    font-weight: 400;
+
+    color: var(--color-titulo);
+
+    text-align: center;
+
+    margin-bottom: 45px;
 }
 
 
-.footer-link {
-    color: var(--color-contato);
-    font-family: var(--font-texto);
-    font-size: 0.95rem;
-    text-decoration: none;
+/* =====================================================
+   ORGANIZAÇÃO DOS DOIS LADOS
+===================================================== */
+
+.conteudo-flex {
+    width: 100%;
+
+    display: flex;
+
+    align-items: flex-start;
+
+    justify-content: center;
+
+    gap: 55px;
+}
+
+
+/* =====================================================
+   PAINEL DA ESQUERDA
+===================================================== */
+
+/*
+   No protótipo, as opções ficam diretamente
+   sobre o fundo bege, sem um quadrado marrom.
+*/
+
+.conteudo-flex > .painel-formulario:first-child {
+    background-color: transparent;
+
+    padding: 5px 0 0 0;
+
+    width: 210px;
+
+    border-radius: 0;
+
+    color: var(--color-titulo);
+}
+
+
+/* Título "Filtros" */
+
+.conteudo-flex > .painel-formulario:first-child h2 {
+    display: none;
+}
+
+
+/* =====================================================
+   CAMPOS DO FILTRO
+===================================================== */
+
+.conteudo-flex > .painel-formulario:first-child form {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+
+.conteudo-flex > .painel-formulario:first-child label {
+    color: var(--color-titulo);
+
+    font-size: 11px;
+
     font-weight: 400;
 }
 
-.link-sublinhado {
+
+/* Select */
+
+.conteudo-flex > .painel-formulario:first-child .select-filtro {
+    width: 150px;
+
+    height: 27px;
+
+    background-color: var(--color-fundo-claro);
+
+    border: none;
+
+    border-bottom: 1px solid var(--color-titulo);
+
+    border-radius: 0;
+
+    padding: 0 5px;
+
+    font-size: 10px;
+
+    color: var(--color-titulo);
+}
+
+
+/* =====================================================
+   BOTÃO FILTRAR
+===================================================== */
+
+.conteudo-flex > .painel-formulario:first-child .btn-salvar {
+    width: 80px;
+
+    height: 25px;
+
+    background-color: var(--color-fundo-claro);
+
+    border: 1px solid var(--color-titulo);
+
+    border-radius: 3px;
+
+    font-size: 10px;
+
+    color: var(--color-titulo);
+
+    margin-top: 5px;
+}
+
+
+.conteudo-flex > .painel-formulario:first-child .btn-salvar:hover {
+    background-color: var(--color-marca);
+
+    color: white;
+}
+
+
+/* =====================================================
+   BOTÃO CADASTRAR
+===================================================== */
+
+.conteudo-flex > .painel-formulario:first-child > .btn-salvar {
+    display: flex;
+
+    width: 110px;
+
+    height: 27px;
+
+    margin-top: 45px;
+
+    border: none;
+
+    background-color: var(--color-marca);
+
+    color: var(--color-fundo-claro);
+
+    text-decoration: none;
+
+    justify-content: center;
+
+    align-items: center;
+}
+
+
+.conteudo-flex > .painel-formulario:first-child > .btn-salvar:hover {
+    background-color: var(--color-titulo);
+}
+
+
+/* =====================================================
+   PAINEL DA DIREITA
+===================================================== */
+
+.conteudo-flex > .painel-formulario:last-child {
+    width: 370px;
+
+    background-color: var(--color-marca);
+
+    padding: 16px;
+
+    border-radius: 3px;
+
+    color: var(--color-fundo-claro);
+}
+
+
+/* Título */
+
+.conteudo-flex > .painel-formulario:last-child h2 {
+    color: var(--color-fundo-claro);
+
+    font-size: 13px;
+
+    font-weight: 500;
+
+    margin-bottom: 12px;
+}
+
+
+/* =====================================================
+   TABELA
+===================================================== */
+
+.tabela-sensores {
+    width: 100%;
+
+    border-collapse: collapse;
+
+    background-color: var(--color-marca);
+
+    color: var(--color-fundo-claro);
+
+    font-family: var(--font-texto);
+
+    font-size: 9px;
+}
+
+
+.tabela-sensores th {
+    background-color: var(--color-titulo);
+
+    color: white;
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    text-align: left;
+
+    padding: 7px 6px;
+
+    border: 1px solid #8A6A58;
+}
+
+
+.tabela-sensores td {
+    padding: 6px;
+
+    font-size: 9px;
+
+    border: 1px solid #8A6A58;
+
+    color: var(--color-fundo-claro);
+}
+
+
+.tabela-sensores tr:hover td {
+    background-color: #76513D;
+}
+
+
+/* =====================================================
+   LINKS DE AÇÃO
+===================================================== */
+
+.tabela-sensores td a {
+    color: var(--color-fundo-claro);
+
+    text-decoration: none;
+
+    font-size: 9px;
+}
+
+
+.tabela-sensores td a:hover {
+    color: white;
+
     text-decoration: underline;
 }
 
 
-.footer-logo {
-    max-height: 45px;
-    width: auto;
-    object-fit: contain;
+/* =====================================================
+   STATUS
+===================================================== */
+
+.status-ativo,
+.status-alerta,
+.status-falha {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 4px;
+
+    font-size: 9px;
+
+    white-space: nowrap;
 }
 
-.footer-copyright {
-    color: var(--color-texto);
-    font-size: 0.65rem;
-    font-family: var(--font-texto);
-    opacity: 0.7;
-    margin-top: 5px;
+
+.status-ativo::before,
+.status-alerta::before,
+.status-falha::before {
+    content: "";
+
+    width: 7px;
+
+    height: 7px;
+
+    border-radius: 50%;
+
+    display: inline-block;
+}
+
+
+.status-ativo::before {
+    background-color: #28a745;
+}
+
+
+.status-alerta::before {
+    background-color: #ffc107;
+}
+
+
+.status-falha::before {
+    background-color: #dc3545;
+}
+
+
+/* =====================================================
+   NENHUM SENSOR
+===================================================== */
+
+.tabela-sensores td[colspan] {
+    text-align: center;
+
+    padding: 15px;
+
+    color: var(--color-fundo-claro);
+}
+
+
+/* =====================================================
+   RESPONSIVIDADE
+===================================================== */
+
+@media (max-width: 750px) {
+
+    .fluxo-conteudo {
+        padding-top: 40px;
+    }
+
+
+    .titulo-tela {
+        font-size: 34px;
+    }
+
+
+    .conteudo-flex {
+        gap: 30px;
+    }
+
+
+    .conteudo-flex > .painel-formulario:last-child {
+        width: 340px;
+    }
+
+}
+
+
+@media (max-width: 650px) {
+
+    .conteudo-flex {
+        flex-direction: column;
+
+        align-items: center;
+
+        gap: 30px;
+    }
+
+
+    .conteudo-flex > .painel-formulario:first-child {
+        width: 200px;
+    }
+
+
+    .conteudo-flex > .painel-formulario:last-child {
+        width: 100%;
+
+        max-width: 370px;
+
+        overflow-x: auto;
+    }
+
+
+    .titulo-tela {
+        font-size: 30px;
+
+        margin-bottom: 35px;
+    }
+
 }

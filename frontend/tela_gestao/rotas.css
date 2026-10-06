@@ -1,0 +1,331 @@
+@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&family=Roboto:wght@400;500;700&display=swap');
+
+:root {
+
+    --color-marca: #6B4732;
+    --color-titulo: #2F1E17;
+    --color-texto: #7A655B;
+    --color-fundo-claro: #F3EFEB;
+    --color-fundo-escuro: #1F1713;
+
+    --color-contato: #C49E7A;
+
+    --font-titulo: 'Fjalla One', sans-serif;
+    --font-texto: 'Roboto', sans-serif;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    font-family: var(--font-texto);
+    background-color: var(--color-fundo-claro);
+    color: var(--color-texto);
+}
+
+
+/* NAVBAR */
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--color-fundo-escuro);
+    padding: 0 30px;            
+    height: 60px;            
+    width: 100%;
+}
+
+.header .left {
+    display: flex;
+    gap: 20px;
+}
+
+.header .left i {
+    color: var(--color-fundo-claro);
+    font-size: 1.25rem;
+    cursor: pointer;
+}
+
+.header .logo {
+    display: flex;
+    align-items: center;
+    width: 100px; 
+}
+
+.header .logo img {
+    display: block;
+    height: 80%;                
+    max-height: 50px;          
+    width: auto;                
+    object-fit: contain;    
+}
+
+
+/* CONTEÚDO */
+
+main {
+    padding: 40px;
+}
+
+
+h1 {
+    font-family: var(--font-titulo);
+
+    color: var(--color-titulo);
+
+    font-size: 32px;
+
+    margin-bottom: 25px;
+}
+
+
+/* BOTÕES */
+
+.botao-nova {
+    display: inline-block;
+
+    margin-bottom: 20px;
+}
+
+
+.botao,
+button {
+    padding: 10px 16px;
+
+    border: none;
+
+    border-radius: 6px;
+
+    background-color: var(--color-marca);
+
+    color: white;
+
+    cursor: pointer;
+
+    text-decoration: none;
+
+    font-family: var(--font-texto);
+}
+
+
+.botao:hover,
+button:hover {
+    background-color: var(--color-fundo-escuro);
+}
+
+
+/* FILTROS */
+
+.filtros {
+    background-color: white;
+
+    padding: 20px;
+
+    border-radius: 10px;
+
+    margin-bottom: 25px;
+}
+
+
+.filtros form {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 12px;
+
+    align-items: end;
+}
+
+
+.campo {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+
+.campo label {
+    font-size: 14px;
+
+    font-weight: 700;
+
+    color: var(--color-titulo);
+}
+
+
+input,
+select {
+    padding: 10px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 6px;
+
+    font-family: var(--font-texto);
+
+    color: var(--color-texto);
+}
+
+
+input:focus,
+select:focus {
+    outline: none;
+
+    border-color: var(--color-contato);
+}
+
+
+/* TABELA */
+
+table {
+    width: 100%;
+
+    border-collapse: collapse;
+
+    background-color: white;
+
+    border-radius: 10px;
+
+    overflow: hidden;
+}
+
+
+th,
+td {
+    padding: 14px;
+
+    text-align: left;
+
+    border-bottom: 1px solid #ddd;
+}
+
+
+th {
+    background-color: var(--color-marca);
+
+    color: white;
+
+    font-family: var(--font-titulo);
+
+    font-weight: normal;
+}
+
+
+td {
+    color: var(--color-texto);
+}
+
+
+/* AÇÕES */
+
+.acoes a {
+    margin-right: 10px;
+
+    text-decoration: none;
+}
+
+
+.editar {
+    color: var(--color-marca);
+}
+
+
+.excluir {
+    color: #b00020;
+}
+
+
+.editar:hover {
+    color: var(--color-fundo-escuro);
+}
+
+
+.excluir:hover {
+    color: #7a0015;
+}
+
+.footer-gauge {
+    background-color: var(--color-fundo-escuro);
+    border-top: 2px solid var(--color-contato); 
+    padding: 30px 20px 15px 20px;
+    width: 100%;
+    margin-top: auto; 
+}
+
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+
+.footer-bloco {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.bloco-esquerda {
+    align-items: flex-start;
+    padding-left: 40px;
+}
+
+.bloco-centro {
+    align-items: center;
+    gap: 15px;
+}
+
+.bloco-direita {
+    align-items: flex-end;
+    padding-right: 40px;
+}
+
+
+.footer-label {
+    color: #ffffff;
+    font-family: var(--font-texto);
+    font-size: 0.95rem;
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+
+.footer-link {
+    color: var(--color-contato);
+    font-family: var(--font-texto);
+    font-size: 0.95rem;
+    text-decoration: none;
+    font-weight: 400;
+}
+
+.link-sublinhado {
+    text-decoration: underline;
+}
+
+
+.footer-logo {
+    max-height: 45px;
+    width: auto;
+    object-fit: contain;
+}
+
+.footer-copyright {
+    color: var(--color-texto);
+    font-size: 0.65rem;
+    font-family: var(--font-texto);
+    opacity: 0.7;
+    margin-top: 5px;
+}

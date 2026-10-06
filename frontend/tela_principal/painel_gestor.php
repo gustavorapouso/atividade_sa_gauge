@@ -155,17 +155,24 @@ if (!temPapel([2])) {
 
 
             <a
-                href="#"
+                href="../tela_gestao/trens/trem.php"
                 class="btn-menu-item"
             >
-                ALERTAS
+                TREM
+            </a>
+
+            <a
+                href="../tela_gestao/trens_carga/trem_carga.php"
+                class="btn-menu-item"
+            >
+                TREM DE CARGA
             </a>
 
             <a
                 href="#"
                 class="btn-menu-item"
             >
-                TREM
+                ALERTAS
             </a>
 
         </nav>
