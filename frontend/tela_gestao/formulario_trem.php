@@ -13,9 +13,16 @@ $mensagem = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    $nome = $_POST['nome'];
+    $prefixo = $_POST['prefixo'];
     $modelo = $_POST['modelo'];
-    $tipo = $_POST['tipo'];
+    $ano = $_POST['ano'];
+    $status = $_POST['status'];
+    $capacidade = $_POST['capacidade'];
+
+    // Última inspeção pode ficar vazia
+    $ultima_inspecao = !empty($_POST['ultima_inspecao'])
+        ? $_POST['ultima_inspecao']
+        : null;
 
 
     // =====================================
@@ -24,11 +31,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $sql = "
         INSERT INTO trem (
-            nome,
+            prefixo,
             modelo,
-            tipo
+            ano,
+            status,
+            capacidade,
+            ultima_inspecao
         )
-        VALUES (?, ?, ?)
+        VALUES (?, ?, ?, ?, ?, ?)
     ";
 
 
@@ -38,10 +48,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($stmt) {
 
         $stmt->bind_param(
-            "sss",
-            $nome,
+            "ssisds",
+            $prefixo,
             $modelo,
-            $tipo
+            $ano,
+            $status,
+            $capacidade,
+            $ultima_inspecao
         );
 
 
@@ -49,6 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             header('Location: trens.php');
             exit;
+
         } else {
 
             $mensagem =
@@ -58,6 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
         $stmt->close();
+
     } else {
 
         $mensagem =
@@ -104,8 +119,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
     <!-- =====================================
-     NAVBAR
-===================================== -->
+         NAVBAR
+    ====================================== -->
 
     <header>
 
@@ -133,8 +148,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
     <!-- =====================================
-     CONTEÚDO
-===================================== -->
+         CONTEÚDO
+    ====================================== -->
 
     <main>
 
@@ -150,8 +165,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
         <!-- =====================================
-         MENSAGEM
-    ====================================== -->
+             MENSAGEM
+        ====================================== -->
 
         <?php if ($mensagem !== ''): ?>
 
@@ -166,8 +181,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
         <!-- =====================================
-         FORMULÁRIO
-    ====================================== -->
+             FORMULÁRIO
+        ====================================== -->
 
         <form method="POST">
 
@@ -175,30 +190,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="formulario">
 
 
-                <!-- NOME -->
+                <!-- =================================
+                     PREFIXO
+                ================================== -->
 
                 <div class="campo">
 
-                    <label for="nome">
+                    <label for="prefixo">
 
-                        Nome do trem
+                        Prefixo
 
                     </label>
 
 
                     <input
                         type="text"
-                        name="nome"
-                        id="nome"
-                        placeholder="Ex: Trem Gauge 01"
-                        maxlength="45"
+                        name="prefixo"
+                        id="prefixo"
+                        placeholder="Ex: TR-204"
+                        maxlength="20"
                         required>
 
                 </div>
 
 
 
-                <!-- MODELO -->
+                <!-- =================================
+                     MODELO
+                ================================== -->
 
                 <div class="campo">
 
@@ -221,44 +240,126 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
 
-                <!-- TIPO -->
+                <!-- =================================
+                     ANO
+                ================================== -->
 
                 <div class="campo">
 
-                    <label for="tipo">
+                    <label for="ano">
 
-                        Tipo de trem
+                        Ano
+
+                    </label>
+
+
+                    <input
+                        type="number"
+                        name="ano"
+                        id="ano"
+                        placeholder="Ex: 2024"
+                        min="1900"
+                        max="2100"
+                        required>
+
+                </div>
+
+
+
+                <!-- =================================
+                     STATUS
+                ================================== -->
+
+                <div class="campo">
+
+                    <label for="status">
+
+                        Status
 
                     </label>
 
 
                     <select
-                        name="tipo"
-                        id="tipo"
+                        name="status"
+                        id="status"
                         required>
 
                         <option value="">
 
-                            Selecione o tipo
+                            Selecione o status
 
                         </option>
 
 
-                        <option value="passageiro">
+                        <option value="ativo">
 
-                            Passageiro
+                            Ativo
+
+                        </option>
+
+
+                        <option value="manutencao">
+
+                            Em manutenção
 
                         </option>
 
 
-                        <option value="carga">
+                        <option value="inativo">
 
-                            Carga
+                            Inativo
 
                         </option>
-
 
                     </select>
+
+                </div>
+
+
+
+                <!-- =================================
+                     CAPACIDADE
+                ================================== -->
+
+                <div class="campo">
+
+                    <label for="capacidade">
+
+                        Capacidade (toneladas)
+
+                    </label>
+
+
+                    <input
+                        type="number"
+                        name="capacidade"
+                        id="capacidade"
+                        placeholder="Ex: 6200.50"
+                        step="0.01"
+                        min="0"
+                        required>
+
+                </div>
+
+
+
+                <!-- =================================
+                     ÚLTIMA INSPEÇÃO
+                ================================== -->
+
+                <div class="campo">
+
+                    <label for="ultima_inspecao">
+
+                        Última inspeção
+
+                    </label>
+
+
+                    <input
+                        type="date"
+                        name="ultima_inspecao"
+                        id="ultima_inspecao">
 
                 </div>
 
@@ -268,8 +369,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
             <!-- =====================================
-             BOTÕES
-        ====================================== -->
+                 BOTÕES
+            ====================================== -->
 
             <div class="botoes">
 
@@ -304,8 +405,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
     <!-- =====================================
-     FOOTER
-===================================== -->
+         FOOTER
+    ====================================== -->
 
     <footer class="footer-gauge">
 
