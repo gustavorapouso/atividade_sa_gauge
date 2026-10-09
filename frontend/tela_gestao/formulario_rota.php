@@ -1,3 +1,4 @@
+
 <?php
 session_start();
 
@@ -7,23 +8,24 @@ $mensagem = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    $estacao_trem = $_POST['estacao_trem'];
-    $data_hora_chegada = $_POST['data_hora_chegada'];
-    $data_hora_saida = $_POST['data_hora_saida'];
-    $status_trem = $_POST['status_trem'];
-    $origem = $_POST['origem'];
-    $destino = $_POST['destino'];
-    $velocidade_km_h = $_POST['velocidade_km_h'];
-    $previsao_chegada = $_POST['previsao_chegada'];
-    $historico_descricao = $_POST['historico_descricao'];
-    $id_trem = $_POST['FK_id_trem'];
-    $id_trilho = $_POST['FK_id_trilho'];
+    $estacao_trem = trim($_POST['estacao_trem'] ?? '');
+    $data_hora_chegada = $_POST['data_hora_chegada'] ?? '';
+    $data_hora_saida = $_POST['data_hora_saida'] ?? '';
+    $status_trem = $_POST['status_trem'] ?? '';
+    $origem = trim($_POST['origem'] ?? '');
+    $destino = trim($_POST['destino'] ?? '');
+    $velocidade_km_h = (float) ($_POST['velocidade_km_h'] ?? 0);
+    $previsao_chegada = $_POST['previsao_chegada'] ?? '';
+    $historico_descricao = trim($_POST['historico_descricao'] ?? '');
+    $id_trem = (int) ($_POST['FK_id_trem'] ?? 0);
+    $id_trilho = (int) ($_POST['FK_id_trilho'] ?? 0);
 
     // Troca o T do datetime-local por espaço
     $data_hora_chegada = str_replace('T', ' ', $data_hora_chegada);
     $data_hora_saida = str_replace('T', ' ', $data_hora_saida);
     $previsao_chegada = str_replace('T', ' ', $previsao_chegada);
 
+    // Cadastra a viagem
     $sql = "
         INSERT INTO viagem (
             estacao_trem,
@@ -61,6 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         );
 
         if ($stmt->execute()) {
+            $stmt->close();
             header('Location: rotas.php');
             exit;
         } else {
@@ -74,26 +77,43 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
+// =====================================
+// BUSCAR TRENS CADASTRADOS
+// =====================================
 
-// Busca os trens cadastrados
 $sql_trens = "
-    SELECT id_trem, nome, modelo, tipo
+    SELECT
+        id_trem,
+        prefixo,
+        modelo
     FROM trem
-    ORDER BY nome
+    ORDER BY prefixo
 ";
 
 $resultado_trens = $conexao->query($sql_trens);
 
+if (!$resultado_trens) {
+    die('Erro ao buscar os trens: ' . $conexao->error);
+}
 
-// Busca os trilhos cadastrados
+// =====================================
+// BUSCAR TRILHOS CADASTRADOS
+// =====================================
+
 $sql_trilhos = "
-    SELECT id_trilho, localizacao, distancia
+    SELECT
+        id_trilho,
+        localizacao,
+        distancia
     FROM trilho
     ORDER BY localizacao
 ";
 
 $resultado_trilhos = $conexao->query($sql_trilhos);
 
+if (!$resultado_trilhos) {
+    die('Erro ao buscar os trilhos: ' . $conexao->error);
+}
 ?>
 
 <!DOCTYPE html>
@@ -105,8 +125,10 @@ $resultado_trilhos = $conexao->query($sql_trilhos);
 
     <title>Nova Viagem - Gauge</title>
 
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    >
 
     <link rel="stylesheet" href="formulario_rota.css">
 </head>
@@ -125,7 +147,6 @@ $resultado_trilhos = $conexao->query($sql_trilhos);
 
 </header>
 
-
 <main>
 
     <h1>Nova viagem</h1>
@@ -134,41 +155,30 @@ $resultado_trilhos = $conexao->query($sql_trilhos);
         Cadastre uma nova viagem para o sistema Ferrorama Gauge.
     </p>
 
-
     <?php if ($mensagem !== ''): ?>
-
         <div class="mensagem">
             <?= htmlspecialchars($mensagem) ?>
         </div>
-
     <?php endif; ?>
-
 
     <form method="POST">
 
-
         <div class="formulario">
 
-
             <!-- TREM -->
-
             <div class="campo">
 
-                <label for="FK_id_trem">
-                    Trem
-                </label>
+                <label for="FK_id_trem">Trem</label>
 
                 <select name="FK_id_trem" id="FK_id_trem" required>
 
-                    <option value="">
-                        Selecione um trem
-                    </option>
+                    <option value="">Selecione um trem</option>
 
                     <?php while ($trem = $resultado_trens->fetch_assoc()): ?>
 
-                        <option value="<?= $trem['id_trem'] ?>">
+                        <option value="<?= (int) $trem['id_trem'] ?>">
 
-                            <?= htmlspecialchars($trem['nome']) ?>
+                            <?= htmlspecialchars($trem['prefixo']) ?>
                             -
                             <?= htmlspecialchars($trem['modelo']) ?>
 
@@ -180,28 +190,22 @@ $resultado_trilhos = $conexao->query($sql_trilhos);
 
             </div>
 
-
             <!-- TRILHO -->
-
             <div class="campo">
 
-                <label for="FK_id_trilho">
-                    Trilho
-                </label>
+                <label for="FK_id_trilho">Trilho</label>
 
                 <select name="FK_id_trilho" id="FK_id_trilho" required>
 
-                    <option value="">
-                        Selecione um trilho
-                    </option>
+                    <option value="">Selecione um trilho</option>
 
                     <?php while ($trilho = $resultado_trilhos->fetch_assoc()): ?>
 
-                        <option value="<?= $trilho['id_trilho'] ?>">
+                        <option value="<?= (int) $trilho['id_trilho'] ?>">
 
                             <?= htmlspecialchars($trilho['localizacao']) ?>
                             -
-                            <?= htmlspecialchars($trilho['distancia']) ?>
+                            <?= htmlspecialchars((string) $trilho['distancia']) ?>
                             km
 
                         </option>
@@ -212,14 +216,10 @@ $resultado_trilhos = $conexao->query($sql_trilhos);
 
             </div>
 
-
             <!-- ESTAÇÃO -->
-
             <div class="campo">
 
-                <label for="estacao_trem">
-                    Estação atual
-                </label>
+                <label for="estacao_trem">Estação atual</label>
 
                 <input
                     type="text"
@@ -232,14 +232,10 @@ $resultado_trilhos = $conexao->query($sql_trilhos);
 
             </div>
 
-
             <!-- ORIGEM -->
-
             <div class="campo">
 
-                <label for="origem">
-                    Origem
-                </label>
+                <label for="origem">Origem</label>
 
                 <input
                     type="text"
@@ -252,14 +248,10 @@ $resultado_trilhos = $conexao->query($sql_trilhos);
 
             </div>
 
-
             <!-- DESTINO -->
-
             <div class="campo">
 
-                <label for="destino">
-                    Destino
-                </label>
+                <label for="destino">Destino</label>
 
                 <input
                     type="text"
@@ -272,14 +264,10 @@ $resultado_trilhos = $conexao->query($sql_trilhos);
 
             </div>
 
-
             <!-- SAÍDA -->
-
             <div class="campo">
 
-                <label for="data_hora_saida">
-                    Data e hora de saída
-                </label>
+                <label for="data_hora_saida">Data e hora de saída</label>
 
                 <input
                     type="datetime-local"
@@ -290,14 +278,10 @@ $resultado_trilhos = $conexao->query($sql_trilhos);
 
             </div>
 
-
             <!-- CHEGADA -->
-
             <div class="campo">
 
-                <label for="data_hora_chegada">
-                    Data e hora de chegada
-                </label>
+                <label for="data_hora_chegada">Data e hora de chegada</label>
 
                 <input
                     type="datetime-local"
@@ -308,14 +292,10 @@ $resultado_trilhos = $conexao->query($sql_trilhos);
 
             </div>
 
-
             <!-- PREVISÃO -->
-
             <div class="campo">
 
-                <label for="previsao_chegada">
-                    Previsão de chegada
-                </label>
+                <label for="previsao_chegada">Previsão de chegada</label>
 
                 <input
                     type="datetime-local"
@@ -326,49 +306,31 @@ $resultado_trilhos = $conexao->query($sql_trilhos);
 
             </div>
 
-
             <!-- STATUS -->
-
             <div class="campo">
 
-                <label for="status_trem">
-                    Status
-                </label>
+                <label for="status_trem">Status</label>
 
                 <select name="status_trem" id="status_trem" required>
 
-                    <option value="">
-                        Selecione o status
-                    </option>
+                    <option value="">Selecione o status</option>
 
-                    <option value="programada">
-                        Programada
-                    </option>
+                    <option value="programada">Programada</option>
 
-                    <option value="em andamento">
-                        Em andamento
-                    </option>
+                    <option value="em andamento">Em andamento</option>
 
-                    <option value="concluida">
-                        Concluída
-                    </option>
+                    <option value="concluida">Concluída</option>
 
-                    <option value="cancelada">
-                        Cancelada
-                    </option>
+                    <option value="cancelada">Cancelada</option>
 
                 </select>
 
             </div>
 
-
             <!-- VELOCIDADE -->
-
             <div class="campo">
 
-                <label for="velocidade_km_h">
-                    Velocidade (km/h)
-                </label>
+                <label for="velocidade_km_h">Velocidade (km/h)</label>
 
                 <input
                     type="number"
@@ -382,14 +344,10 @@ $resultado_trilhos = $conexao->query($sql_trilhos);
 
             </div>
 
-
             <!-- HISTÓRICO -->
-
             <div class="campo campo-grande">
 
-                <label for="historico_descricao">
-                    Descrição
-                </label>
+                <label for="historico_descricao">Descrição</label>
 
                 <textarea
                     name="historico_descricao"
@@ -401,12 +359,9 @@ $resultado_trilhos = $conexao->query($sql_trilhos);
 
             </div>
 
-
         </div>
 
-
         <!-- BOTÕES -->
-
         <div class="botoes">
 
             <a href="rotas.php" class="botao cancelar">
@@ -420,31 +375,51 @@ $resultado_trilhos = $conexao->query($sql_trilhos);
 
         </div>
 
-
     </form>
 
 </main>
 
+<!-- RODAPÉ -->
+<footer class="footer-gauge">
 
-        <footer class="footer-gauge">
     <div class="footer-container">
-        
+
         <div class="footer-bloco bloco-esquerda">
             <span class="footer-label">Entre em contato</span>
-            <a href="tel:47999174896" class="footer-link">(47) 99917-4896</a>
+            <a href="tel:47999174896" class="footer-link">
+                (47) 99917-4896
+            </a>
         </div>
 
         <div class="footer-bloco bloco-centro">
-            <img src="../assets/logo_gauge_menor.png" alt="Gauge Logo" class="footer-logo">
-            <p class="footer-copyright">&copy; 2026 Gauge. Todos os direitos reservados.</p>
+
+            <img
+                src="../assets/logo_gauge_menor.png"
+                alt="Gauge Logo"
+                class="footer-logo"
+            >
+
+            <p class="footer-copyright">
+                &copy; 2026 Gauge. Todos os direitos reservados.
+            </p>
+
         </div>
 
         <div class="footer-bloco bloco-direita">
+
             <span class="footer-label">Precisa de Suporte?</span>
-            <a href="mailto:contato@gauge.com.br" class="footer-link link-sublinhado">contato@gauge.com.br</a>
+
+            <a
+                href="mailto:contato@gauge.com.br"
+                class="footer-link link-sublinhado"
+            >
+                contato@gauge.com.br
+            </a>
+
         </div>
 
     </div>
+
 </footer>
 
 </body>
