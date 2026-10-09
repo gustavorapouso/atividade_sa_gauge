@@ -2,3 +2,8 @@
 
 Forma 1 - mysqli orientado a objetos
 Conexao.php está correto
+
+Guia Bloco 2
+Escolhemos o comportamento RESTRICT, pois os sensores possuem informações importantes de monitoramento. 
+Dessa forma, um trem não poderá ser excluído enquanto houver sensores vinculados a ele, 
+evitando a perda de dados e mantendo a integridade do sistema.
