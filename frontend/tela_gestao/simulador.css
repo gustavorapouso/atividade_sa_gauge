@@ -1,0 +1,78 @@
+:root {
+    --marca: #6B4732;
+    --titulo: #2F1E17;
+    --texto: #7A655B;
+    --claro: #F3EFEB;
+    --borda: #ded4cc;
+    --branco: #ffffff;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: var(--claro);
+    color: var(--titulo);
+    font-family: 'Roboto', Arial, sans-serif;
+}
+
+h1, h2, h3 {
+    color: var(--titulo);
+    font-family: 'Fjalla One', sans-serif;
+    font-weight: 400;
+}
+
+.cartao {
+    background: var(--branco);
+    border-radius: 10px;
+    padding: 26px;
+    margin-bottom: 22px;
+    box-shadow: 0 2px 8px rgba(47, 30, 23, 0.04);
+}
+
+button,
+.botao {
+    background: var(--marca);
+    color: var(--branco);
+    border: none;
+    border-radius: 6px;
+    padding: 12px 22px;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+button:hover,
+.botao:hover {
+    background: var(--titulo);
+}
+
+input,
+select {
+    width: 100%;
+    min-height: 42px;
+    border: 1px solid var(--borda);
+    border-radius: 6px;
+    padding: 10px 12px;
+    background: var(--branco);
+    color: var(--texto);
+    font: inherit;
+}
+
+.aviso {
+    border-radius: 6px;
+    padding: 13px 16px;
+    margin-bottom: 18px;
+}
+
+.sucesso {
+    background: #e7f5e9;
+    color: #245b2b;
+}
+
+.erro {
+    background: #fde8e7;
+    color: #8a2722;
+}
