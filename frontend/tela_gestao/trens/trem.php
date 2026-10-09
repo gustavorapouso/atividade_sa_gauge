@@ -1,3 +1,18 @@
+<?php
+
+
+require '../../../data_base/includes/proteger.php';
+require '../../../data_base/includes/permissao.php';
+
+if (!temPapel([1, 2, 3])) {
+    echo "Acesso negado.";
+    exit;
+}
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -5,26 +20,114 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trens</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="dashboard.css">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Roboto:wght@400;500;700&display=swap"
       rel="stylesheet"/>
-    <link rel="stylesheet" href="trem_style.css">
+
+     
+
+    
+
+    <link rel="stylesheet" href="trem_style.css?v=1.0">
 </head>
 <body>
     <header class="header">
-        <div class="left">
-            <i class="fas fa-bars" title="Menu"></i>
-            <i class="fas fa-search" title="Pesquisar"></i>
-        </div>
-        <div class="logo">
-            <img src="../../assets/logo_gauge_menor.png" alt="Gauge Logo">
-        </div>
 
-        
-    </header>
+    <div class="header-left">
+
+        <button
+            type="button"
+            class="menu-button"
+            id="menuBtn"
+            aria-label="Abrir menu"
+        >
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <i class="fas fa-search" title="Pesquisar"></i>
+
+    </div>
+
+    <div class="logo">
+
+        <img
+            src="../../assets/logo_gauge_menor.png"
+            alt="Gauge Logo"
+        >
+
+    </div>
+
+</header>
+
+<div class="layout-wrapper">
+
+    <aside
+            class="sidebar"
+            id="sidebar"
+        >
+
+            <nav class="nav-links">
+
+
+                <a
+                    href="../seu_perfil.php"
+                    class="btn-menu-item"
+                >
+                    PERFIL
+                </a>
+
+
+                <a
+                    href="#"
+                    class="btn-menu-item"
+                >
+                    CADASTRAR SENSOR
+                </a>
+
+
+                <?php if (temPapel([2])): ?>
+
+                    <a
+                        href="usuarios.php"
+                        class="btn-menu-item"
+                    >
+                        USUÁRIOS
+                    </a>
+
+                <?php endif; ?>
+
+
+                <a
+                    href="#"
+                    class="btn-menu-item"
+                >
+                    RELATÓRIOS
+                </a>
+
+
+
+                <a
+                    href="../trens_carga/trem_carga.php"
+                    class="btn-menu-item"
+                >
+                    TREM DE CARGA
+                </a>
+
+                <a
+                    href="#"
+                    class="btn-menu-item"
+                >
+                    ALERTAS
+                </a>
+
+            </nav>
+
+        </aside>
 
     <main>
     <section>
@@ -92,7 +195,7 @@
     </section>
 
     </main>
-
+</div>
         <footer class="footer-gauge">
     <div class="footer-container">
         
@@ -113,5 +216,7 @@
 
     </div>
 </footer>
+
+    <script src="../../js/menu.js"></script>
 </body>
 </html>

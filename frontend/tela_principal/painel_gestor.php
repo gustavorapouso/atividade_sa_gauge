@@ -119,7 +119,7 @@ if (!temPapel([2])) {
 
 
             <a
-                href="#"
+                href="../tela_gestao/seu_perfil.php"
                 class="btn-menu-item"
             >
                 PERFIL
@@ -127,7 +127,7 @@ if (!temPapel([2])) {
 
 
             <a
-                href="#"
+                href="../tela_gestao/sensores.php"
                 class="btn-menu-item"
             >
                 CADASTRAR SENSOR
