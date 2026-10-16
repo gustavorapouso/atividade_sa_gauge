@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 
@@ -49,13 +48,18 @@ function gerarValor(string $tipo, bool $foraDoNormal): array
         : [mt_rand(10, 100), 'un'];
 }
 
+
+<?php
 // =====================================
 // PROCESSAR FORMULÁRIO DO SIMULADOR
 // =====================================
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' &&
-    isset($_POST['gerar_leituras'])) {
+require_once '../../includes/limites.php';
 
+if (
+    $_SERVER['REQUEST_METHOD'] === 'POST' &&
+    isset($_POST['gerar_leituras'])
+) {
     $id_sensor = filter_input(
         INPUT_POST,
         'id_sensor',
@@ -72,10 +76,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' &&
 
     if (!$id_sensor || $id_sensor < 1) {
         $erro = 'Selecione um sensor.';
-    } elseif (!$quantidade || $quantidade < 1 || $quantidade > 200) {
+    } elseif (
+        !$quantidade ||
+        $quantidade < 1 ||
+        $quantidade > 200
+    ) {
         $erro = 'A quantidade deve estar entre 1 e 200.';
     } else {
-        // Confere se o sensor existe
         $sqlSensor = "
             SELECT id_sensores, codigo, tipo
             FROM sensores
@@ -92,24 +99,40 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' &&
         if (!$sensor) {
             $erro = 'O sensor selecionado não foi encontrado.';
         } else {
-            // Preparar a consulta apenas uma vez
-            $sql = "
+            // Prepara o INSERT das leituras uma única vez.
+            $sqlLeitura = "
                 INSERT INTO leituras
                     (id_sensor, data_hora, valor, unidade)
                 VALUES (?, ?, ?, ?)
             ";
 
-            $stmt = $conexao->prepare($sql);
+            // Prepara o INSERT dos alertas uma única vez.
+            $sqlAlerta = "
+                INSERT INTO alertas
+                    (id_leitura, tipo, severidade, mensagem, data_hora)
+                VALUES (?, ?, ?, ?, ?)
+            ";
 
-            if (!$stmt) {
-                $erro = 'Erro ao preparar a consulta.';
+            $stmtLeitura = $conexao->prepare($sqlLeitura);
+            $stmtAlerta = $conexao->prepare($sqlAlerta);
+
+            if (!$stmtLeitura || !$stmtAlerta) {
+                if ($stmtLeitura) {
+                    $stmtLeitura->close();
+                }
+
+                if ($stmtAlerta) {
+                    $stmtAlerta->close();
+                }
+
+                $erro = 'Erro ao preparar as consultas.';
             } else {
                 $id_sensor_db = (int) $sensor['id_sensores'];
                 $data_hora = '';
                 $valor = 0.0;
                 $unidade = '';
 
-                $stmt->bind_param(
+                $stmtLeitura->bind_param(
                     'isds',
                     $id_sensor_db,
                     $data_hora,
@@ -117,11 +140,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' &&
                     $unidade
                 );
 
+                $id_leitura = 0;
+                $tipoAlerta = '';
+                $severidade = '';
+                $mensagemAlerta = '';
+                $dataAlerta = '';
+
+                $stmtAlerta->bind_param(
+                    'issss',
+                    $id_leitura,
+                    $tipoAlerta,
+                    $severidade,
+                    $mensagemAlerta,
+                    $dataAlerta
+                );
+
                 try {
                     $conexao->begin_transaction();
 
                     for ($i = 0; $i < $quantidade; $i++) {
-                        // Uma leitura a cada cinco minutos
                         $data_hora = date(
                             'Y-m-d H:i:s',
                             time() - (($quantidade - 1 - $i) * 300)
@@ -132,18 +169,50 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' &&
                             $foraDoNormal
                         );
 
-                        if (!$stmt->execute()) {
+                        // 1. Salva a leitura.
+                        if (!$stmtLeitura->execute()) {
                             throw new Exception(
                                 'Não foi possível salvar uma leitura.'
                             );
                         }
+
+                        // ID da leitura que acabou de ser criada.
+                        $id_leitura = $conexao->insert_id;
+
+                        // 2. Classifica o valor.
+                        $severidade = classificar(
+                            $sensor['tipo'],
+                            (float) $valor
+                        );
+
+                        // 3. Só registra alertas não normais.
+                        if ($severidade !== 'normal') {
+                            $tipoAlerta = $sensor['tipo'];
+
+                            $mensagemAlerta =
+                                'Sensor ' . $sensor['codigo'] .
+                                ': leitura de ' . $valor . ' ' .
+                                $unidade .
+                                ' acima do limite esperado.';
+
+                            $dataAlerta = $data_hora;
+
+                            if (!$stmtAlerta->execute()) {
+                                throw new Exception(
+                                    'Não foi possível registrar o alerta.'
+                                );
+                            }
+                        }
                     }
 
+                    // Confirma leituras e alertas juntos.
                     $conexao->commit();
 
                     $_SESSION['sucesso_leituras'] =
-                        $quantidade . ' leituras geradas para o sensor ' .
-                        $sensor['codigo'] . '.';
+                        $quantidade .
+                        ' leituras geradas para o sensor ' .
+                        $sensor['codigo'] .
+                        '. Os alertas foram verificados automaticamente.';
 
                     header('Location: simulador.php');
                     exit;
@@ -152,11 +221,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' &&
                     $erro = $e->getMessage();
                 }
 
-                $stmt->close();
+                $stmtLeitura->close();
+                $stmtAlerta->close();
             }
         }
     }
 }
+?>
+
 
 // =====================================
 // MENSAGENS

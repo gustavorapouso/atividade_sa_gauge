@@ -1,0 +1,375 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&family=Roboto:wght@400;500;700&display=swap');
+
+:root {
+    --marca: #6B4732;
+    --titulo: #2F1E17;
+    --texto: #7A655B;
+    --claro: #F3EFEB;
+    --borda: #ded4cc;
+    --branco: #ffffff;
+    --critico: #c62828;
+    --critico-fundo: #fff0ef;
+    --atencao: #e5a500;
+    --atencao-fundo: #fff8df;
+    --verde: #39834b;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: var(--claro);
+    color: var(--titulo);
+    font-family: 'Roboto', sans-serif;
+}
+
+/* NAVBAR ORIGINAL */
+.header {
+    min-height: 48px;
+    background: #2f211b;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 24px;
+}
+
+.header .left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    color: var(--branco);
+}
+
+.header .left i {
+    font-size: 17px;
+    cursor: pointer;
+}
+
+.header .logo img {
+    width: 48px;
+    height: auto;
+    object-fit: contain;
+}
+
+/* CONTEÚDO */
+.conteudo {
+    width: min(100% - 40px, 1000px);
+    min-height: 440px;
+    margin: 0 auto;
+    padding: 24px 0 42px;
+}
+
+h1 {
+    margin: 0 0 8px;
+    text-align: center;
+    color: var(--marca);
+    font-family: 'Fjalla One', sans-serif;
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+.subtitulo {
+    margin: 0 0 24px;
+    text-align: center;
+    color: var(--texto);
+    font-size: 14px;
+}
+
+/* FILTROS */
+.filtros {
+    margin: 0 auto 24px;
+    padding: 16px;
+    border: 1px solid var(--borda);
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.55);
+}
+
+.filtros form {
+    display: flex;
+    align-items: end;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.campo {
+    flex: 1;
+    min-width: 180px;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.campo label {
+    color: var(--titulo);
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.campo select {
+    width: 100%;
+    min-height: 38px;
+    padding: 8px 10px;
+    border: 1px solid #b7a69a;
+    border-radius: 4px;
+    background: var(--branco);
+    color: var(--titulo);
+    font: inherit;
+}
+
+.acoes-filtro {
+    display: flex;
+    gap: 8px;
+}
+
+.botao-filtrar,
+.botao-limpar {
+    min-height: 38px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 9px 15px;
+    border-radius: 4px;
+    font: inherit;
+    font-size: 13px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.botao-filtrar {
+    border: 1px solid var(--marca);
+    background: var(--marca);
+    color: var(--branco);
+}
+
+.botao-filtrar:hover {
+    background: #4f3324;
+}
+
+.botao-limpar {
+    border: 1px solid #b7a69a;
+    background: transparent;
+    color: var(--titulo);
+}
+
+/* CARTÕES */
+.grade-alertas {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+    align-items: start;
+}
+
+.cartao {
+    min-width: 0;
+    padding: 16px;
+    border: 1px solid #b8aaa1;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.35);
+}
+
+.cartao-critico {
+    border-top: 3px solid var(--critico);
+}
+
+.cartao-atencao {
+    border-top: 3px solid var(--atencao);
+}
+
+.cabecalho-cartao {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 14px;
+}
+
+.cabecalho-cartao h2 {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-family: 'Fjalla One', sans-serif;
+    font-size: 17px;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+.cartao-critico .cabecalho-cartao h2 i {
+    color: var(--critico);
+}
+
+.cartao-atencao .cabecalho-cartao h2 i {
+    color: var(--atencao);
+}
+
+.contador {
+    min-width: 24px;
+    padding: 3px 7px;
+    border-radius: 12px;
+    background: #e6ddd7;
+    color: var(--titulo);
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    text-align: center;
+}
+
+/* LISTA DE ALERTAS */
+.lista-alertas {
+    margin: 0;
+    padding-left: 20px;
+    overflow-wrap: anywhere;
+}
+
+.lista-alertas li {
+    padding: 8px 0;
+    border-bottom: 1px solid #e4dbd5;
+    color: #392c26;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.lista-alertas li:last-child {
+    border-bottom: none;
+}
+
+.cartao-critico .lista-alertas li {
+    border-left: 2px solid #e6a5a0;
+    padding-left: 8px;
+    margin-bottom: 8px;
+}
+
+.cartao-atencao .lista-alertas li {
+    border-left: 2px solid #e9cc72;
+    padding-left: 8px;
+    margin-bottom: 8px;
+}
+
+.detalhes-alerta {
+    margin-top: 5px;
+    color: var(--texto);
+    font-size: 12px;
+}
+
+.lista-alertas time {
+    display: block;
+    margin-top: 4px;
+    color: var(--texto);
+    font-size: 12px;
+}
+
+.sem-alertas {
+    margin: 18px 0;
+    color: var(--texto);
+    font-size: 14px;
+    text-align: center;
+}
+
+.nota {
+    margin-top: 18px;
+    color: var(--texto);
+    font-size: 12px;
+    text-align: center;
+}
+
+/* FOOTER ORIGINAL */
+.footer-gauge {
+    width: 100%;
+    padding: 24px;
+    background: #2f211b;
+    color: var(--branco);
+}
+
+.footer-container {
+    width: min(100%, 1100px);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+.footer-bloco {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.bloco-centro {
+    align-items: center;
+    text-align: center;
+}
+
+.bloco-direita {
+    align-items: flex-end;
+    text-align: right;
+}
+
+.footer-label {
+    font-size: 12px;
+    color: #d6c8bf;
+}
+
+.footer-link {
+    color: var(--branco);
+    font-size: 13px;
+    text-decoration: none;
+}
+
+.link-sublinhado {
+    text-decoration: underline;
+}
+
+.footer-logo {
+    width: 58px;
+    height: auto;
+    object-fit: contain;
+}
+
+.footer-copyright {
+    margin: 0;
+    color: #d6c8bf;
+    font-size: 11px;
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 650px) {
+    .conteudo {
+        width: calc(100% - 28px);
+        padding-top: 28px;
+    }
+
+    .grade-alertas {
+        grid-template-columns: 1fr;
+    }
+
+    .filtros form {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .acoes-filtro {
+        width: 100%;
+    }
+
+    .acoes-filtro > * {
+        flex: 1;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        gap: 22px;
+    }
+
+    .footer-bloco,
+    .bloco-direita {
+        align-items: center;
+        text-align: center;
+    }
+}
