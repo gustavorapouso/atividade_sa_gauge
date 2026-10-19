@@ -184,7 +184,7 @@ $data_nascimento = !empty($usuario['data_nascimento'])
 
         </div>
     </footer>
-
+    <script href="../tela_gestao/menu.js"></script>
 </body>
 </html>
 
