@@ -2,6 +2,7 @@
 session_start();
 
 require '../../data_base/conexao.php';
+require_once '../../data_base/includes/limites.php';
 
 $mensagem = '';
 $erro = '';
@@ -31,15 +32,19 @@ function gerarValor(string $tipo, bool $foraDoNormal): array
             : [mt_rand(60, 100), '°C'];
     }
 
-    if (str_contains($tipo, 'consumo') ||
-        str_contains($tipo, 'energia')) {
+    if (
+        str_contains($tipo, 'consumo') ||
+        str_contains($tipo, 'energia')
+    ) {
         return $foraDoNormal
             ? [mt_rand(1000, 1800) / 100, 'kWh']
             : [mt_rand(200, 900) / 100, 'kWh'];
     }
 
-    if (str_contains($tipo, 'localização') ||
-        str_contains($tipo, 'localizacao')) {
+    if (
+        str_contains($tipo, 'localização') ||
+        str_contains($tipo, 'localizacao')
+    ) {
         return [mt_rand(0, 50000) / 100, 'km'];
     }
 
@@ -48,13 +53,9 @@ function gerarValor(string $tipo, bool $foraDoNormal): array
         : [mt_rand(10, 100), 'un'];
 }
 
-
-<?php
 // =====================================
 // PROCESSAR FORMULÁRIO DO SIMULADOR
 // =====================================
-
-require_once '../../includes/limites.php';
 
 if (
     $_SERVER['REQUEST_METHOD'] === 'POST' &&
@@ -83,6 +84,7 @@ if (
     ) {
         $erro = 'A quantidade deve estar entre 1 e 200.';
     } else {
+        // Busca o sensor selecionado.
         $sqlSensor = "
             SELECT id_sensores, codigo, tipo
             FROM sensores
@@ -159,6 +161,7 @@ if (
                     $conexao->begin_transaction();
 
                     for ($i = 0; $i < $quantidade; $i++) {
+                        // Gera leituras com intervalos de cinco minutos.
                         $data_hora = date(
                             'Y-m-d H:i:s',
                             time() - (($quantidade - 1 - $i) * 300)
@@ -176,16 +179,16 @@ if (
                             );
                         }
 
-                        // ID da leitura que acabou de ser criada.
+                        // ID da leitura recém-criada.
                         $id_leitura = $conexao->insert_id;
 
-                        // 2. Classifica o valor.
+                        // 2. Classifica o valor da leitura.
                         $severidade = classificar(
                             $sensor['tipo'],
                             (float) $valor
                         );
 
-                        // 3. Só registra alertas não normais.
+                        // 3. Registra somente leituras não normais.
                         if ($severidade !== 'normal') {
                             $tipoAlerta = $sensor['tipo'];
 
@@ -227,8 +230,6 @@ if (
         }
     }
 }
-?>
-
 
 // =====================================
 // MENSAGENS
@@ -305,7 +306,10 @@ if (!$stmtLeituras) {
 }
 
 if ($parametros) {
-    $stmtLeituras->bind_param($tipos_parametros, ...$parametros);
+    $stmtLeituras->bind_param(
+        $tipos_parametros,
+        ...$parametros
+    );
 }
 
 $stmtLeituras->execute();
@@ -328,22 +332,29 @@ $resultadoTrens = $conexao->query("
 ");
 
 if (!$resultadoSensores || !$resultadoTrens) {
-    die('Erro ao carregar sensores ou trens: ' . escapar($conexao->error));
+    die(
+        'Erro ao carregar sensores ou trens: ' .
+        escapar($conexao->error)
+    );
 }
 ?>
 
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Leituras dos sensores - Ferrorama Gauge</title>
 
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    >
 
     <link rel="stylesheet" href="simulador.css">
+
 </head>
 
 <body>
@@ -362,16 +373,21 @@ if (!$resultadoSensores || !$resultadoTrens) {
 
     <main>
         <h1>Leituras dos sensores</h1>
+
         <p class="subtitulo">
             Acompanhe e simule as leituras dos sensores do Ferrorama Gauge.
         </p>
 
         <?php if ($mensagem !== ''): ?>
-            <div class="aviso sucesso"><?= escapar($mensagem) ?></div>
+            <div class="aviso sucesso">
+                <?= escapar($mensagem) ?>
+            </div>
         <?php endif; ?>
 
         <?php if ($erro !== ''): ?>
-            <div class="aviso erro"><?= escapar($erro) ?></div>
+            <div class="aviso erro">
+                <?= escapar($erro) ?>
+            </div>
         <?php endif; ?>
 
         <!-- GERAR LEITURAS -->
@@ -384,17 +400,26 @@ if (!$resultadoSensores || !$resultadoTrens) {
                     de gerar leituras.
                 </p>
             <?php else: ?>
+
                 <form method="POST" action="simulador.php">
                     <div class="linha">
+
                         <div class="campo">
                             <label for="sensor_geracao">Sensor</label>
 
-                            <select name="id_sensor" id="sensor_geracao" required>
+                            <select
+                                name="id_sensor"
+                                id="sensor_geracao"
+                                required
+                            >
                                 <option value="">Selecione um sensor</option>
 
                                 <?php
                                 $resultadoSensores->data_seek(0);
-                                while ($s = $resultadoSensores->fetch_assoc()):
+
+                                while (
+                                    $s = $resultadoSensores->fetch_assoc()
+                                ):
                                 ?>
                                     <option value="<?= (int) $s['id_sensores'] ?>">
                                         <?= escapar(
@@ -406,7 +431,10 @@ if (!$resultadoSensores || !$resultadoTrens) {
                         </div>
 
                         <div class="campo">
-                            <label for="quantidade">Quantidade de leituras</label>
+                            <label for="quantidade">
+                                Quantidade de leituras
+                            </label>
+
                             <input
                                 type="number"
                                 name="quantidade"
@@ -417,6 +445,7 @@ if (!$resultadoSensores || !$resultadoTrens) {
                                 required
                             >
                         </div>
+
                     </div>
 
                     <label class="opcao" for="fora_do_normal">
@@ -426,9 +455,12 @@ if (!$resultadoSensores || !$resultadoTrens) {
                             id="fora_do_normal"
                             value="1"
                         >
+
                         <span>
                             <strong>Gerar valores acima do normal</strong>
+
                             <br>
+
                             <span class="nota">
                                 Use esta opção para testar os alertas
                                 da próxima entrega.
@@ -443,6 +475,7 @@ if (!$resultadoSensores || !$resultadoTrens) {
                         </button>
                     </div>
                 </form>
+
             <?php endif; ?>
         </section>
 
@@ -452,42 +485,59 @@ if (!$resultadoSensores || !$resultadoTrens) {
 
             <form method="GET" action="simulador.php">
                 <div class="linha">
+
                     <div class="campo">
                         <label for="filtro_sensor">Sensor</label>
+
                         <select name="id_sensor" id="filtro_sensor">
                             <option value="0">Todos os sensores</option>
 
                             <?php
                             $resultadoSensores->data_seek(0);
-                            while ($s = $resultadoSensores->fetch_assoc()):
+
+                            while (
+                                $s = $resultadoSensores->fetch_assoc()
+                            ):
                             ?>
                                 <option
                                     value="<?= (int) $s['id_sensores'] ?>"
                                     <?= $filtro_sensor == $s['id_sensores']
-                                        ? 'selected' : '' ?>
+                                        ? 'selected'
+                                        : '' ?>
                                 >
-                                    <?= escapar($s['codigo'] . ' - ' . $s['tipo']) ?>
+                                    <?= escapar(
+                                        $s['codigo'] . ' - ' . $s['tipo']
+                                    ) ?>
                                 </option>
                             <?php endwhile; ?>
+
                         </select>
                     </div>
 
                     <div class="campo">
                         <label for="filtro_trem">Trem</label>
+
                         <select name="id_trem" id="filtro_trem">
                             <option value="0">Todos os trens</option>
 
-                            <?php while ($t = $resultadoTrens->fetch_assoc()): ?>
+                            <?php while (
+                                $t = $resultadoTrens->fetch_assoc()
+                            ): ?>
                                 <option
                                     value="<?= (int) $t['id_trem'] ?>"
                                     <?= $filtro_trem == $t['id_trem']
-                                        ? 'selected' : '' ?>
+                                        ? 'selected'
+                                        : '' ?>
                                 >
-                                    <?= escapar($t['prefixo'] . ' - ' . $t['modelo']) ?>
+                                    <?= escapar(
+                                        $t['prefixo'] . ' - ' . $t['modelo']
+                                    ) ?>
                                 </option>
                             <?php endwhile; ?>
+
                         </select>
                     </div>
+
                 </div>
 
                 <div class="acoes">
@@ -496,7 +546,10 @@ if (!$resultadoSensores || !$resultadoTrens) {
                         Filtrar
                     </button>
 
-                    <a class="botao-secundario" href="simulador.php">
+                    <a
+                        class="botao-secundario"
+                        href="simulador.php"
+                    >
                         Limpar filtros
                     </a>
                 </div>
@@ -522,44 +575,71 @@ if (!$resultadoSensores || !$resultadoTrens) {
 
                     <tbody>
                         <?php if ($resultadoLeituras->num_rows > 0): ?>
-                            <?php while ($leitura = $resultadoLeituras->fetch_assoc()): ?>
+
+                            <?php while (
+                                $leitura = $resultadoLeituras->fetch_assoc()
+                            ): ?>
                                 <tr>
-                                    <td><?= (int) $leitura['id_leitura'] ?></td>
                                     <td>
-                                        <?= escapar(date(
-                                            'd/m/Y H:i:s',
-                                            strtotime($leitura['data_hora'])
-                                        )) ?>
+                                        <?= (int) $leitura['id_leitura'] ?>
                                     </td>
-                                    <td><?= escapar($leitura['prefixo']) ?></td>
-                                    <td><?= escapar($leitura['codigo']) ?></td>
-                                    <td><?= escapar($leitura['tipo']) ?></td>
+
                                     <td>
-                                        <?= escapar(number_format(
-                                            (float) $leitura['valor'],
-                                            2,
-                                            ',',
-                                            '.'
-                                        )) ?>
+                                        <?= escapar(
+                                            date(
+                                                'd/m/Y H:i:s',
+                                                strtotime($leitura['data_hora'])
+                                            )
+                                        ) ?>
+                                    </td>
+
+                                    <td>
+                                        <?= escapar($leitura['prefixo']) ?>
+                                    </td>
+
+                                    <td>
+                                        <?= escapar($leitura['codigo']) ?>
+                                    </td>
+
+                                    <td>
+                                        <?= escapar($leitura['tipo']) ?>
+                                    </td>
+
+                                    <td>
+                                        <?= escapar(
+                                            number_format(
+                                                (float) $leitura['valor'],
+                                                2,
+                                                ',',
+                                                '.'
+                                            )
+                                        ) ?>
+
                                         <?= escapar($leitura['unidade']) ?>
                                     </td>
                                 </tr>
+
                             <?php endwhile; ?>
+
                         <?php else: ?>
+
                             <tr>
                                 <td colspan="6" class="sem-resultados">
                                     Nenhuma leitura encontrada.
                                 </td>
                             </tr>
+
                         <?php endif; ?>
                     </tbody>
                 </table>
             </div>
 
             <p class="nota">
-                Exibindo no máximo 100 leituras, das mais recentes às mais antigas.
+                Exibindo no máximo 100 leituras, das mais recentes
+                às mais antigas.
             </p>
         </section>
+
     </main>
 
     <!-- FOOTER ORIGINAL DO PROJETO -->
@@ -568,6 +648,7 @@ if (!$resultadoSensores || !$resultadoTrens) {
 
             <div class="footer-bloco bloco-esquerda">
                 <span class="footer-label">Entre em contato</span>
+
                 <a href="tel:47999174896" class="footer-link">
                     (47) 99917-4896
                 </a>
@@ -587,6 +668,7 @@ if (!$resultadoSensores || !$resultadoTrens) {
 
             <div class="footer-bloco bloco-direita">
                 <span class="footer-label">Precisa de Suporte?</span>
+
                 <a
                     href="mailto:contato@gauge.com.br"
                     class="footer-link link-sublinhado"
