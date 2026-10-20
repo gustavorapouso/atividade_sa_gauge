@@ -254,3 +254,148 @@ body {
     margin-top: 8px;
 
 }
+
+
+/* ================================= */
+/* CONTEÚDO PRINCIPAL DO DASHBOARD   */
+/* ================================= */
+
+.main-content {
+    flex: 1;
+    min-width: 0;
+    padding: 25px;
+}
+
+.titulo-dashboard {
+    font-family: var(--font-titulo);
+    color: var(--color-titulo);
+    font-size: 42px;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+/* Divide o conteúdo em duas colunas */
+.dashboard-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(300px, 1fr);
+    gap: 24px;
+    align-items: start;
+    width: 100%;
+}
+
+/* Quatro lacunas: duas colunas e duas linhas */
+.lacunas-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+    min-width: 0;
+}
+
+.lacuna {
+    min-height: 220px;
+    padding: 20px;
+    background-color: #FFFFFF;
+    border: 2px solid #D5C8BF;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 12px;
+}
+
+.lacuna > i {
+    font-size: 32px;
+    color: var(--color-marca);
+}
+
+.lacuna h2 {
+    font-family: var(--font-titulo);
+    font-size: 20px;
+    color: var(--color-titulo);
+}
+
+.lacuna p {
+    font-size: 14px;
+    color: var(--color-texto);
+}
+
+/* Coluna dos quatro cards marrons */
+.container {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    min-width: 0;
+}
+
+.card {
+    width: 100%;
+    min-height: 130px;
+    background-color: #806E64;
+    border: 3px solid var(--color-titulo);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    padding: 15px;
+}
+
+.icon {
+    width: 55px;
+    flex-shrink: 0;
+    font-size: 32px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.info {
+    flex: 1;
+    min-width: 0;
+    text-align: center;
+}
+
+.info h2 {
+    color: #FFFFFF;
+    font-family: var(--font-titulo);
+    font-size: 18px;
+}
+
+.info p {
+    color: #FFFFFF;
+    font-size: 16px;
+    margin-top: 8px;
+}
+
+/* Adaptação para telas menores */
+@media (max-width: 1100px) {
+    .dashboard-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .container {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .main-content {
+        padding: 15px;
+    }
+
+    .titulo-dashboard {
+        font-size: 30px;
+    }
+
+    .lacunas-grid,
+    .container {
+        grid-template-columns: 1fr;
+    }
+
+    .card {
+        min-height: 110px;
+    }
+}
