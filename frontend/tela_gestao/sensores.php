@@ -1,4 +1,3 @@
-
 <?php
 
 require '../../data_base/conexao.php';
@@ -108,7 +107,7 @@ if (
                             tipo,
                             estacao_sensores,
                             segmento,
-                            data_adição,
+                            data_adiçao,
                             FK_id_trem,
                             FK_id_trilho
                         )
