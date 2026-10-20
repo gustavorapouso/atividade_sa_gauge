@@ -177,7 +177,7 @@ $resultadoLeituras = $stmtLeituras->get_result();
 
 <header class="header">
     <div class="left">
-        <a href="../tela_principal/dashboard.php" title="Voltar">
+        <a href="../tela_principal/painel_gestor.php" title="Voltar">
             <i class="fas fa-arrow-left"></i>
         </a>
     </div>

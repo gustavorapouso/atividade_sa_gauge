@@ -29,7 +29,7 @@ if (!temPapel([2])) {
 
     <link
         rel="stylesheet"
-        href="painel.css"
+        href="painel.css?v=1.0"
     >
 
     <link
@@ -183,62 +183,95 @@ if (!temPapel([2])) {
 
     <!-- CONTEÚDO PRINCIPAL -->
 
-        <main>
-    
+
+<!-- CONTEÚDO PRINCIPAL -->
+<main class="main-content">
+
     <div class="title">
+        <h1 class="titulo-dashboard">Painel de Disponibilidade</h1>
+    </div>
 
-    <h1 class="title">Painel de Disponibilidade</h1>
+    <div class="dashboard-layout">
+
+        <!-- QUATRO LACUNAS À ESQUERDA -->
+        <section class="lacunas-grid">
+
+            <div class="lacuna">
+                <i class="fas fa-chart-column"></i>
+                <h2>Indicador 1</h2>
+                <p>Conteúdo do painel</p>
+            </div>
+
+            <div class="lacuna">
+                <i class="fas fa-chart-column"></i>
+                <h2>Indicador 2</h2>
+                <p>Conteúdo do painel</p>
+            </div>
+
+            <div class="lacuna">
+                <i class="fas fa-chart-column"></i>
+                <h2>Indicador 3</h2>
+                <p>Conteúdo do painel</p>
+            </div>
+
+            <div class="lacuna">
+                <i class="fas fa-chart-column"></i>
+                <h2>Indicador 4</h2>
+                <p>Conteúdo do painel</p>
+            </div>
+
+        </section>
+
+        <!-- QUATRO CARDS MARRONS À DIREITA -->
+        <aside class="container">
+
+            <div class="card">
+                <div class="icon">
+                    <i class="fas fa-train"></i>
+                </div>
+                <div class="info">
+                    <h2>TRENS DE PASSAGEIRO</h2>
+                    <p>Ativos: 3</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="icon">
+                    <i class="fas fa-box"></i>
+                </div>
+                <div class="info">
+                    <h2>TRENS DE CARGA</h2>
+                    <p>Ativos: 4</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="icon">
+                    <i class="fas fa-wrench"></i>
+                </div>
+                <div class="info">
+                    <h2>EM MANUTENÇÃO</h2>
+                    <p>Quantidade: 2</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="icon">
+                    <i class="fas fa-ban"></i>
+                </div>
+                <div class="info">
+                    <h2>TRENS INATIVOS</h2>
+                    <p>Quantidade: 2</p>
+                </div>
+            </div>
+
+        </aside>
 
     </div>
 
-    <div class="container">
+</main>
 
-        <div class="card">
-            <div class="icon">
-                <i class="fas fa-train"></i>
-            </div>
 
-            <div class="info">
-                <h2>TRENS DE PASSAGEIRO</h2>
-                <p>Ativos: 3</p>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="icon">
-                <i class="fas fa-box"></i>
-            </div>
-
-            <div class="info">
-                <h2>TRENS DE CARGA</h2>
-                <p>Ativos: 4</p>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="icon">
-                <i class="fas fa-wrench"></i>
-            </div>
-
-            <div class="info">
-                <h2>EM MANUTENÇÃO</h2>
-                <p>Quantidade: 2</p>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="icon">
-                <i class="fas fa-ban"></i>
-            </div>
-
-            <div class="info">
-                <h2>TRENS INATIVOS</h2>
-                <p>Quantidade: 2</p>
-            </div>
-        </div>
-
-    </div>
-    </main>
 
 
 </div>
