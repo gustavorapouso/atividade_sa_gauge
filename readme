@@ -7,3 +7,6 @@ Guia Bloco 2
 Escolhemos o comportamento RESTRICT, pois os sensores possuem informações importantes de monitoramento. 
 Dessa forma, um trem não poderá ser excluído enquanto houver sensores vinculados a ele, 
 evitando a perda de dados e mantendo a integridade do sistema.
+
+Guia Bloco 4 
+Escolha de recuperação de senha: 
