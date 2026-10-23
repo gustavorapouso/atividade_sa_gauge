@@ -263,7 +263,7 @@ if (!temPapel([2])) {
                 </section>
 
                 <!-- QUATRO CARDS MARRONS À DIREITA -->
-
+                <!-- Arrumar -->
                 <?php
 
                     $trem_passageiro_status = $conexao->query("
@@ -277,6 +277,20 @@ if (!temPapel([2])) {
                         SELECT COUNT(*) AS trem
                         FROM trem
                         WHERE status = 'ativo'
+                        AND tipo_trem = 'Carga'
+                    ");
+
+                    $trem_status = $conexao->query("
+                        SELECT COUNT(*) AS trem
+                        FROM trem
+                        WHERE status = 'inativo'
+                        AND tipo_trem = 'Passageiro'
+                    ");
+
+                    $trem_status = $conexao->query("
+                        SELECT COUNT(*) AS trem
+                        FROM trem
+                        WHERE status = 'inativo'
                         AND tipo_trem = 'Carga'
                     ");
 
@@ -320,7 +334,10 @@ if (!temPapel([2])) {
                         </div>
                         <div class="info">
                             <h2>EM MANUTENÇÃO</h2>
-                            <p>Quantidade: 2</p>
+                            <p>Quantidade: <?php
+                                $resultado = $trem_carga_status->fetch_assoc();
+                                echo $resultado['trem']
+                                ?></p>
                         </div>
                     </div>
 
@@ -333,7 +350,7 @@ if (!temPapel([2])) {
                             <p>Quantidade: 2</p>
                         </div>
                     </div>
-
+                <!--Arrumar -->
                 </aside>
 
             </div>
