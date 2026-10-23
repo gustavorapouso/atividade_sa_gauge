@@ -9,4 +9,7 @@ Dessa forma, um trem não poderá ser excluído enquanto houver sensores vincula
 evitando a perda de dados e mantendo a integridade do sistema.
 
 Guia Bloco 4 
-Escolha de recuperação de senha: 
+Escolha de recuperação de senha: A funcionalidade de recuperação de senha foi desenvolvida para permitir que os usuários 
+recuperem o acesso à plataforma Ferrorama Gauge caso esqueçam suas credenciais. Ela facilita o processo de acesso, 
+evitando a necessidade de criar uma nova conta e reduzindo a dependência de suporte técnico. Além disso, contribui 
+para a segurança do sistema ao possibilitar a redefinição da senha por meio de um processo de verificação da identidade do usuário.
