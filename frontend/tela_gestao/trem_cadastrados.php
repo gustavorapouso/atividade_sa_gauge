@@ -1,470 +1,203 @@
 <?php
-
 session_start();
-
 require '../../data_base/conexao.php';
 
-
-// =====================================
-// BUSCAR TRENS CADASTRADOS
-// =====================================
-
-$sql = "
-    SELECT
-        id_trem,
-        prefixo,
-        modelo,
-        ano,
-        status,
-        capacidade,
-        ultima_inspecao
-    FROM trem
-    ORDER BY prefixo
-";
+$sql = "SELECT
+            id_trem,
+            prefixo,
+            modelo,
+            ano,
+            status,
+            capacidade,
+            ultima_inspecao,
+            tipo_trem,
+            quantidade_assentos,
+            tipo_carga
+        FROM trem
+        ORDER BY prefixo";
 
 $resultado = $conexao->query($sql);
-
-
-// Verificar se houve erro
-if (!$resultado) {
-    die(
-        "Erro ao buscar os trens: " .
-        $conexao->error
-    );
-}
-
 ?>
 
-<!DOCTYPE html>
 
+<!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
-
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <title>Trens cadastrados - Ferrorama Gauge</title>
 
-    <title>Trens - Ferrorama Gauge</title>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-
-    <!-- Font Awesome -->
-
-    <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    >
-
-
-    <!-- CSS -->
-
-    <link
-        rel="stylesheet"
-        href="rotas.css"
-    >
-
+    <link rel="stylesheet" href="rotas.css">
 </head>
-
 
 <body>
 
-
-<!-- =====================================
-     NAVBAR
-===================================== -->
-
-<header class="header">
-
-    <div class="left">
-
-        <i
-            class="fas fa-bars"
-            title="Menu"
-        ></i>
-
-
-        <i
-            class="fas fa-search"
-            title="Pesquisar"
-        ></i>
-
-    </div>
-
-
-    <div class="logo">
-
-        <img
-            src="../assets/logo_gauge_menor.png"
-            alt="Gauge Logo"
-        >
-
-    </div>
-
-</header>
-
-
-
-<!-- =====================================
-     CONTEÚDO
-===================================== -->
-
-<main>
-
-
-    <h1>Trens</h1>
-
-
-    <!-- =====================================
-         BOTÃO CADASTRAR
-    ====================================== -->
-
-    <a
-        href="formulario_trem.php"
-        class="botao botao-nova"
-    >
-
-        <i class="fas fa-plus"></i>
-
-        Cadastrar trem
-
-    </a>
-
-
-
-    <!-- =====================================
-         TABELA DE TRENS
-    ====================================== -->
-
-    <table>
-
-        <thead>
-
-            <tr>
-
-                <!-- IDENTIFICADOR -->
-
-                <th>
-                    ID
-                </th>
-
-
-                <!-- PREFIXO -->
-
-                <th>
-                    Prefixo
-                </th>
-
-
-                <!-- MODELO -->
-
-                <th>
-                    Modelo
-                </th>
-
-
-                <!-- ANO -->
-
-                <th>
-                    Ano
-                </th>
-
-
-                <!-- STATUS -->
-
-                <th>
-                    Status
-                </th>
-
-
-                <!-- CAPACIDADE -->
-
-                <th>
-                    Capacidade
-                </th>
-
-
-                <!-- ÚLTIMA INSPEÇÃO -->
-
-                <th>
-                    Última inspeção
-                </th>
-
-
-                <!-- AÇÕES -->
-
-                <th>
-                    Ações
-                </th>
-
-            </tr>
-
-        </thead>
-
-
-        <tbody>
-
-
-            <?php if ($resultado->num_rows > 0): ?>
-
-
-                <?php while ($trem = $resultado->fetch_assoc()): ?>
-
-                    <tr>
-
-
-                        <!-- =================================
-                             ID
-                        ================================== -->
-
-                        <td>
-
-                            <?= htmlspecialchars(
-                                $trem['id_trem']
-                            ) ?>
-
-                        </td>
-
-
-
-                        <!-- =================================
-                             PREFIXO
-                        ================================== -->
-
-                        <td>
-
-                            <?= htmlspecialchars(
-                                $trem['prefixo']
-                            ) ?>
-
-                        </td>
-
-
-
-                        <!-- =================================
-                             MODELO
-                        ================================== -->
-
-                        <td>
-
-                            <?= htmlspecialchars(
-                                $trem['modelo']
-                            ) ?>
-
-                        </td>
-
-
-
-                        <!-- =================================
-                             ANO
-                        ================================== -->
-
-                        <td>
-
-                            <?= htmlspecialchars(
-                                $trem['ano']
-                            ) ?>
-
-                        </td>
-
-
-
-                        <!-- =================================
-                             STATUS
-                        ================================== -->
-
-                        <td>
-
-                            <?= htmlspecialchars(
-                                $trem['status']
-                            ) ?>
-
-                        </td>
-
-
-
-                        <!-- =================================
-                             CAPACIDADE
-                        ================================== -->
-
-                        <td>
-
-                            <?= htmlspecialchars(
-                                $trem['capacidade']
-                            ) ?>
-
-                            t
-
-                        </td>
-
-
-
-                        <!-- =================================
-                             ÚLTIMA INSPEÇÃO
-                        ================================== -->
-
-                        <td>
-
-                            <?php if (!empty($trem['ultima_inspecao'])): ?>
-
-                                <?= date(
-                                    'd/m/Y',
-                                    strtotime($trem['ultima_inspecao'])
-                                ) ?>
-
-                            <?php else: ?>
-
-                                Não realizada
-
-                            <?php endif; ?>
-
-                        </td>
-
-
-
-                        <!-- =================================
-                             AÇÕES
-                        ================================== -->
-
-                        <td class="acoes">
-
-
-                            <!-- EDITAR -->
-
-                            <a
-                                href="formulario_trem.php?id=<?= $trem['id_trem'] ?>"
-                                class="editar"
-                                title="Editar"
-                            >
-
-                                <i class="fas fa-pen"></i>
-
-                            </a>
-
-
-
-                            <!-- EXCLUIR -->
-
-                            <a
-                            href="excluir_trem.php?id=<?= $trem['id_trem'] ?>"
-                            class="excluir"
-                            title="Excluir"
-                            onclick="return confirm('Deseja realmente excluir este trem?')"
-                            >
-                            <i class="fas fa-trash"></i>
-                            </a>
-
-                        </td>
-
-
-                    </tr>
-
-                <?php endwhile; ?>
-
-
-            <?php else: ?>
-
-
+    <!-- NAVBAR ORIGINAL -->
+    <header class="header">
+        <div class="left">
+            <i class="fas fa-bars" title="Menu"></i>
+            <i class="fas fa-search" title="Pesquisar"></i>
+        </div>
+
+        <div class="logo">
+            <img src="../assets/logo_gauge_menor.png" alt="Gauge Logo">
+        </div>
+    </header>
+
+    <main>
+
+        <h1>Trens cadastrados</h1>
+
+        <a href="formulario_trem.php" class="botao botao-nova">
+            <i class="fas fa-plus"></i>
+            Novo trem
+        </a>
+
+        <table>
+            <thead>
                 <tr>
-
-                    <td colspan="8">
-
-                        Nenhum trem cadastrado.
-
-                    </td>
-
+                    <th>ID</th>
+                    <th>Prefixo</th>
+                    <th>Modelo</th>
+                    <th>Ano</th>
+                    <th>Status</th>
+                    <th>Capacidade (t)</th>
+                    <th>Última inspeção</th>
+                    <th>Tipo de trem</th>
+                    <th>Assentos / Tipo de carga</th>
+                    <th>Ações</th>
                 </tr>
+            </thead>
 
+            <tbody>
+                <?php if ($resultado && $resultado->num_rows > 0): ?>
 
-            <?php endif; ?>
+                    <?php while ($trem = $resultado->fetch_assoc()): ?>
+                        <tr>
+                            <td><?= (int)$trem['id_trem'] ?></td>
 
+                            <td><?= htmlspecialchars($trem['prefixo']) ?></td>
 
-        </tbody>
+                            <td><?= htmlspecialchars($trem['modelo']) ?></td>
 
-    </table>
+                            <td><?= htmlspecialchars((string)$trem['ano']) ?></td>
 
+                            <td>
+                                <?php
+                                $status_texto = [
+                                    'ativo' => 'Ativo',
+                                    'manutencao' => 'Em manutenção',
+                                    'inativo' => 'Inativo'
+                                ];
 
-</main>
+                                echo htmlspecialchars(
+                                    $status_texto[$trem['status']]
+                                    ?? $trem['status']
+                                );
+                                ?>
+                            </td>
 
+                            <td>
+                                <?= number_format(
+                                    (float)$trem['capacidade'],
+                                    2,
+                                    ',',
+                                    '.'
+                                ) ?>
+                            </td>
 
+                            <td>
+                                <?= !empty($trem['ultima_inspecao'])
+                                    ? htmlspecialchars($trem['ultima_inspecao'])
+                                    : 'Não informada' ?>
+                            </td>
 
-<!-- =====================================
-     FOOTER
-===================================== -->
+                            <td><?= htmlspecialchars($trem['tipo_trem']) ?></td>
 
-<footer class="footer-gauge">
+                            <td>
+                                <?php if ($trem['tipo_trem'] === 'Passageiro'): ?>
+                                    <?= $trem['quantidade_assentos'] !== null
+                                        ? (int)$trem['quantidade_assentos'] . ' assentos'
+                                        : 'Não informado' ?>
+                                <?php else: ?>
+                                    <?= htmlspecialchars(
+                                        $trem['tipo_carga'] ?? 'Não informada'
+                                    ) ?>
+                                <?php endif; ?>
+                            </td>
 
-    <div class="footer-container">
+                            <td class="acoes">
+                                <a
+                                    href="formulario_trem.php?id=<?= (int)$trem['id_trem'] ?>"
+                                    class="editar"
+                                    title="Editar"
+                                >
+                                    <i class="fas fa-pen"></i>
+                                </a>
 
+                                <a
+                                    href="excluir_trem.php?id=<?= (int)$trem['id_trem'] ?>"
+                                    class="excluir"
+                                    title="Excluir"
+                                    onclick="return confirm('Deseja realmente excluir este trem?')"
+                                >
+                                    <i class="fas fa-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
 
-        <div class="footer-bloco bloco-esquerda">
+                    <?php endwhile; ?>
 
-            <span class="footer-label">
-                Entre em contato
-            </span>
+                <?php else: ?>
+                    <tr>
+                        <td colspan="10">Nenhum trem cadastrado.</td>
+                    </tr>
+                <?php endif; ?>
+            </tbody>
+        </table>
 
+    </main>
 
-            <a
-                href="tel:47999174896"
-                class="footer-link"
-            >
+    <!-- RODAPÉ ORIGINAL -->
+    <footer class="footer-gauge">
+        <div class="footer-container">
 
-                (47) 99917-4896
+            <div class="footer-bloco bloco-esquerda">
+                <span class="footer-label">Entre em contato</span>
+                <a href="tel:47999174896" class="footer-link">
+                    (47) 99917-4896
+                </a>
+            </div>
 
-            </a>
+            <div class="footer-bloco bloco-centro">
+                <img
+                    src="../assets/logo_gauge_menor.png"
+                    alt="Gauge Logo"
+                    class="footer-logo"
+                >
+
+                <p class="footer-copyright">
+                    &copy; 2026 Gauge. Todos os direitos reservados.
+                </p>
+            </div>
+
+            <div class="footer-bloco bloco-direita">
+                <span class="footer-label">Precisa de Suporte?</span>
+                <a href="mailto:contato@gauge.com.br"
+                   class="footer-link link-sublinhado">
+                    contato@gauge.com.br
+                </a>
+            </div>
 
         </div>
-
-
-
-        <div class="footer-bloco bloco-centro">
-
-            <img
-                src="../assets/logo_gauge_menor.png"
-                alt="Gauge Logo"
-                class="footer-logo"
-            >
-
-
-            <p class="footer-copyright">
-
-                &copy; 2026 Gauge.
-                Todos os direitos reservados.
-
-            </p>
-
-        </div>
-
-
-
-        <div class="footer-bloco bloco-direita">
-
-            <span class="footer-label">
-
-                Precisa de Suporte?
-
-            </span>
-
-
-            <a
-                href="mailto:contato@gauge.com.br"
-                class="footer-link link-sublinhado"
-            >
-
-                contato@gauge.com.br
-
-            </a>
-
-        </div>
-
-
-    </div>
-
-</footer>
-
+    </footer>
 
 </body>
-
 </html>
+
+
