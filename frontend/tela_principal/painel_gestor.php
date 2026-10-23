@@ -126,7 +126,7 @@ if (!temPapel([2])) {
                 <?php if (temPapel([2])): ?>
 
                     <a
-                        href="usuarios.php"
+                        href="../tela_gestao/usuarios.php"
                         class="btn-menu-item">
                         USUÁRIOS
                     </a>
@@ -164,11 +164,29 @@ if (!temPapel([2])) {
         </aside>
 
         <?php
-        $velocidade = $conexao->query("SELECT ROUND(AVG(leituras.valor)) AS velocidade
-    FROM leituras
-    INNER JOIN sensores
-        ON leituras.id_sensor = sensores.id_sensores
-    WHERE sensores.tipo = 'Velocidade'");
+            $velocidade = $conexao->query("SELECT ROUND(AVG(leituras.valor)) AS velocidade
+                FROM leituras
+                INNER JOIN sensores
+                    ON leituras.id_sensor = sensores.id_sensores
+                WHERE sensores.tipo = 'Velocidade'");
+
+            $temperatura = $conexao->query("SELECT ROUND(AVG(leituras.valor)) AS temperatura
+                FROM leituras
+                INNER JOIN sensores
+                ON leituras.id_sensor = sensores.id_sensores
+                WHERE sensores.tipo = 'Temperatura'");
+
+            $consumo = $conexao->query("SELECT ROUND(AVG(leituras.valor)) AS consumo
+                FROM leituras
+                INNER JOIN sensores
+                ON leituras.id_sensor = sensores.id_sensores
+                WHERE sensores.tipo = 'Consumo'");
+
+            $vibracao = $conexao->query("SELECT ROUND(AVG(leituras.valor)) AS vibracao
+                FROM leituras
+                INNER JOIN sensores
+                ON leituras.id_sensor = sensores.id_sensores
+                WHERE sensores.tipo = 'Vibração'");
         ?>
 
         <!-- CONTEÚDO PRINCIPAL -->
@@ -187,24 +205,52 @@ if (!temPapel([2])) {
                 <section class="lacunas-grid">
 
                     <div class="lacuna">
-                        <i class="fas fa-chart-column"></i>
+                        <i class="fa-solid fa-bolt"></i>
                         <h2>Velocidade</h2>
                         <p>
                             <?php
                             $resultado = $velocidade->fetch_assoc();
                             echo $resultado['velocidade']
-                            ?></p>
+                            ?>
+                        </p>
+                    </div>
+
+                    <div class="lacuna">
+                        <i class="fas fa-temperature-high"></i>
+                        <h2>Temperatura</h2>
+                        <p>
+                            <?php
+                            $resultado = $temperatura->fetch_assoc();
+                            echo $resultado['temperatura']
+                            ?>
+                        </p>
+                    </div>
+
+                    <div class="lacuna">
+                        <i class="fas fa-gas-pump"></i>
+                        <h2>Consumo</h2>
+                        <p>
+                            <?php
+                            $resultado = $consumo->fetch_assoc();
+                            echo $resultado['consumo']
+                            ?>
+                        </p>
+                    </div>
+
+                    <div class="lacuna">
+                        <i class="fa-solid fa-wave-pulse"></i>
+                        <h2>Vibração</h2>
+                        <p>
+                            <?php
+                            $resultado = $vibracao->fetch_assoc();
+                            echo $resultado['vibracao']
+                            ?>
+                        </p>
                     </div>
 
                     <div class="lacuna">
                         <i class="fas fa-chart-column"></i>
-                        <h2>Indicador 2</h2>
-                        <p>Conteúdo do painel</p>
-                    </div>
-
-                    <div class="lacuna">
-                        <i class="fas fa-chart-column"></i>
-                        <h2>Indicador 3</h2>
+                        <h2>Indicador 4</h2>
                         <p>Conteúdo do painel</p>
                     </div>
 
