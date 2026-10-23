@@ -238,7 +238,7 @@ if (!temPapel([2])) {
                     </div>
 
                     <div class="lacuna">
-                        <i class="fa-solid fa-wave-pulse"></i>
+                        <i class="fas fa-water fa-shake"></i>
                         <h2>Vibração</h2>
                         <p>
                             <?php
@@ -263,6 +263,25 @@ if (!temPapel([2])) {
                 </section>
 
                 <!-- QUATRO CARDS MARRONS À DIREITA -->
+
+                <?php
+
+                    $trem_passageiro_status = $conexao->query("
+                        SELECT COUNT(*) AS trem
+                        FROM trem
+                        WHERE status = 'ativo'
+                        AND tipo_trem = 'Passageiro'
+                    ");
+
+                    $trem_carga_status = $conexao->query("
+                        SELECT COUNT(*) AS trem
+                        FROM trem
+                        WHERE status = 'ativo'
+                        AND tipo_trem = 'Carga'
+                    ");
+
+                ?>
+
                 <aside class="container">
 
                     <div class="card">
@@ -271,7 +290,12 @@ if (!temPapel([2])) {
                         </div>
                         <div class="info">
                             <h2>TRENS DE PASSAGEIRO</h2>
-                            <p>Ativos: 3</p>
+                            <p>Ativos: 
+                                <?php
+                                $resultado = $trem_passageiro_status->fetch_assoc();
+                                echo $resultado['trem']
+                                ?>
+                            </p>
                         </div>
                     </div>
 
@@ -281,7 +305,12 @@ if (!temPapel([2])) {
                         </div>
                         <div class="info">
                             <h2>TRENS DE CARGA</h2>
-                            <p>Ativos: 4</p>
+                            <p>Ativos: 
+                                <?php
+                                $resultado = $trem_carga_status->fetch_assoc();
+                                echo $resultado['trem']
+                                ?>
+                            </p>
                         </div>
                     </div>
 
