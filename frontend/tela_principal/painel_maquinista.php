@@ -3,7 +3,7 @@
 
 require '../../data_base/includes/proteger.php';
 require '../../data_base/includes/permissao.php';
-
+require '../../data_base/conexao.php';
 
 /*
 if (!temPapel([1])) {
