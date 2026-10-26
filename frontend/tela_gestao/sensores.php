@@ -2,6 +2,7 @@
 
 require '../../data_base/conexao.php';
 require_once '../../data_base/includes/limites.php';
+require '../../data_base/includes/proteger.php';
 
 // =====================================================
 // OPÇÃO SELECIONADA
