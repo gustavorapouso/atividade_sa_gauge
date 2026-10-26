@@ -2,6 +2,7 @@
 <?php
 session_start();
 require '../../data_base/conexao.php';
+require '../../data_base/includes/proteger.php';
 
 $mensagem = '';
 $id_trem = isset($_GET['id']) ? intval($_GET['id']) : 0;

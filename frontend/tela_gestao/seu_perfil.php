@@ -3,6 +3,7 @@
 session_start();
 
 require '../../data_base/conexao.php';
+require '../../data_base/includes/proteger.php';
 
 // Verifica se o usuário está logado
 if (!isset($_SESSION['id_pessoa'])) {

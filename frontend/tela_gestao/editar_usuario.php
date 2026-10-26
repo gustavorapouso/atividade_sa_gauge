@@ -14,6 +14,7 @@ if ((int) ($_SESSION['FK_id_perfil'] ?? 0) !== 2) {
 }
 
 require '../../data_base/conexao.php';
+require '../../data_base/includes/proteger.php';
 
 // Verifica o envio do formulário
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
