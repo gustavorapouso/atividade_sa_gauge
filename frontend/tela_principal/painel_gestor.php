@@ -238,7 +238,7 @@ if (!temPapel([2])) {
                     </div>
 
                     <div class="lacuna">
-                        <i class="fas fa-water fa-shake"></i>
+                        <i class="fas fa-water "></i>
                         <h2>Vibração</h2>
                         <p>
                             <?php
@@ -263,7 +263,7 @@ if (!temPapel([2])) {
                 </section>
 
                 <!-- QUATRO CARDS MARRONS À DIREITA -->
-                <!-- Arrumar -->
+                
                 <?php
 
                     $trem_passageiro_status = $conexao->query("
@@ -280,14 +280,13 @@ if (!temPapel([2])) {
                         AND tipo_trem = 'Carga'
                     ");
 
-                    $trem_status = $conexao->query("
+                    $trem_manutencao_status = $conexao->query("
                         SELECT COUNT(*) AS trem
                         FROM trem
-                        WHERE status = 'inativo'
-                        AND tipo_trem = 'Passageiro'
+                        WHERE status = 'manutencao'
                     ");
 
-                    $trem_status = $conexao->query("
+                    $trem_inativo_status = $conexao->query("
                         SELECT COUNT(*) AS trem
                         FROM trem
                         WHERE status = 'inativo'
@@ -335,7 +334,7 @@ if (!temPapel([2])) {
                         <div class="info">
                             <h2>EM MANUTENÇÃO</h2>
                             <p>Quantidade: <?php
-                                $resultado = $trem_carga_status->fetch_assoc();
+                                $resultado = $trem_manutencao_status->fetch_assoc();
                                 echo $resultado['trem']
                                 ?></p>
                         </div>
@@ -347,10 +346,13 @@ if (!temPapel([2])) {
                         </div>
                         <div class="info">
                             <h2>TRENS INATIVOS</h2>
-                            <p>Quantidade: 2</p>
+                            <p>Quantidade: <?php
+                                $resultado = $trem_inativo_status->fetch_assoc();
+                                echo $resultado['trem']
+                                ?></p>
                         </div>
                     </div>
-                <!--Arrumar -->
+                
                 </aside>
 
             </div>
