@@ -1,15 +1,123 @@
-##Entrega 1 - conexao.php
+# Ferrorama Gauge
 
-Forma 1 - mysqli orientado a objetos
-Conexao.php está correto
+## 1. Identificação do projeto
 
-Guia Bloco 2
-Escolhemos o comportamento RESTRICT, pois os sensores possuem informações importantes de monitoramento. 
-Dessa forma, um trem não poderá ser excluído enquanto houver sensores vinculados a ele, 
-evitando a perda de dados e mantendo a integridade do sistema.
+O Ferrorama Gauge é um sistema web desenvolvido como projeto escolar para organizar informações relacionadas ao monitoramento de trens e sensores. O sistema possui diferentes áreas de acesso de acordo com o perfil do usuário.
 
-Guia Bloco 4 
-Escolha de recuperação de senha: A funcionalidade de recuperação de senha foi desenvolvida para permitir que os usuários 
-recuperem o acesso à plataforma Ferrorama Gauge caso esqueçam suas credenciais. Ela facilita o processo de acesso, 
-evitando a necessidade de criar uma nova conta e reduzindo a dependência de suporte técnico. Além disso, contribui 
-para a segurança do sistema ao possibilitar a redefinição da senha por meio de um processo de verificação da identidade do usuário.
+Tecnologias utilizadas:** PHP, HTML, CSS e MySQL.
+
+**Repositório:** https://github.com/gustavorapouso/atividade_sa_gauge.git
+
+### Integrantes da equipe
+- Alice Lopes Fernandes
+- Davi Felski de Vargas
+- Gustavo Henrique Rapouso
+- Vitória Jaroczinski
+
+Turma: T TDES 2024/1 M6
+
+Unidade curricular: Desenvolvimento de Sistemas
+
+Professor(a): Ewerton de Oliveira Cercal
+
+## 2. Instalação e execução
+
+### 2.1. Preparação do ambiente
+
+1. Instale o XAMPP no computador.
+2. Inicie os serviços Apache e MySQL pelo painel do XAMPP.
+3. Baixe o projeto pelo repositório do GitHub ou utilize a pasta fornecida pela equipe.
+4. Coloque a pasta do projeto dentro do diretório `C:\xampp\htdocs\`.
+
+Para baixar pelo Git, utilize:
+
+```bash
+git clone https://github.com/gustavorapouso/atividade_sa_gauge.git
+```
+
+### 2.2. Importação do banco de dados
+
+1. Abra o navegador e acesse `http://localhost/phpmyadmin`.
+2. Crie ou selecione o banco de dados utilizado pelo projeto.
+3. Acesse a opção **Importar**.
+4. Selecione o arquivo SQL disponibilizado junto com o projeto.
+5. Clique em **Importar** ou **Executar** e aguarde a conclusão.
+6. Confira se as tabelas foram criadas corretamente.
+
+### 2.3. Configuração da conexão
+
+O arquivo `conexao.php` é responsável pela conexão com o banco de dados. O projeto utiliza MySQLi no formato orientado a objetos.
+
+Antes de executar o sistema, confira se o endereço do servidor, o usuário, a senha e o nome do banco de dados estão de acordo com a configuração do MySQL no computador.
+
+### 2.4. Acesso ao sistema
+
+1. Confira se os serviços Apache e MySQL estão iniciados.
+2. Abra o navegador.
+3. Acesse `http://localhost/atividade_sa_gauge/`, ajustando o endereço caso a pasta tenha outro nome.
+4. Faça login com uma das contas de teste disponibilizadas pela equipe.
+
+## 3. Usuários de teste
+
+As contas abaixo serão utilizadas para testar o acesso de cada perfil do sistema.
+
+| Perfil | Login | Senha |
+|---|---|---|
+| Maquinista | [login de teste] | [senha de teste] |
+| Gestor | [login de teste] | [senha de teste] |
+| Cliente | [login de teste] | [senha de teste] |
+
+Cada conta deve ser testada para verificar se o usuário consegue acessar o painel correspondente ao seu perfil.
+
+## 4. Telas do sistema
+
+### Login
+Permite que o usuário informe suas credenciais para acessar o sistema.
+
+### Painel do maquinista
+Área destinada ao usuário com perfil de maquinista, reunindo as funcionalidades disponíveis para esse perfil.
+
+### Painel do gestor
+Área destinada ao gestor, com acesso às funcionalidades administrativas disponíveis no sistema.
+
+### Painel do cliente
+Área destinada ao cliente, com acesso às funcionalidades disponibilizadas para esse perfil.
+
+### Recuperação de senha
+Permite que o usuário inicie o processo de recuperação de acesso caso esqueça sua senha.
+
+As funcionalidades de cada tela devem ser conferidas na versão final do sistema. Recomenda-se adicionar capturas de tela para facilitar a compreensão da interface.
+
+## 5. Decisões tomadas durante o desenvolvimento
+
+### Bloco 1 — Conexão com o banco de dados
+
+Escolhemos utilizar o `mysqli` no formato orientado a objetos para conectar o sistema ao banco de dados. A conexão é realizada pelo arquivo `conexao.php`, que foi conferido e está correto. Essa organização facilita a centralização da conexão e a manutenção do código.
+
+### Bloco 2 — Exclusão de trens e sensores
+
+Escolhemos o comportamento `RESTRICT`, pois os sensores possuem informações importantes para o monitoramento. Dessa forma, um trem não poderá ser excluído enquanto houver sensores vinculados a ele, evitando a perda de dados e mantendo a integridade do banco de dados.
+
+### Bloco 4 — Recuperação de senha
+
+A funcionalidade de recuperação de senha foi desenvolvida para permitir que os usuários recuperem o acesso ao Ferrorama Gauge caso esqueçam suas credenciais. Ela facilita o processo de acesso, evitando a necessidade de criar outra conta e reduzindo a dependência de suporte técnico. A verificação da identidade do usuário também é importante para proteger a conta durante a redefinição da senha.
+
+### Outras decisões técnicas
+
+Outras decisões devem ser documentadas de acordo com as escolhas realmente feitas pela equipe em cada bloco do projeto. Cada decisão deve apresentar o que foi escolhido e o motivo dessa escolha.
+
+## 6. Limitações conhecidas
+
+As limitações desta versão devem ser registradas com base nos testes realizados pela equipe.
+
+Devem ser verificadas possíveis funcionalidades que não foram concluídas, problemas encontrados durante os testes e recursos previstos no planejamento que ficaram de fora da versão final.
+
+A equipe deve atualizar esta seção com as limitações reais do Ferrorama Gauge antes da entrega.
+
+## 7. Registro de uso de inteligência artificial
+
+Ferramentas de inteligência artificial foram utilizadas como apoio durante o desenvolvimento do projeto, auxiliando na compreensão de dúvidas técnicas, na análise de erros e na organização da documentação.
+
+As sugestões fornecidas foram utilizadas como apoio e devem ser conferidas pela equipe de acordo com o código desenvolvido. A equipe é responsável por compreender o funcionamento do sistema, testar suas funcionalidades e revisar o conteúdo final.
+
+Este registro deve ser ajustado para representar o uso efetivo de inteligência artificial pela equipe e respeitar as orientações da unidade curricular.
