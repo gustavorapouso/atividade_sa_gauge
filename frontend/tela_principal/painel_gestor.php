@@ -122,6 +122,24 @@ if (!temPapel([2])) {
                     CADASTRAR SENSOR
                 </a>
 
+                <a
+                    href="../tela_gestao/rotas.php"
+                    class="btn-menu-item">
+                    CADASTRAR VIAGEM
+                </a>
+
+                <a
+                    href="../tela_gestao/trilhos.php"
+                    class="btn-menu-item">
+                    CADASTRAR TRILHO
+                </a>
+
+                <a
+                    href="../tela_gestao/trem_cadastrados.php"
+                    class="btn-menu-item">
+                    CADASTRAR TREM
+                </a>
+
 
                 <?php if (temPapel([2])): ?>
 
@@ -135,29 +153,30 @@ if (!temPapel([2])) {
 
 
                 <a
-                    href="#"
+                    href="../relatorio/gera_relatorio.php"
                     class="btn-menu-item">
                     RELATÓRIOS
                 </a>
 
-
                 <a
-                    href="../tela_gestao/trens/trem.php"
-                    class="btn-menu-item">
-                    TREM
-                </a>
-
-                <a
-                    href="../tela_gestao/trens_carga/trem_carga.php"
-                    class="btn-menu-item">
-                    TREM DE CARGA
-                </a>
-
-                <a
-                    href="#"
+                    href="../tela_gestao/notificacoes_alertas.php"
                     class="btn-menu-item">
                     ALERTAS
+                
+                <a
+                    href="../tela_principal/carga.php"
+                    class="btn-menu-item">
+                    ACOMPANHAMENTO
+                
                 </a>
+
+                <a
+                    href="../tela_gestao/leituras_sensores.php"
+                    class="btn-menu-item">
+                    LER SENSOR
+                
+                </a>
+
 
             </nav>
 
