@@ -110,48 +110,50 @@ if (!temPapel([1])) {
 
     <!-- MENU LATERAL -->
 
-    <aside
-        class="sidebar"
-        id="sidebar"
-    >
-
-        <nav class="nav-links">
+   <aside
+            class="sidebar"
+            id="sidebar">
 
 
-            <a
-                href="#"
-                class="btn-menu-item"
-            >
-                PERFIL
-            </a>
+            <nav class="nav-links">
 
 
-            <a
-                href="#"
-                class="btn-menu-item"
-            >
-                TREM DE CARGA
-            </a>
-
-            <a
-                href="../tela_gestao/trens/trem_passageiro.php"
-                class="btn-menu-item"
-            >
-                TREM DE PASSAGEIROS
-            </a>
 
 
-            <a
-                href="#"
-                class="btn-menu-item"
-            >
-                SUPORTE
-            </a>
+                <a
+                    href="../tela_gestao/seu_perfil.php"
+                    class="btn-menu-item">
+                    PERFIL
+                </a>
 
 
-        </nav>
 
-    </aside>
+
+                <a
+                    href="../tela_gestao/trens_carga/trem_carga.php"
+                    class="btn-menu-item">
+                    TREM DE CARGA
+                </a>
+
+
+                <a
+                    href="../tela_gestao/trens/trem_passageiro.php"
+                    class="btn-menu-item">
+                    TREM DE PASSAGEIROS
+                </a>
+
+
+                <a
+                    href="../tela_principal/suporte.html"
+                    class="btn-menu-item">
+                    SUPORTE
+                </a>
+
+
+            </nav>
+
+
+        </aside>
 
 
 
