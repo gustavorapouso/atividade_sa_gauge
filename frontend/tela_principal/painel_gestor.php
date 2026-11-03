@@ -267,17 +267,7 @@ if (!temPapel([2])) {
                         </p>
                     </div>
 
-                    <div class="lacuna">
-                        <i class="fas fa-chart-column"></i>
-                        <h2>Indicador 4</h2>
-                        <p>Conteúdo do painel</p>
-                    </div>
-
-                    <div class="lacuna">
-                        <i class="fas fa-chart-column"></i>
-                        <h2>Indicador 4</h2>
-                        <p>Conteúdo do painel</p>
-                    </div>
+                    
 
                 </section>
 
