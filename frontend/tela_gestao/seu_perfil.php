@@ -59,9 +59,7 @@ $data_nascimento = !empty($usuario['data_nascimento'])
         href="seu_perfil.css?v=1.0">
 
     <!-- CSS DO MENU LATERAL -->
-    <link
-        rel="stylesheet"
-        href="menu.css">
+    <link rel="stylesheet" href="../tela_principal/menu.css?v=1.0">
 
     <!-- Bootstrap Icons -->
     <link
@@ -86,6 +84,7 @@ $data_nascimento = !empty($usuario['data_nascimento'])
     <link
         href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Roboto:wght@400;500;700&display=swap"
         rel="stylesheet">
+    
 
 </head>
 
