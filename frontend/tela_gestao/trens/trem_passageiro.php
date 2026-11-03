@@ -178,7 +178,7 @@ if (!$resultado) {
 
                     <div class="card-trem-acoes">
                         <a
-                            href="calendario_trem.php?id_trem=<?= (int) $trem['id_trem'] ?>"
+                            href="linha_trem.php?id_trem=<?= (int) $trem['id_trem'] ?>"
                             class="btn-detalhes"
                         >
                             Ver viagens
