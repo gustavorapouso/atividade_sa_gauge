@@ -122,42 +122,72 @@ if (!temPapel([1])) {
 
 
             <a
-                href=""
-                class="btn-menu-item"
-            >
-                PERFIL
-            </a>
+                    href="../tela_gestao/seu_perfil.php"
+                    class="btn-menu-item">
+                    PERFIL
+                </a>
 
 
-            <a
-                href="#"
-                class="btn-menu-item"
-            >
-                CADASTRAR SENSOR
-            </a>
+                <a
+                    href="../tela_gestao/sensores.php"
+                    class="btn-menu-item">
+                    CADASTRAR SENSOR
+                </a>
+
+                <a
+                    href="../tela_gestao/rotas.php"
+                    class="btn-menu-item">
+                    CADASTRAR VIAGEM
+                </a>
+
+                <a
+                    href="../tela_gestao/trilhos.php"
+                    class="btn-menu-item">
+                    CADASTRAR TRILHO
+                </a>
+
+                <a
+                    href="../tela_gestao/trem_cadastrados.php"
+                    class="btn-menu-item">
+                    CADASTRAR TREM
+                </a>
 
 
-            <a
-                href="#"
-                class="btn-menu-item"
-            >
-                RELATÓRIOS
-            </a>
+                <?php if (temPapel([2])): ?>
 
-            <a
-                href="#"
-                class="btn-menu-item"
-            >
-                VER ROTAS
-            </a>
+                    <a
+                        href="../tela_gestao/usuarios.php"
+                        class="btn-menu-item">
+                        USUÁRIOS
+                    </a>
+
+                <?php endif; ?>
 
 
-            <a
-                href="#"
-                class="btn-menu-item"
-            >
-                ALERTAS
-            </a>
+                <a
+                    href="../relatorio/gera_relatorio.php"
+                    class="btn-menu-item">
+                    RELATÓRIOS
+                </a>
+
+                <a
+                    href="../tela_gestao/notificacoes_alertas.php"
+                    class="btn-menu-item">
+                    ALERTAS
+                
+                <a
+                    href="../tela_principal/carga.php"
+                    class="btn-menu-item">
+                    ACOMPANHAMENTO
+                
+                </a>
+
+                <a
+                    href="../tela_gestao/leituras_sensores.php"
+                    class="btn-menu-item">
+                    LER SENSOR
+                
+                </a>
 
 
         </nav>
