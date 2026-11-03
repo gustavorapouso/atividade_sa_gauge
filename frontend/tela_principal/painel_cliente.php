@@ -155,63 +155,101 @@ if (!temPapel([1])) {
 
 
 
-    <!-- CONTEÚDO PRINCIPAL -->
+    <!-- QUATRO CARDS MARRONS À DIREITA -->
+                
+                <?php
 
-        <main>
-    
-    <div class="title">
+                    $trem_passageiro_status = $conexao->query("
+                        SELECT COUNT(*) AS trem
+                        FROM trem
+                        WHERE status = 'ativo'
+                        AND tipo_trem = 'Passageiro'
+                    ");
 
-    <h1 class="title">Painel de Disponibilidade</h1>
+                    $trem_carga_status = $conexao->query("
+                        SELECT COUNT(*) AS trem
+                        FROM trem
+                        WHERE status = 'ativo'
+                        AND tipo_trem = 'Carga'
+                    ");
 
-    </div>
+                    $trem_manutencao_status = $conexao->query("
+                        SELECT COUNT(*) AS trem
+                        FROM trem
+                        WHERE status = 'manutencao'
+                    ");
 
-    <div class="container">
+                    $trem_inativo_status = $conexao->query("
+                        SELECT COUNT(*) AS trem
+                        FROM trem
+                        WHERE status = 'inativo'
+                        AND tipo_trem = 'Carga'
+                    ");
 
-        <div class="card">
-            <div class="icon">
-                <i class="fas fa-train"></i>
+                ?>
+
+                <aside class="container">
+
+                    <div class="card">
+                        <div class="icon">
+                            <i class="fas fa-train"></i>
+                        </div>
+                        <div class="info">
+                            <h2>TRENS DE PASSAGEIRO</h2>
+                            <p>Ativos: 
+                                <?php
+                                $resultado = $trem_passageiro_status->fetch_assoc();
+                                echo $resultado['trem']
+                                ?>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="icon">
+                            <i class="fas fa-box"></i>
+                        </div>
+                        <div class="info">
+                            <h2>TRENS DE CARGA</h2>
+                            <p>Ativos: 
+                                <?php
+                                $resultado = $trem_carga_status->fetch_assoc();
+                                echo $resultado['trem']
+                                ?>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="icon">
+                            <i class="fas fa-wrench"></i>
+                        </div>
+                        <div class="info">
+                            <h2>EM MANUTENÇÃO</h2>
+                            <p>Quantidade: <?php
+                                $resultado = $trem_manutencao_status->fetch_assoc();
+                                echo $resultado['trem']
+                                ?></p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="icon">
+                            <i class="fas fa-ban"></i>
+                        </div>
+                        <div class="info">
+                            <h2>TRENS INATIVOS</h2>
+                            <p>Quantidade: <?php
+                                $resultado = $trem_inativo_status->fetch_assoc();
+                                echo $resultado['trem']
+                                ?></p>
+                        </div>
+                    </div>
+                
+                </aside>
+
             </div>
 
-            <div class="info">
-                <h2>TRENS DE PASSAGEIRO</h2>
-                <p>Ativos: 3</p>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="icon">
-                <i class="fas fa-box"></i>
-            </div>
-
-            <div class="info">
-                <h2>TRENS DE CARGA</h2>
-                <p>Ativos: 4</p>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="icon">
-                <i class="fas fa-wrench"></i>
-            </div>
-
-            <div class="info">
-                <h2>EM MANUTENÇÃO</h2>
-                <p>Quantidade: 2</p>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="icon">
-                <i class="fas fa-ban"></i>
-            </div>
-
-            <div class="info">
-                <h2>TRENS INATIVOS</h2>
-                <p>Quantidade: 2</p>
-            </div>
-        </div>
-
-    </div>
     </main>
 
 </div>
