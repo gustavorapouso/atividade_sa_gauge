@@ -1,4 +1,3 @@
-
 <?php
 require '../../../data_base/includes/proteger.php';
 require '../../../data_base/includes/permissao.php';
@@ -47,55 +46,21 @@ if (!$resultado) {
 
 <body>
 
-<header class="navbar">
-    <button id="menuBtn" type="button" aria-label="Abrir menu">
-        <i class="fa-solid fa-bars"></i>
-    </button>
+<header class="header">
+    <div class="header-left">
+        <button class="menu-button" type="button" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
 
-    <a href="../../tela_principal/dashboard.php">
-        <img
-            src="../../assets/logo_gauge_menor.png"
-            alt="Logo Gauge"
-            class="logo"
-        >
+        <i class="fa-solid fa-magnifying-glass"></i>
+    </div>
+
+    <a href="../../tela_principal/dashboard.php" class="logo">
+        <img src="../../assets/logo_gauge_menor.png" alt="Logo Gauge">
     </a>
 </header>
-
-<aside class="sidebar" id="sidebar">
-    <nav>
-        <a href="../perfil/perfil.php">
-            <i class="fa-solid fa-user"></i>
-            Perfil
-        </a>
-
-        <a href="../sensores/sensores.php">
-            <i class="fa-solid fa-gauge-high"></i>
-            Sensores
-        </a>
-
-        <?php if (temPapel([2])): ?>
-            <a href="../usuarios/usuarios.php">
-                <i class="fa-solid fa-users"></i>
-                Usuários
-            </a>
-        <?php endif; ?>
-
-        <a href="../relatorios/relatorios.php">
-            <i class="fa-solid fa-chart-column"></i>
-            Relatórios
-        </a>
-
-        <a href="../trens_carga/trem_carga.php">
-            <i class="fa-solid fa-train"></i>
-            Trens de Carga
-        </a>
-
-        <a href="../alertas/alertas.php">
-            <i class="fa-solid fa-bell"></i>
-            Alertas
-        </a>
-    </nav>
-</aside>
 
 <main class="conteudo">
 
@@ -213,7 +178,7 @@ if (!$resultado) {
 
                     <div class="card-trem-acoes">
                         <a
-                            href="calendario_trem.php?id_trem=<?= (int) $trem['id_trem'] ?>"
+                            href="linha_trem.php?id_trem=<?= (int) $trem['id_trem'] ?>"
                             class="btn-detalhes"
                         >
                             Ver viagens
@@ -242,31 +207,31 @@ if (!$resultado) {
 </main>
 
 <footer class="rodape">
-    <div class="rodape-contato">
-        <p>
-            <i class="fa-solid fa-phone"></i>
-            (47) 99917-4896
-        </p>
+    <div class="rodape-container">
 
-        <p>
-            <i class="fa-solid fa-envelope"></i>
-            contato@gauge.com.br
-        </p>
+        <div class="rodape-contato">
+            <p>Entre em contato</p>
+            <a href="tel:+5547999174896">(47) 99917-4896</a>
+        </div>
+
+        <div class="rodape-centro">
+            <img src="../../assets/logo_gauge_menor.png" alt="Logo Gauge">
+
+            <p>
+                &copy; <?= date('Y') ?> Gauge. Todos os direitos reservados.
+            </p>
+        </div>
+
+        <div class="rodape-suporte">
+            <p>Precisa de Suporte?</p>
+            <a href="mailto:contato@gauge.com.br">
+                contato@gauge.com.br
+            </a>
+        </div>
+
     </div>
-
-    <div class="rodape-logo">
-        <img
-            src="../../assets/logo_gauge_menor.png"
-            alt="Logo Gauge"
-        >
-    </div>
-
-    <p class="copyright">
-        &copy; <?= date('Y') ?> Gauge. Todos os direitos reservados.
-    </p>
 </footer>
 
-<script src="../../js/menu.js"></script>
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
