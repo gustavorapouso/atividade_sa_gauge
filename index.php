@@ -19,7 +19,7 @@
     <div class="container">
 
         <div class="lado-esquerdo">
-            <img src="../assets/tela_cadastrar_img.png" alt="Banner" class="imagem">
+            <img src="frontend/assets/tela_cadastrar_img.png" alt="Banner" class="imagem">
         </div>
 
         <div class="lado-direito">
@@ -30,9 +30,9 @@
 
                 <h3>BEM-VINDO!</h3>
 
-                <img src="../assets/logo_gauge_menor.png" alt="Logo Gauge" class="logo">
+                <img src="frontend/assets/logo_gauge_menor.png" alt="Logo Gauge" class="logo">
 
-                <form action="../../data_base/autenticacaodb/login.php" method="POST">
+                <form action="data_base/autenticacaodb/login.php" method="POST">
 
                     <div class="campo">
                         <i class="bi bi-person-fill"></i>
@@ -44,11 +44,11 @@
                         <input type="password" name="senha" placeholder="Senha" required>
                     </div>
 
-                    <a href="../../frontend/tela_gestao/recupera_senha.php">
+                    <a href="frontend/tela_gestao/recupera_senha.php">
                     Esqueceu sua senha?
                     </a>
 
-                    <button type="submit" href="../tela_principal/dashboard.html">Entrar</button>
+                    <button type="submit" href="frontend/tela_principal/dashboard.html">Entrar</button>
 
                 </form>
 

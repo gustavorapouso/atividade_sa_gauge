@@ -47,7 +47,7 @@
 
     </form>
 
-    <button type="button" class="voltar" onclick="window.location.href='login.html'">
+    <button type="button" class="voltar" onclick="window.location.href='index.php'">
         Voltar ao login
     </button>
 
