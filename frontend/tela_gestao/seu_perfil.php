@@ -163,7 +163,7 @@ $data_nascimento = !empty($usuario['data_nascimento'])
 
                         <!-- PAINEL DO MAQUINISTA -->
                         <a
-                            href="../tela_principal/painel_maquinista.php"
+                            href="../tela_principal/painel_passageiro.php"
                             class="btn-menu-item">
 
                             PAINEL
@@ -174,7 +174,7 @@ $data_nascimento = !empty($usuario['data_nascimento'])
 
                         <!-- PAINEL DO PASSAGEIRO -->
                         <a
-                            href="../tela_principal/painel_passageiro.php"
+                            href="../tela_principal/painel_maquinista.php"
                             class="btn-menu-item">
 
                             PAINEL
