@@ -122,7 +122,7 @@ if (!temPapel([1])) {
 
 
             <a
-                href="#"
+                href=""
                 class="btn-menu-item"
             >
                 PERFIL
