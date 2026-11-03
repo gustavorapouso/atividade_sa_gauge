@@ -56,10 +56,10 @@ $data_nascimento = !empty($usuario['data_nascimento'])
     <!-- CSS DO PERFIL -->
     <link
         rel="stylesheet"
-        href="seu_perfil.css?v=1.0">
+        href="seu_perfil.css?v=2.0">
 
     <!-- CSS DO MENU LATERAL -->
-    <link rel="stylesheet" href="../tela_principal/menu.css?v=1.0">
+    <link rel="stylesheet" href="../tela_principal/menu.css?v=2.0">
 
     <!-- Bootstrap Icons -->
     <link
@@ -148,13 +148,40 @@ $data_nascimento = !empty($usuario['data_nascimento'])
 
                 <!-- PERFIL -->
 
-                <a
-                    href="seu_perfil.php"
-                    class="btn-menu-item">
+                <?php if (temPapel([2])): ?>
 
-                    PERFIL
+                        <!-- PAINEL DO GESTOR -->
+                        <a
+                            href="../tela_principal/painel_gestor.php"
+                            class="btn-menu-item">
 
-                </a>
+                            PAINEL
+
+                        </a>
+
+                    <?php elseif (temPapel([1])): ?>
+
+                        <!-- PAINEL DO MAQUINISTA -->
+                        <a
+                            href="../tela_principal/painel_maquinista.php"
+                            class="btn-menu-item">
+
+                            PAINEL
+
+                        </a>
+
+                    <?php elseif (temPapel([3])): ?>
+
+                        <!-- PAINEL DO PASSAGEIRO -->
+                        <a
+                            href="../tela_principal/painel_passageiro.php"
+                            class="btn-menu-item">
+
+                            PAINEL
+
+                        </a>
+
+                <?php endif; ?>
 
 
                 <!-- CADASTRAR SENSOR -->
