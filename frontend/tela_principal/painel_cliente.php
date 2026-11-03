@@ -134,7 +134,7 @@ if (!temPapel([1])) {
             </a>
 
             <a
-                href="#"
+                href="../tela_gestao/trens/trem_passageiro.php"
                 class="btn-menu-item"
             >
                 TREM DE PASSAGEIROS
