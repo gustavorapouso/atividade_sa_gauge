@@ -839,7 +839,7 @@ $listaSensores = $resultadoSensores->fetch_all(MYSQLI_ASSOC);
             <div class="footer-bloco bloco-centro">
 
                 <img
-                    src="../../assets/logo_gauge_menor.png"
+                    src="../assets/logo_gauge_menor.png"
                     alt="Gauge Logo"
                     class="footer-logo">
 
