@@ -1,0 +1,113 @@
+/* =========================================================
+   PAINÉIS INICIAIS (gestor, cliente e maquinista)
+   ========================================================= */
+
+/* Indicadores à esquerda e resumo dos trens à direita */
+.painel-inicial {
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+    gap: 24px;
+    align-items: start;
+}
+
+/* Médias dos sensores: grade 2 x 2 */
+.indicadores {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.indicador {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 200px;
+    padding: 20px;
+    border: 2px solid var(--cor-borda);
+    border-radius: var(--raio);
+    background-color: var(--cor-branco);
+    text-align: center;
+}
+
+.indicador i {
+    font-size: 2rem;
+    color: var(--cor-marca);
+}
+
+.indicador h2 {
+    font-size: 1.25rem;
+}
+
+.indicador p {
+    font-family: var(--fonte-titulo);
+    font-size: 2.2rem;
+    color: var(--cor-texto);
+}
+
+/* Cartões marrons com a situação dos trens */
+.resumo-trens {
+    display: grid;
+    gap: 16px;
+}
+
+.resumo-cartao {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    min-height: 110px;
+    padding: 16px 20px;
+    border: 3px solid var(--cor-titulo);
+    border-radius: var(--raio);
+    background-color: #806E64;
+    color: var(--cor-branco);
+}
+
+.resumo-cartao > i {
+    width: 56px;
+    flex-shrink: 0;
+    font-size: 2rem;
+    text-align: center;
+}
+
+.resumo-cartao div {
+    flex: 1;
+    text-align: center;
+}
+
+.resumo-cartao h2 {
+    color: var(--cor-branco);
+    font-size: 1.2rem;
+    text-transform: uppercase;
+}
+
+.resumo-cartao p {
+    margin-top: 6px;
+}
+
+/* Painel do cliente: só o resumo, em grade */
+.conteudo > .resumo-trens {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+@media (max-width: 1100px) {
+    .painel-inicial {
+        grid-template-columns: 1fr;
+    }
+
+    .painel-inicial .resumo-trens {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .indicadores,
+    .painel-inicial .resumo-trens {
+        grid-template-columns: 1fr;
+    }
+
+    .indicador {
+        min-height: 150px;
+    }
+}

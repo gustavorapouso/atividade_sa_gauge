@@ -1,0 +1,582 @@
+/* =========================================================
+   COMPONENTES REUTILIZÁVEIS
+   Títulos, painéis, formulários, botões, mensagens,
+   tabelas, status, cartões e listas.
+   ========================================================= */
+
+/* ---------- Títulos da página ---------- */
+
+.titulo-pagina {
+    margin-bottom: 8px;
+    font-size: clamp(2rem, 5vw, 3rem);
+    text-align: center;
+}
+
+.subtitulo {
+    max-width: 640px;
+    margin: 0 auto 28px;
+    color: var(--cor-texto);
+    text-align: center;
+}
+
+.titulo-secao {
+    margin: 8px 0 16px;
+    font-size: 1.6rem;
+}
+
+.cabecalho-pagina {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.cabecalho-pagina .titulo-pagina {
+    margin: 0;
+    text-align: left;
+}
+
+/* ---------- Painel (bloco com borda) ---------- */
+
+.painel {
+    margin-bottom: 24px;
+    padding: 20px;
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio);
+    background-color: var(--cor-superficie);
+}
+
+.painel > h2 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+    font-size: 1.4rem;
+}
+
+.painel > h2 i {
+    color: var(--cor-marca);
+}
+
+.painel-estreito {
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ---------- Formulários ---------- */
+
+.form-grade {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+}
+
+.campo-inteiro {
+    grid-column: 1 / -1;
+}
+
+.campo label {
+    color: var(--cor-titulo);
+    font-size: 0.875rem;
+    font-weight: 700;
+}
+
+.campo input,
+.campo select,
+.campo textarea {
+    width: 100%;
+    min-height: 42px;
+    padding: 8px 12px;
+    border: 1px solid var(--cor-borda);
+    border-radius: 6px;
+    background-color: var(--cor-branco);
+    color: var(--cor-titulo);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.campo textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.campo input:focus,
+.campo select:focus,
+.campo textarea:focus {
+    outline: none;
+    border-color: var(--cor-marca);
+    box-shadow: 0 0 0 3px rgba(107, 71, 50, 0.15);
+}
+
+.campo input[readonly] {
+    background-color: var(--cor-superficie-2);
+}
+
+.campo-opcao {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-top: 16px;
+    cursor: pointer;
+}
+
+.campo-opcao input {
+    margin-top: 4px;
+    accent-color: var(--cor-marca);
+}
+
+/* ---------- Botões ---------- */
+
+.botao,
+.botao-secundario,
+.botao-perigo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 42px;
+    padding: 8px 18px;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.botao {
+    background-color: var(--cor-marca);
+    color: var(--cor-branco);
+}
+
+.botao:hover {
+    background-color: var(--cor-marca-escura);
+}
+
+.botao-secundario {
+    border-color: var(--cor-borda);
+    background-color: var(--cor-branco);
+    color: var(--cor-marca);
+}
+
+.botao-secundario:hover {
+    background-color: var(--cor-superficie-2);
+}
+
+.botao-perigo {
+    background-color: var(--cor-critico);
+    color: var(--cor-branco);
+}
+
+.botao-perigo:hover {
+    background-color: #6a1a21;
+}
+
+.botao:active,
+.botao-secundario:active,
+.botao-perigo:active {
+    transform: scale(0.98);
+}
+
+.acoes {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.acoes-centro {
+    justify-content: center;
+}
+
+/* ---------- Mensagens ---------- */
+
+.mensagem {
+    margin-bottom: 20px;
+    padding: 14px 16px;
+    border-left: 4px solid var(--cor-texto);
+    border-radius: 6px;
+    background-color: var(--cor-superficie-2);
+    color: var(--cor-titulo);
+}
+
+.mensagem.sucesso {
+    border-color: var(--cor-sucesso);
+    background-color: var(--cor-sucesso-fundo);
+    color: var(--cor-sucesso);
+}
+
+.mensagem.erro {
+    border-color: var(--cor-critico);
+    background-color: var(--cor-critico-fundo);
+    color: var(--cor-critico);
+}
+
+.nota {
+    margin-top: 12px;
+    color: var(--cor-texto);
+    font-size: 0.85rem;
+}
+
+/* ---------- Tabelas ---------- */
+
+.tabela-responsiva {
+    width: 100%;
+    overflow-x: auto;
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio);
+    background-color: var(--cor-branco);
+}
+
+.tabela-responsiva table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+.tabela-responsiva th,
+.tabela-responsiva td {
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--cor-borda);
+    text-align: left;
+    white-space: nowrap;
+}
+
+.tabela-responsiva thead {
+    background-color: var(--cor-marca);
+    color: var(--cor-branco);
+}
+
+.tabela-responsiva tbody tr:nth-child(even) {
+    background-color: var(--cor-superficie);
+}
+
+.tabela-responsiva tbody tr:hover {
+    background-color: var(--cor-superficie-2);
+}
+
+.tabela-responsiva tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+.tabela-responsiva .vazio {
+    padding: 28px;
+    color: var(--cor-texto);
+    text-align: center;
+}
+
+/* Ícones de editar/excluir dentro das tabelas */
+.acoes-tabela {
+    display: flex;
+    gap: 6px;
+}
+
+.icone-acao {
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 6px;
+    color: var(--cor-branco);
+    text-decoration: none;
+}
+
+.icone-acao.editar {
+    background-color: var(--cor-marca);
+}
+
+.icone-acao.excluir {
+    background-color: var(--cor-critico);
+}
+
+.icone-acao:hover {
+    opacity: 0.85;
+}
+
+/* ---------- Status ---------- */
+
+.status {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 999px;
+    background-color: var(--cor-superficie-2);
+    color: var(--cor-titulo);
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: capitalize;
+    white-space: nowrap;
+}
+
+.status-normal,
+.status-ativo {
+    background-color: var(--cor-sucesso-fundo);
+    color: var(--cor-sucesso);
+}
+
+.status-atencao,
+.status-manutencao {
+    background-color: var(--cor-atencao-fundo);
+    color: var(--cor-atencao);
+}
+
+.status-critico,
+.status-inativo {
+    background-color: var(--cor-critico-fundo);
+    color: var(--cor-critico);
+}
+
+/* ---------- Abas (links que trocam a visão da página) ---------- */
+
+.abas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.aba {
+    padding: 8px 16px;
+    border: 1px solid var(--cor-borda);
+    border-radius: 999px;
+    background-color: var(--cor-branco);
+    color: var(--cor-marca);
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.aba:hover {
+    background-color: var(--cor-superficie-2);
+}
+
+.aba[aria-current="page"] {
+    border-color: var(--cor-marca);
+    background-color: var(--cor-marca);
+    color: var(--cor-branco);
+}
+
+/* ---------- Cartões em grade ---------- */
+
+.cartoes {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.cartao {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 20px;
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio);
+    background-color: var(--cor-branco);
+    box-shadow: var(--sombra);
+}
+
+/* Cartão que é um link inteiro (ex.: página de suporte) */
+a.cartao {
+    align-items: center;
+    color: inherit;
+    text-align: center;
+    text-decoration: none;
+    transition: transform 0.15s ease;
+}
+
+a.cartao:hover {
+    transform: translateY(-2px);
+}
+
+.cartao-topo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.cartao-topo h3 {
+    font-size: 1.3rem;
+}
+
+.cartao-icone {
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: var(--cor-superficie-2);
+    color: var(--cor-marca);
+    font-size: 1.3rem;
+}
+
+.cartao-rodape {
+    margin-top: auto;
+    padding-top: 12px;
+    border-top: 1px solid var(--cor-borda);
+}
+
+/* Lista de dados "Rótulo: valor" */
+.dados {
+    display: grid;
+    gap: 6px;
+    color: var(--cor-texto);
+    font-size: 0.92rem;
+}
+
+.dados strong {
+    color: var(--cor-titulo);
+}
+
+.dados-colunas {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 8px 24px;
+}
+
+/* ---------- Estado vazio ---------- */
+
+.vazio-bloco {
+    padding: 40px 20px;
+    border: 1px dashed var(--cor-borda);
+    border-radius: var(--raio);
+    color: var(--cor-texto);
+    text-align: center;
+}
+
+.vazio-bloco i {
+    margin-bottom: 12px;
+    font-size: 2.5rem;
+    color: var(--cor-contato);
+}
+
+/* ---------- Pesquisa ---------- */
+
+.campo-pesquisa {
+    position: relative;
+    max-width: 480px;
+    margin: 0 auto 24px;
+}
+
+.campo-pesquisa i {
+    position: absolute;
+    top: 50%;
+    left: 14px;
+    transform: translateY(-50%);
+    color: var(--cor-texto);
+}
+
+.campo-pesquisa input {
+    width: 100%;
+    min-height: 44px;
+    padding: 8px 14px 8px 40px;
+    border: 1px solid var(--cor-borda);
+    border-radius: 999px;
+    background-color: var(--cor-branco);
+}
+
+/* ---------- Duas colunas (empilham em telas pequenas) ---------- */
+
+.duas-colunas {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+    gap: 24px;
+    align-items: start;
+}
+
+@media (max-width: 900px) {
+    .duas-colunas {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ---------- Avatar do usuário ---------- */
+
+.avatar {
+    display: block;
+    margin: 0 auto 20px;
+    font-size: 7rem;
+    line-height: 1;
+    color: var(--cor-texto);
+    text-align: center;
+}
+
+/* ---------- Mapa (Leaflet) ---------- */
+
+.mapa {
+    position: relative;
+    z-index: 0; /* mantém o mapa abaixo do menu e da barra superior */
+    width: 100%;
+    height: clamp(280px, 50vh, 460px);
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio);
+    background-color: var(--cor-superficie-2);
+}
+
+.legenda-mapa {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 12px;
+    color: var(--cor-texto);
+    font-size: 0.9rem;
+}
+
+.legenda-mapa i {
+    color: var(--cor-marca);
+}
+
+/* ---------- Linha do tempo (histórico) ---------- */
+
+.linha-tempo {
+    display: grid;
+    gap: 10px;
+    list-style: none;
+}
+
+.linha-tempo li {
+    display: flex;
+    gap: 16px;
+    padding: 10px 14px;
+    border-left: 4px solid var(--cor-marca);
+    border-radius: 6px;
+    background-color: var(--cor-branco);
+}
+
+.linha-tempo time {
+    min-width: 48px;
+    font-weight: 700;
+    color: var(--cor-marca);
+}
+
+/* ---------- Ajustes para celular ---------- */
+
+@media (max-width: 600px) {
+    .painel {
+        padding: 16px;
+    }
+
+    .acoes {
+        justify-content: stretch;
+    }
+
+    .acoes > * {
+        flex: 1;
+    }
+
+    .cabecalho-pagina .titulo-pagina {
+        text-align: center;
+    }
+
+    .cabecalho-pagina {
+        justify-content: center;
+    }
+}

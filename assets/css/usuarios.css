@@ -1,0 +1,77 @@
+/* =========================================================
+   GESTÃO DE USUÁRIOS
+   ========================================================= */
+
+.lista-usuarios {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+.usuario-linha {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-template-areas:
+        "icone nome   situacao"
+        "icone perfil situacao";
+    align-items: center;
+    column-gap: 12px;
+    padding: 10px 14px;
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio);
+    background-color: var(--cor-branco);
+    color: inherit;
+    text-decoration: none;
+}
+
+.usuario-linha:hover {
+    background-color: var(--cor-superficie-2);
+}
+
+.usuario-linha[aria-current="true"] {
+    border-color: var(--cor-marca);
+    box-shadow: inset 4px 0 0 var(--cor-marca);
+}
+
+.usuario-icone {
+    grid-area: icone;
+    font-size: 2rem;
+    color: var(--cor-texto);
+}
+
+.usuario-nome {
+    grid-area: nome;
+    overflow: hidden;
+    font-weight: 700;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.usuario-perfil {
+    grid-area: perfil;
+    color: var(--cor-texto);
+    font-size: 0.85rem;
+}
+
+.usuario-situacao {
+    grid-area: situacao;
+    font-size: 0.7rem;
+    color: var(--cor-critico-forte);
+}
+
+.usuario-situacao.ativo {
+    color: var(--cor-normal-forte);
+}
+
+.usuario-titulo {
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 900px) {
+    .lista-usuarios {
+        max-height: 320px;
+    }
+}

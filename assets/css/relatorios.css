@@ -1,0 +1,195 @@
+/* =========================================================
+   RELATÓRIOS: filtros aplicados, gráficos e impressão
+   ========================================================= */
+
+.filtros-aplicados {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 16px;
+    margin-bottom: 20px;
+    padding: 12px 16px;
+    border-radius: var(--raio);
+    background-color: var(--cor-superficie-2);
+    font-size: 0.85rem;
+}
+
+/* Bolinha colorida de status */
+.valor-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 700;
+}
+
+.indicador {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.indicador.normal,
+.barra-valor.normal,
+.coluna.normal {
+    background-color: var(--cor-normal-forte);
+}
+
+.indicador.atencao,
+.barra-valor.atencao,
+.coluna.atencao {
+    background-color: var(--cor-atencao-forte);
+}
+
+.indicador.critico,
+.barra-valor.critico,
+.coluna.critico {
+    background-color: var(--cor-critico-forte);
+}
+
+/* Área dos gráficos */
+.graficos {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    margin-top: 20px;
+}
+
+.grafico {
+    min-width: 0;
+    padding: 16px;
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio);
+    background-color: var(--cor-superficie);
+}
+
+.grafico h3 {
+    margin-bottom: 20px;
+    font-family: var(--fonte-texto);
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+/* Barras horizontais */
+.barras {
+    display: grid;
+    gap: 14px;
+}
+
+.barra-item {
+    display: grid;
+    grid-template-columns: 70px minmax(30px, 1fr) 70px;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.8rem;
+}
+
+.barra-item strong {
+    text-align: right;
+}
+
+.barra-fundo {
+    height: 14px;
+    overflow: hidden;
+    border-radius: 4px;
+    background-color: #E7DCD3;
+}
+
+.barra-valor {
+    height: 100%;
+    min-width: 3px;
+    border-radius: 4px;
+}
+
+/* Colunas verticais */
+.colunas {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    gap: 12px;
+    height: 200px;
+    padding: 8px 8px 0;
+    border-bottom: 1px solid var(--cor-borda);
+}
+
+.coluna-item {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 6px;
+    min-width: 0;
+    height: 100%;
+    font-size: 0.75rem;
+}
+
+.coluna {
+    width: min(55px, 70%);
+    min-height: 3px;
+    border-radius: 4px 4px 0 0;
+}
+
+.coluna-item span {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    text-align: center;
+}
+
+.legenda {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 12px;
+    color: var(--cor-texto);
+    font-size: 0.8rem;
+}
+
+.legenda span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+@media (max-width: 900px) {
+    .graficos {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .barra-item {
+        grid-template-columns: 52px minmax(30px, 1fr) 56px;
+        gap: 6px;
+    }
+}
+
+/* Impressão: só o relatório, em paisagem */
+@media print {
+    @page {
+        size: landscape;
+        margin: 12mm;
+    }
+
+    .acoes,
+    .cabecalho-pagina .botao-secundario {
+        display: none !important;
+    }
+
+    .grafico,
+    .tabela-responsiva {
+        break-inside: avoid;
+    }
+
+    .graficos {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .barra-valor,
+    .coluna,
+    .indicador,
+    .tabela-responsiva thead {
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+    }
+}

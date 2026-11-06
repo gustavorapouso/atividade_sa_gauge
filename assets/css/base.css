@@ -1,0 +1,100 @@
+/* =========================================================
+   BASE: identidade visual (variáveis), reset e tipografia.
+   Todas as páginas carregam este arquivo.
+   ========================================================= */
+
+:root {
+    /* Cores da marca */
+    --cor-marca: #6B4732;
+    --cor-marca-escura: #4C3023;
+    --cor-titulo: #2F1E17;
+    --cor-texto: #7A655B;
+    --cor-fundo: #F3EFEB;
+    --cor-escuro: #1F1713;
+    --cor-contato: #C49E7A;
+
+    /* Superfícies e bordas */
+    --cor-superficie: #FBF9F7;
+    --cor-superficie-2: #EAE2DC;
+    --cor-borda: #D7C9BF;
+    --cor-branco: #FFFFFF;
+
+    /* Status */
+    --cor-sucesso: #245B31;
+    --cor-sucesso-fundo: #E5F2E7;
+    --cor-atencao: #856404;
+    --cor-atencao-fundo: #FFF3CD;
+    --cor-critico: #842029;
+    --cor-critico-fundo: #F8D7DA;
+    --cor-normal-forte: #28A745;
+    --cor-atencao-forte: #FFC107;
+    --cor-critico-forte: #DC3545;
+
+    /* Tipografia */
+    --fonte-titulo: 'Fjalla One', sans-serif;
+    --fonte-texto: 'Roboto', sans-serif;
+
+    /* Medidas */
+    --raio: 8px;
+    --sombra: 0 2px 6px rgba(31, 23, 19, 0.08);
+    --altura-topo: 60px;
+    --largura-menu: 250px;
+    --espaco: 24px;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    min-height: 100vh;
+    background-color: var(--cor-fundo);
+    color: var(--cor-titulo);
+    font-family: var(--fonte-texto);
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+img,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+a {
+    color: var(--cor-marca);
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+    color: inherit;
+}
+
+h1,
+h2,
+h3 {
+    font-family: var(--fonte-titulo);
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--cor-titulo);
+}
+
+:focus-visible {
+    outline: 3px solid var(--cor-contato);
+    outline-offset: 2px;
+}
+
+[hidden] {
+    display: none !important;
+}

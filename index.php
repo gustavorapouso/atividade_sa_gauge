@@ -1,75 +1,108 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Gauge</title>
+<?php
+// Tela de login. O formulário envia os dados para esta mesma página.
 
-    <link rel="stylesheet" href="login.css">
+require_once __DIR__ . '/includes/funcoes.php';
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+// Usuário já logado vai direto para o painel
+if (isset($_SESSION['id_pessoa'])) {
+    redirecionar(painelDoUsuario());
+}
 
-    <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+$erro = '';
+$nome = '';
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-</head>
-<body>
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    require_once __DIR__ . '/includes/conexao.php';
 
-    <div class="container">
+    $nome  = trim($_POST['nome'] ?? '');
+    $senha = $_POST['senha'] ?? '';
 
-        <div class="lado-esquerdo">
-            <img src="frontend/assets/tela_cadastrar_img.png" alt="Banner" class="imagem">
-        </div>
+    $stmt = $conexao->prepare(
+        'SELECT id_pessoa, nome, email, senha, FK_id_perfil, ativo
+         FROM PESSOA
+         WHERE nome = ?'
+    );
+    $stmt->bind_param('s', $nome);
+    $stmt->execute();
 
-        <div class="lado-direito">
+    $usuario = $stmt->get_result()->fetch_assoc();
+    $stmt->close();
 
-            <div class="card-login">
+    if (!$usuario || !password_verify($senha, $usuario['senha'])) {
+        $erro = 'Nome ou senha incorretos.';
+    } elseif ((int) $usuario['ativo'] !== 1) {
+        $erro = 'Esta conta está desativada.';
+    } else {
+        // Proteção da sessão
+        session_regenerate_id(true);
 
-                <h1>LOGIN</h1>
+        $_SESSION['id_pessoa']    = $usuario['id_pessoa'];
+        $_SESSION['nome']         = $usuario['nome'];
+        $_SESSION['email']        = $usuario['email'];
+        $_SESSION['FK_id_perfil'] = $usuario['FK_id_perfil'];
 
-                <h3>BEM-VINDO!</h3>
+        $painel = painelDoUsuario();
 
-                <img src="frontend/assets/logo_gauge_menor.png" alt="Logo Gauge" class="logo">
+        if ($painel === 'index.php') {
+            session_unset();
+            session_destroy();
+            $erro = 'Perfil de usuário inválido.';
+        } else {
+            redirecionar($painel);
+        }
+    }
+}
 
-                <form action="data_base/autenticacaodb/login.php" method="POST">
+$titulo  = 'Login';
+$estilos = ['autenticacao'];
+require __DIR__ . '/includes/head.php';
+?>
 
-                    <div class="campo">
-                        <i class="bi bi-person-fill"></i>
-                        <input type="text" name="nome" placeholder="Nome" required>
-                    </div>
+<body class="tela-login">
 
-                    <div class="campo">
-                        <i class="bi bi-lock-fill"></i>
-                        <input type="password" name="senha" placeholder="Senha" required>
-                    </div>
-
-                    <a href="frontend/tela_gestao/recupera_senha.php">
-                    Esqueceu sua senha?
-                    </a>
-
-                    <button type="submit" href="frontend/tela_principal/dashboard.html">Entrar</button>
-
-                </form>
-
-                <div class="rodape-login">
-
-                    <a href="cadastro.html" class="cadastro">cadastrar-se</a>
-
-                    <div class="redes">
-                        <i class="bi bi-google"></i>
-                        <i class="bi bi-facebook"></i>
-                        <i class="bi bi-linkedin"></i>
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
+    <div class="login-imagem">
+        <img src="<?= url('assets/img/tela_cadastrar_img.png') ?>" alt="">
     </div>
 
-    
+    <main class="cartao-auth">
+        <h1>Login</h1>
+        <p class="auth-subtitulo">Bem-vindo!</p>
+
+        <img src="<?= url('assets/img/logo_gauge_menor.png') ?>" alt="Gauge" class="auth-logo">
+
+        <?php if ($erro !== ''): ?>
+            <p class="mensagem erro" role="alert"><?= h($erro) ?></p>
+        <?php endif; ?>
+
+        <form method="POST" class="form-auth">
+            <label class="campo-icone">
+                <i class="fas fa-user"></i>
+                <input type="text" name="nome" placeholder="Nome" value="<?= h($nome) ?>" autocomplete="username" required>
+            </label>
+
+            <label class="campo-icone">
+                <i class="fas fa-lock"></i>
+                <input type="password" name="senha" placeholder="Senha" autocomplete="current-password" required>
+            </label>
+
+            <a href="<?= url('paginas/autenticacao/recuperar_senha.php') ?>" class="link-auth">
+                Esqueceu sua senha?
+            </a>
+
+            <button type="submit" class="botao">Entrar</button>
+        </form>
+
+        <div class="auth-rodape">
+            <a href="<?= url('paginas/autenticacao/cadastro.php') ?>" class="link-auth">Cadastrar-se</a>
+
+            <div class="redes" aria-hidden="true">
+                <i class="fab fa-google"></i>
+                <i class="fab fa-facebook"></i>
+                <i class="fab fa-linkedin"></i>
+            </div>
+        </div>
+    </main>
+
 </body>
+
 </html>

@@ -46,9 +46,63 @@ git clone https://github.com/gustavorapouso/atividade_sa_gauge.git
 
 ### 2.3. Configuração da conexão
 
-O arquivo `conexao.php` é responsável pela conexão com o banco de dados. O projeto utiliza MySQLi no formato orientado a objetos.
+O arquivo `includes/conexao.php` é responsável pela conexão com o banco de dados. O projeto utiliza MySQLi no formato orientado a objetos.
 
 Antes de executar o sistema, confira se o endereço do servidor, o usuário, a senha e o nome do banco de dados estão de acordo com a configuração do MySQL no computador.
+
+### 2.5. Estrutura de pastas
+
+```
+atividade_sa_gauge/
+├── index.php                 Tela de login
+├── assets/
+│   ├── css/                  Estilos
+│   │   ├── base.css          Cores, fontes e reset (todas as páginas)
+│   │   ├── layout.css        Barra superior, menu lateral e rodapé
+│   │   ├── componentes.css   Botões, formulários, tabelas, cartões, mensagens
+│   │   └── ...               Estilos específicos (paineis, relatorios, alertas...)
+│   ├── img/                  Imagens e logos
+│   └── js/                   menu.js (menu lateral) e mapa.js (mapas Leaflet)
+├── includes/                 Arquivos PHP compartilhados
+│   ├── conexao.php           Conexão com o banco
+│   ├── funcoes.php           Funções auxiliares (h, url, temPapel...)
+│   ├── proteger.php          Exige login nas páginas restritas
+│   ├── cabecalho.php         Início das páginas internas (barra + menu)
+│   ├── menu.php              Itens do menu de acordo com o perfil
+│   ├── rodape.php            Fim das páginas internas (rodapé)
+│   └── ...
+├── paginas/
+│   ├── autenticacao/         Cadastro, recuperação de senha, sair
+│   ├── paineis/              Painéis do gestor, cliente e maquinista
+│   ├── usuarios/             Perfil e gestão de usuários
+│   ├── trens/                Trens (cadastro, listas e detalhes)
+│   ├── trilhos/              Trilhos
+│   ├── viagens/              Viagens e acompanhamento no mapa
+│   ├── sensores/             Sensores, leituras, simulador e alertas
+│   ├── relatorios/           Geração e visualização de relatórios
+│   └── suporte/              Contato com o suporte
+└── docs/                     Plano de implementação
+```
+
+Toda página interna segue o mesmo modelo:
+
+```php
+<?php
+require __DIR__ . '/../../includes/proteger.php';   // exige login
+
+// ... consultas ao banco ...
+
+$titulo = 'Nome da página';
+require __DIR__ . '/../../includes/cabecalho.php';  // barra superior + menu
+?>
+
+<h1 class="titulo-pagina">Nome da página</h1>
+<!-- conteúdo -->
+
+<?php require __DIR__ . '/../../includes/rodape.php'; ?>
+```
+
+O menu lateral fica ao lado do conteúdo em telas grandes (e pode ser recolhido pelo botão ☰) e abre por cima do conteúdo em celulares.
 
 ### 2.4. Acesso ao sistema
 
