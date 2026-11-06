@@ -4,13 +4,12 @@ require '../../../data_base/includes/proteger.php';
 require '../../../data_base/includes/permissao.php';
 require '../../../data_base/conexao.php';
 
-// Permite acesso aos perfis autorizados
 if (!temPapel([1, 2, 3])) {
     header('Location: ../../tela_principal/dashboard.php');
     exit;
 }
 
-// Busca somente os trens de carga cadastrados
+// Buscar somente os trens de carga cadastrados no banco
 $sql = "SELECT
             id_trem,
             prefixo,
@@ -19,6 +18,7 @@ $sql = "SELECT
             status,
             capacidade,
             ultima_inspecao,
+            tipo_trem,
             tipo_carga
         FROM trem
         WHERE tipo_trem = 'Carga'
@@ -27,7 +27,7 @@ $sql = "SELECT
 $resultado = $conexao->query($sql);
 
 if (!$resultado) {
-    die("Erro ao buscar os trens: " . $conexao->error);
+    die('Erro ao consultar os trens: ' . $conexao->error);
 }
 ?>
 
@@ -37,13 +37,9 @@ if (!$resultado) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Trens de Carga | Ferrorama Gauge</title>
+    <title>Trens de Carga | Gauge</title>
 
-    <link rel="stylesheet" href="trem_carga_style.css?v=1">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../trens/trem_style.css?v=99">
 
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -51,152 +47,217 @@ if (!$resultado) {
 
 <body>
 
-    <header class="navbar">
-        <div class="navbar-esquerda">
-            <i class="fa-solid fa-bars"></i>
-            <h1>Trens de Carga</h1>
+<header class="header">
+    <div class="header-left">
+        <button class="menu-button" type="button" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <i class="fa-solid fa-magnifying-glass"></i>
+    </div>
+
+    <a href="../../tela_principal/dashboard.php" class="logo">
+        <img src="../../assets/logo_gauge_menor.png" alt="Logo Gauge">
+    </a>
+</header>
+
+<main class="conteudo">
+
+    <section class="titulo-pagina">
+        <h1>Trens de Carga</h1>
+        <p>Consulte os trens de carga cadastrados no sistema.</p>
+    </section>
+
+    <section class="pesquisa">
+        <div class="campo-pesquisa">
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            <input
+                type="text"
+                id="pesquisa_bar"
+                placeholder="Pesquise por prefixo ou modelo"
+                aria-label="Pesquisar trens"
+            >
         </div>
+    </section>
 
-        <a href="../../tela_principal/dashboard.php" class="logo">
-            <img src="../../../assets/logo_gauge_menor.png" alt="Logo Gauge">
-        </a>
-    </header>
+    <section class="lista-trens" id="listaTrens">
 
-    <main class="container">
+        <?php if ($resultado->num_rows > 0): ?>
 
-        <section class="cabecalho-pagina">
-            <div>
-                <h2>Gerenciamento de Trens de Carga</h2>
-                <p>Consulte os trens de carga cadastrados no sistema.</p>
-            </div>
+            <?php while ($trem = $resultado->fetch_assoc()): ?>
 
-            <div class="contador">
-                <i class="fa-solid fa-train"></i>
-                <span>
-                    <?php echo $resultado->num_rows; ?>
-                    trem(ns) cadastrado(s)
-                </span>
-            </div>
-        </section>
+                <?php
+                $prefixo = $trem['prefixo'];
+                $modelo = $trem['modelo'];
+                $status = $trem['status'];
+                ?>
 
-        <section class="lista-trens">
+                <article
+                    class="card-trem"
+                    data-pesquisa="<?= htmlspecialchars(
+                        $prefixo . ' ' . $modelo,
+                        ENT_QUOTES,
+                        'UTF-8'
+                    ) ?>"
+                >
 
-            <?php if ($resultado->num_rows > 0): ?>
-
-                <?php while ($trem = $resultado->fetch_assoc()): ?>
-
-                    <a
-                        href="linha_trem_carga.php?id_trem=<?php echo (int) $trem['id_trem']; ?>"
-                        class="card-trem"
-                    >
-
-                        <div class="card-topo">
-                            <div class="icone-trem">
-                                <i class="fa-solid fa-train"></i>
-                            </div>
-
-                            <span class="status <?php echo strtolower(str_replace(' ', '-', $trem['status'])); ?>">
-                                <?php echo htmlspecialchars($trem['status']); ?>
-                            </span>
+                    <div class="card-trem-topo">
+                        <div class="icone-trem">
+                            <i class="fa-solid fa-train"></i>
                         </div>
 
-                        <div class="informacoes-trem">
+                        <span class="status-trem">
+                            <?= htmlspecialchars(
+                                $status,
+                                ENT_QUOTES,
+                                'UTF-8'
+                            ) ?>
+                        </span>
+                    </div>
 
-                            <h3>
-                                <?php echo htmlspecialchars($trem['prefixo']); ?>
-                            </h3>
+                    <div class="card-trem-conteudo">
+                        <h2>
+                            <?= htmlspecialchars(
+                                $prefixo,
+                                ENT_QUOTES,
+                                'UTF-8'
+                            ) ?>
+                        </h2>
 
-                            <p class="modelo">
-                                <?php echo htmlspecialchars($trem['modelo']); ?>
-                            </p>
+                        <p>
+                            <strong>Modelo:</strong>
+                            <?= htmlspecialchars(
+                                $modelo,
+                                ENT_QUOTES,
+                                'UTF-8'
+                            ) ?>
+                        </p>
 
-                            <div class="detalhes-trem">
+                        <p>
+                            <strong>Ano:</strong>
+                            <?= (int) $trem['ano'] ?>
+                        </p>
 
-                                <div class="detalhe">
-                                    <i class="fa-solid fa-calendar"></i>
-                                    <span>
-                                        Ano:
-                                        <?php echo htmlspecialchars($trem['ano']); ?>
-                                    </span>
-                                </div>
+                        <p>
+                            <strong>Capacidade:</strong>
+                            <?= htmlspecialchars(
+                                (string) $trem['capacidade'],
+                                ENT_QUOTES,
+                                'UTF-8'
+                            ) ?>
+                        </p>
 
-                                <div class="detalhe">
-                                    <i class="fa-solid fa-weight-hanging"></i>
-                                    <span>
-                                        Capacidade:
-                                        <?php echo htmlspecialchars($trem['capacidade']); ?> toneladas
-                                    </span>
-                                </div>
+                        <p>
+                            <strong>Tipo de carga:</strong>
+                            <?= !empty($trem['tipo_carga'])
+                                ? htmlspecialchars(
+                                    $trem['tipo_carga'],
+                                    ENT_QUOTES,
+                                    'UTF-8'
+                                )
+                                : 'Não informado'
+                            ?>
+                        </p>
 
-                                <div class="detalhe">
-                                    <i class="fa-solid fa-box"></i>
-                                    <span>
-                                        Tipo de carga:
-                                        <?php
-                                        echo !empty($trem['tipo_carga'])
-                                            ? htmlspecialchars($trem['tipo_carga'])
-                                            : 'Não informado';
-                                        ?>
-                                    </span>
-                                </div>
+                        <p>
+                            <strong>Última inspeção:</strong>
+                            <?php
+                            if (!empty($trem['ultima_inspecao'])) {
+                                echo date(
+                                    'd/m/Y',
+                                    strtotime($trem['ultima_inspecao'])
+                                );
+                            } else {
+                                echo 'Não informada';
+                            }
+                            ?>
+                        </p>
 
-                                <div class="detalhe">
-                                    <i class="fa-solid fa-screwdriver-wrench"></i>
-                                    <span>
-                                        Última inspeção:
-                                        <?php
-                                        echo !empty($trem['ultima_inspecao'])
-                                            ? date('d/m/Y', strtotime($trem['ultima_inspecao']))
-                                            : 'Não informada';
-                                        ?>
-                                    </span>
-                                </div>
+                        <p>
+                            <strong>ID do trem:</strong>
+                            <?= (int) $trem['id_trem'] ?>
+                        </p>
+                    </div>
 
-                            </div>
-                        </div>
-
-                        <div class="card-rodape">
-                            <span>Visualizar detalhes</span>
+                    <div class="card-trem-acoes">
+                        <a
+                            href="linha_trem_carga.php?id_trem=<?= (int) $trem['id_trem'] ?>"
+                            class="btn-detalhes"
+                        >
+                            Ver viagens
                             <i class="fa-solid fa-arrow-right"></i>
-                        </div>
+                        </a>
+                    </div>
 
-                    </a>
+                </article>
 
-                <?php endwhile; ?>
+            <?php endwhile; ?>
 
-            <?php else: ?>
+        <?php else: ?>
 
-                <div class="mensagem-vazia">
-                    <i class="fa-solid fa-train"></i>
-                    <h3>Nenhum trem de carga encontrado</h3>
-                    <p>Não existem trens de carga cadastrados no momento.</p>
-                </div>
+            <div class="mensagem-vazia">
+                <i class="fa-solid fa-train"></i>
+                <h2>Nenhum trem encontrado</h2>
+                <p>
+                    Não há trens cadastrados com o tipo Carga.
+                </p>
+            </div>
 
-            <?php endif; ?>
+        <?php endif; ?>
 
-        </section>
+    </section>
 
-    </main>
+</main>
 
-    <footer class="footer">
-        <div class="footer-contato">
-            <span>Contato: suporte@ferroramagauge.com</span>
+<footer class="rodape">
+    <div class="rodape-container">
+
+        <div class="rodape-contato">
+            <p>Entre em contato</p>
+            <a href="tel:+5547999174896">(47) 99917-4896</a>
         </div>
 
-        <div class="footer-centro">
-            <img src="../../../assets/logo_gauge_menor.png" alt="Logo Gauge">
-            <p>© <?php echo date('Y'); ?> Ferrorama Gauge. Todos os direitos reservados.</p>
+        <div class="rodape-centro">
+            <img src="../../assets/logo_gauge_menor.png" alt="Logo Gauge">
+
+            <p>
+                &copy; <?= date('Y') ?> Gauge. Todos os direitos reservados.
+            </p>
         </div>
 
-        <div class="footer-suporte">
-            <span>Suporte</span>
+        <div class="rodape-suporte">
+            <p>Precisa de Suporte?</p>
+            <a href="mailto:contato@gauge.com.br">
+                contato@gauge.com.br
+            </a>
         </div>
-    </footer>
+
+    </div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const campoPesquisa = document.getElementById('pesquisa_bar');
+    const cards = document.querySelectorAll('.card-trem');
+
+    campoPesquisa.addEventListener('input', function () {
+        const termo = this.value.toLowerCase().trim();
+
+        cards.forEach(function (card) {
+            const texto = card.dataset.pesquisa.toLowerCase();
+
+            card.style.display = texto.includes(termo) ? '' : 'none';
+        });
+    });
+});
+</script>
 
 </body>
 </html>
 
 <?php
 $resultado->free();
-$conexao->close();
 ?>

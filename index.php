@@ -54,7 +54,7 @@
 
                 <div class="rodape-login">
 
-                    <a href="cadastro.html" class="cadastro">cadastrar-se</a>
+                    <a href="frontend/autenticacao/cadastro.php" class="cadastro">cadastrar-se</a>
 
                     <div class="redes">
                         <i class="bi bi-google"></i>

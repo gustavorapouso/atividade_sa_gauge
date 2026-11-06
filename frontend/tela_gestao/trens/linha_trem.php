@@ -1,4 +1,3 @@
-
 <?php
 require '../../../data_base/includes/proteger.php';
 require '../../../data_base/includes/permissao.php';
