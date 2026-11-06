@@ -1,389 +1,543 @@
-@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&family=Roboto:wght@400;500;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Fjalla+One&family=Roboto:wght@400;500;700&display=swap");
+
+/* =====================================
+   VARIÁVEIS
+===================================== */
 
 :root {
+  --color-marca: #6b4732;
+  --color-titulo: #2f1e17;
+  --color-texto: #7a655b;
+  --color-fundo-claro: #f3efeb;
+  --color-fundo-escuro: #1f1713;
+  --color-contato: #c49e7a;
 
-    --color-marca: #6B4732;
-    --color-titulo: #2F1E17;
-    --color-texto: #7A655B;
-    --color-fundo-claro: #F3EFEB;
-    --color-fundo-escuro: #1F1713;
-
-    --color-contato: #C49E7A;
-
-    --font-titulo: 'Fjalla One', sans-serif;
-    --font-texto: 'Roboto', sans-serif;
+  --font-titulo: "Fjalla One", sans-serif;
+  --font-texto: "Roboto", sans-serif;
 }
 
+/* =====================================
+   RESET
+===================================== */
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
+/* =====================================
+   ESTRUTURA GERAL
+===================================== */
+
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+}
 
 body {
-    font-family: var(--font-texto);
-    background-color: var(--color-fundo-claro);
-    color: var(--color-texto);
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+
+  font-family: var(--font-texto);
+  background-color: var(--color-fundo-claro);
+  color: var(--color-texto);
 }
 
-
-/* NAVBAR */
+/* =====================================
+   NAVBAR
+===================================== */
 
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: var(--color-fundo-escuro);
-    padding: 0 30px;            
-    height: 60px;            
-    width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 100%;
+  height: 60px;
+  min-height: 60px;
+
+  padding: 0 30px;
+
+  background-color: var(--color-fundo-escuro);
+
+  flex-shrink: 0;
 }
 
 .header .left {
-    display: flex;
-    gap: 20px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
-.header .left i {
-    color: var(--color-fundo-claro);
-    font-size: 1.25rem;
-    cursor: pointer;
+/* =====================================
+   BOTÃO DO MENU
+===================================== */
+
+.header .left button#menuBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: auto;
+  height: auto;
+
+  padding: 0;
+
+  background: transparent;
+  color: var(--color-fundo-claro);
+
+  border: none;
+  border-radius: 0;
+
+  box-shadow: none;
+  outline: none;
+
+  appearance: none;
+  cursor: pointer;
 }
+
+.header .left button#menuBtn:hover,
+.header .left button#menuBtn:active,
+.header .left button#menuBtn:focus {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  outline: none;
+}
+
+.header .left button#menuBtn i {
+  color: var(--color-fundo-claro);
+  font-size: 1.25rem;
+}
+
+/* =====================================
+   PESQUISA
+===================================== */
+
+.header .left > i {
+  color: var(--color-fundo-claro);
+  font-size: 1.25rem;
+  cursor: pointer;
+}
+
+/* =====================================
+   LOGO DA NAVBAR
+===================================== */
 
 .header .logo {
-    display: flex;
-    align-items: center;
-    width: 100px; 
+  display: flex;
+  align-items: center;
+  width: 100px;
 }
 
 .header .logo img {
-    display: block;
-    height: 80%;                
-    max-height: 50px;          
-    width: auto;                
-    object-fit: contain;    
+  display: block;
+
+  height: 80%;
+  max-height: 50px;
+
+  width: auto;
+  object-fit: contain;
 }
 
+/* =====================================
+   LAYOUT PRINCIPAL
+   ASIDE E MAIN LADO A LADO
+===================================== */
 
-/* CONTEÚDO */
+.layout-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
 
-main {
-    padding: 40px;
+  width: 100%;
+
+  flex: 1 0 auto;
+  min-width: 0;
 }
 
+/* =====================================
+   MENU LATERAL FECHADO
+===================================== */
+
+.layout-wrapper .sidebar {
+  width: 0;
+  min-width: 0;
+
+  flex: 0 0 0px;
+
+  overflow: hidden;
+
+  background-color: var(--color-marca);
+
+  transition:
+    width 0.3s ease,
+    flex-basis 0.3s ease;
+}
+
+/* =====================================
+   MENU LATERAL ABERTO
+===================================== */
+
+.layout-wrapper .sidebar.aberto {
+  width: 300px;
+  min-width: 300px;
+
+  flex: 0 0 300px;
+}
+
+/* =====================================
+   CONTEÚDO PRINCIPAL
+===================================== */
+
+.layout-wrapper main {
+  flex: 1 1 auto;
+
+  width: 0;
+  min-width: 0;
+
+  padding: 40px;
+
+  display: block;
+}
+
+/* =====================================
+   TÍTULO
+===================================== */
 
 h1 {
-    font-family: var(--font-titulo);
+  width: 100%;
 
-    color: var(--color-titulo);
+  font-family: var(--font-titulo);
+  color: var(--color-titulo);
 
-    font-size: 32px;
+  font-size: 32px;
 
-    margin-bottom: 25px;
+  text-align: center;
+
+  margin-bottom: 25px;
 }
 
-
-/* BOTÕES */
+/* =====================================
+   BOTÕES
+===================================== */
 
 .botao-nova {
-    display: inline-block;
-
-    margin-bottom: 20px;
+  display: inline-block;
+  margin-bottom: 20px;
 }
-
 
 .botao,
-button {
-    padding: 10px 16px;
+.layout-wrapper main button {
+  padding: 10px 16px;
 
-    border: none;
+  border: none;
+  border-radius: 6px;
 
-    border-radius: 6px;
+  background-color: var(--color-marca);
+  color: white;
 
-    background-color: var(--color-marca);
+  cursor: pointer;
+  text-decoration: none;
 
-    color: white;
-
-    cursor: pointer;
-
-    text-decoration: none;
-
-    font-family: var(--font-texto);
+  font-family: var(--font-texto);
 }
-
 
 .botao:hover,
-button:hover {
-    background-color: var(--color-fundo-escuro);
+.layout-wrapper main button:hover {
+  background-color: var(--color-fundo-escuro);
 }
 
-
-/* FILTROS */
+/* =====================================
+   FILTROS
+===================================== */
 
 .filtros {
-    background-color: white;
+  background-color: white;
 
-    padding: 20px;
+  padding: 20px;
 
-    border-radius: 10px;
+  border-radius: 10px;
 
-    margin-bottom: 25px;
+  margin-bottom: 25px;
 }
-
 
 .filtros form {
-    display: flex;
+  display: flex;
+  flex-wrap: wrap;
 
-    flex-wrap: wrap;
+  gap: 12px;
 
-    gap: 12px;
-
-    align-items: end;
+  align-items: end;
 }
-
 
 .campo {
-    display: flex;
+  display: flex;
+  flex-direction: column;
 
-    flex-direction: column;
-
-    gap: 5px;
+  gap: 5px;
 }
-
 
 .campo label {
-    font-size: 14px;
+  font-size: 14px;
+  font-weight: 700;
 
-    font-weight: 700;
-
-    color: var(--color-titulo);
+  color: var(--color-titulo);
 }
 
+/* =====================================
+   INPUTS E SELECTS
+===================================== */
 
 input,
 select {
-    padding: 10px;
+  padding: 10px;
 
-    border: 1px solid #ccc;
+  border: 1px solid #ccc;
+  border-radius: 6px;
 
-    border-radius: 6px;
-
-    font-family: var(--font-texto);
-
-    color: var(--color-texto);
+  font-family: var(--font-texto);
+  color: var(--color-texto);
 }
-
 
 input:focus,
 select:focus {
-    outline: none;
-
-    border-color: var(--color-contato);
+  outline: none;
+  border-color: var(--color-contato);
 }
 
-
-/* TABELA */
+/* =====================================
+   TABELA
+===================================== */
 
 table {
-    width: 100%;
+  width: 100%;
 
-    border-collapse: collapse;
+  border-collapse: collapse;
 
-    background-color: white;
+  background-color: white;
 
-    border-radius: 10px;
+  border-radius: 10px;
 
-    overflow: hidden;
+  overflow: hidden;
 }
-
 
 th,
 td {
-    padding: 14px;
+  padding: 14px;
 
-    text-align: left;
+  text-align: left;
 
-    border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
 }
-
 
 th {
-    background-color: var(--color-marca);
+  background-color: var(--color-marca);
+  color: white;
 
-    color: white;
-
-    font-family: var(--font-titulo);
-
-    font-weight: normal;
+  font-family: var(--font-titulo);
+  font-weight: normal;
 }
-
 
 td {
-    color: var(--color-texto);
+  color: var(--color-texto);
 }
 
-
-/* AÇÕES */
-
-.acoes a {
-    margin-right: 10px;
-
-    text-decoration: none;
-}
-
-
-.editar {
-    color: var(--color-marca);
-}
-
-
-.excluir {
-    color: #b00020;
-}
-
-
-.editar:hover {
-    color: var(--color-fundo-escuro);
-}
-
-
-.excluir:hover {
-    color: #7a0015;
-}
-
-.footer-gauge {
-    background-color: var(--color-fundo-escuro);
-    border-top: 2px solid var(--color-contato); 
-    padding: 30px 20px 15px 20px;
-    width: 100%;
-    margin-top: auto; 
-}
-
-
-.footer-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 20px;
-}
-
-
-.footer-bloco {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-}
-
-.bloco-esquerda {
-    align-items: flex-start;
-    padding-left: 40px;
-}
-
-.bloco-centro {
-    align-items: center;
-    gap: 15px;
-}
-
-.bloco-direita {
-    align-items: flex-end;
-    padding-right: 40px;
-}
-
-
-.footer-label {
-    color: #ffffff;
-    font-family: var(--font-texto);
-    font-size: 0.95rem;
-    font-weight: 500;
-    margin-bottom: 4px;
-}
-
-
-.footer-link {
-    color: var(--color-contato);
-    font-family: var(--font-texto);
-    font-size: 0.95rem;
-    text-decoration: none;
-    font-weight: 400;
-}
-
-.link-sublinhado {
-    text-decoration: underline;
-}
-
-
-.footer-logo {
-    max-height: 45px;
-    width: auto;
-    object-fit: contain;
-}
-
-.footer-copyright {
-    color: var(--color-texto);
-    font-size: 0.65rem;
-    font-family: var(--font-texto);
-    opacity: 0.7;
-    margin-top: 5px;
-}
-
-/* ==============================
+/* =====================================
    AÇÕES DA TABELA
-============================== */
+===================================== */
 
 .acoes {
-    text-align: center;
-    white-space: nowrap;
+  text-align: center;
+  white-space: nowrap;
 }
 
 .acoes a {
-    display: inline-flex;
+  display: inline-flex;
 
-    align-items: center;
-    justify-content: center;
+  align-items: center;
+  justify-content: center;
 
-    width: 35px;
-    height: 35px;
+  width: 35px;
+  height: 35px;
 
-    margin: 0 4px;
+  margin: 0 4px;
 
-    border-radius: 5px;
+  border-radius: 5px;
 
-    text-decoration: none;
+  text-decoration: none;
 
-    transition: 0.2s;
+  transition: 0.2s;
 }
-
 
 /* EDITAR */
 
 .acoes .editar {
-    color: #6B4732;
+  color: var(--color-marca);
 }
 
 .acoes .editar:hover {
-    background-color: #6B4732;
-    color: white;
+  background-color: var(--color-marca);
+  color: white;
 }
-
 
 /* EXCLUIR */
 
 .acoes .excluir {
-    color: #b02a37;
+  color: #b02a37;
 }
 
 .acoes .excluir:hover {
-    background-color: #b02a37;
-    color: white;
+  background-color: #b02a37;
+  color: white;
 }
-
 
 /* ÍCONES */
 
 .acoes i {
-    font-size: 15px;
+  font-size: 15px;
+}
+
+/* =====================================
+   RODAPÉ
+===================================== */
+
+.footer-gauge {
+  background-color: var(--color-fundo-escuro);
+
+  border-top: 2px solid var(--color-contato);
+
+  padding: 30px 20px 15px;
+
+  width: 100%;
+
+  margin-top: auto;
+
+  flex-shrink: 0;
+}
+
+.footer-container {
+  max-width: 1200px;
+
+  margin: 0 auto;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 20px;
+}
+
+.footer-bloco {
+  display: flex;
+  flex-direction: column;
+
+  flex: 1;
+}
+
+.bloco-esquerda {
+  align-items: flex-start;
+  padding-left: 40px;
+}
+
+.bloco-centro {
+  align-items: center;
+  gap: 15px;
+}
+
+.bloco-direita {
+  align-items: flex-end;
+  padding-right: 40px;
+}
+
+.footer-label {
+  color: #ffffff;
+
+  font-family: var(--font-texto);
+  font-size: 0.95rem;
+  font-weight: 500;
+
+  margin-bottom: 4px;
+}
+
+.footer-link {
+  color: var(--color-contato);
+
+  font-family: var(--font-texto);
+  font-size: 0.95rem;
+
+  text-decoration: none;
+  font-weight: 400;
+}
+
+.link-sublinhado {
+  text-decoration: underline;
+}
+
+.footer-logo {
+  max-height: 45px;
+  width: auto;
+
+  object-fit: contain;
+}
+
+.footer-copyright {
+  color: var(--color-texto);
+
+  font-size: 0.65rem;
+  font-family: var(--font-texto);
+
+  opacity: 0.7;
+
+  margin-top: 5px;
+}
+
+/* =====================================
+   RESPONSIVIDADE
+===================================== */
+
+@media (max-width: 768px) {
+  .layout-wrapper .sidebar.aberto {
+    width: 250px;
+    min-width: 250px;
+
+    flex-basis: 250px;
+  }
+
+  .layout-wrapper main {
+    padding: 25px 15px;
+  }
+
+  .filtros form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .campo {
+    width: 100%;
+  }
+
+  table {
+    display: block;
+
+    overflow-x: auto;
+
+    white-space: nowrap;
+  }
+
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .bloco-esquerda,
+  .bloco-centro,
+  .bloco-direita {
+    align-items: center;
+    padding: 0;
+  }
 }
