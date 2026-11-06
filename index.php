@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $stmt = $conexao->prepare(
         'SELECT id_pessoa, nome, email, senha, FK_id_perfil, ativo
-         FROM PESSOA
+         FROM pessoa
          WHERE nome = ?'
     );
     $stmt->bind_param('s', $nome);

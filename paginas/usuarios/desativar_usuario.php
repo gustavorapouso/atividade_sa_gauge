@@ -38,7 +38,7 @@ try {
     $conexao->begin_transaction();
 
     // Busca o usuário e bloqueia o registro durante a operação
-    $stmt = $conexao->prepare('SELECT FK_id_perfil, ativo FROM PESSOA WHERE id_pessoa = ? FOR UPDATE');
+    $stmt = $conexao->prepare('SELECT FK_id_perfil, ativo FROM pessoa WHERE id_pessoa = ? FOR UPDATE');
     $stmt->bind_param('i', $idPessoa);
     $stmt->execute();
     $usuario = $stmt->get_result()->fetch_assoc();
@@ -59,7 +59,7 @@ try {
     // Impede desativar o último gestor ativo
     if ($acao === 'desativar' && (int) $usuario['FK_id_perfil'] === PERFIL_GESTOR) {
         $totalGestores = (int) $conexao
-            ->query('SELECT COUNT(*) AS total FROM PESSOA WHERE FK_id_perfil = 2 AND ativo = 1')
+            ->query('SELECT COUNT(*) AS total FROM pessoa WHERE FK_id_perfil = 2 AND ativo = 1')
             ->fetch_assoc()['total'];
 
         if ($totalGestores <= 1) {
@@ -67,7 +67,7 @@ try {
         }
     }
 
-    $stmt = $conexao->prepare('UPDATE PESSOA SET ativo = ? WHERE id_pessoa = ?');
+    $stmt = $conexao->prepare('UPDATE pessoa SET ativo = ? WHERE id_pessoa = ?');
     $stmt->bind_param('ii', $novoStatus, $idPessoa);
     $stmt->execute();
     $stmt->close();

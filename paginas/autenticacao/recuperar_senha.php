@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $acao === 'solicitar') {
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $erro = 'Informe um e-mail válido.';
     } else {
-        $stmt = $conexao->prepare('SELECT id_pessoa, email, ativo FROM PESSOA WHERE email = ?');
+        $stmt = $conexao->prepare('SELECT id_pessoa, email, ativo FROM pessoa WHERE email = ?');
         $stmt->bind_param('s', $email);
         $stmt->execute();
 
@@ -86,7 +86,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $acao === 'redefinir') {
             $senhaHash = password_hash($novaSenha, PASSWORD_DEFAULT);
 
             // Só altera se a conta continuar ativa
-            $stmt = $conexao->prepare('UPDATE PESSOA SET senha = ? WHERE id_pessoa = ? AND ativo = 1');
+            $stmt = $conexao->prepare('UPDATE pessoa SET senha = ? WHERE id_pessoa = ? AND ativo = 1');
             $stmt->bind_param('si', $senhaHash, $idPessoa);
             $stmt->execute();
             $alterou = $stmt->affected_rows === 1;

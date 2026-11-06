@@ -3,7 +3,7 @@ require __DIR__ . '/../../includes/proteger.php';
 
 $stmt = $conexao->prepare(
     'SELECT nome, data_nascimento, telefone, email
-     FROM PESSOA
+     FROM pessoa
      WHERE id_pessoa = ?'
 );
 $stmt->bind_param('i', $_SESSION['id_pessoa']);

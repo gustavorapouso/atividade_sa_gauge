@@ -19,8 +19,8 @@ $sqlUsuarios = 'SELECT
                     p.FK_id_perfil,
                     p.ativo,
                     f.nome_perfil
-                FROM PESSOA p
-                INNER JOIN PERFIL f ON p.FK_id_perfil = f.id_perfil';
+                FROM pessoa p
+                INNER JOIN perfil f ON p.FK_id_perfil = f.id_perfil';
 
 // Todos os usuários
 $usuarios = $conexao

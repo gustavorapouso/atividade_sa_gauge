@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
 
         $stmt = $conexao->prepare(
-            'INSERT INTO PESSOA (nome, data_nascimento, email, telefone, senha, FK_id_perfil)
+            'INSERT INTO pessoa (nome, data_nascimento, email, telefone, senha, FK_id_perfil)
              VALUES (?, ?, ?, ?, ?, ?)'
         );
 

@@ -1,7 +1,7 @@
 <?php
 // Funções auxiliares usadas em várias páginas do sistema.
 
-// Perfis de acesso (tabela PERFIL)
+// Perfis de acesso (tabela perfil)
 const PERFIL_CLIENTE    = 1;
 const PERFIL_GESTOR     = 2;
 const PERFIL_MAQUINISTA = 3;

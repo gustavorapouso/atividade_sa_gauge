@@ -12,7 +12,7 @@ if (!isset($_SESSION['id_pessoa'])) {
 // Verifica se a conta continua ativa e com o mesmo perfil no banco
 $stmt = $conexao->prepare(
     'SELECT ativo, FK_id_perfil
-     FROM PESSOA
+     FROM pessoa
      WHERE id_pessoa = ?'
 );
 $stmt->bind_param('i', $_SESSION['id_pessoa']);

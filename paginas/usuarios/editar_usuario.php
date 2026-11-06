@@ -46,7 +46,7 @@ if ($dataNascimento !== '') {
 }
 
 // Busca o usuário que será alterado
-$stmt = $conexao->prepare('SELECT FK_id_perfil, ativo FROM PESSOA WHERE id_pessoa = ?');
+$stmt = $conexao->prepare('SELECT FK_id_perfil, ativo FROM pessoa WHERE id_pessoa = ?');
 $stmt->bind_param('i', $idPessoa);
 $stmt->execute();
 $usuarioAtual = $stmt->get_result()->fetch_assoc();
@@ -57,7 +57,7 @@ if (!$usuarioAtual) {
 }
 
 // O e-mail não pode pertencer a outra pessoa
-$stmt = $conexao->prepare('SELECT id_pessoa FROM PESSOA WHERE email = ? AND id_pessoa <> ?');
+$stmt = $conexao->prepare('SELECT id_pessoa FROM pessoa WHERE email = ? AND id_pessoa <> ?');
 $stmt->bind_param('si', $email, $idPessoa);
 $stmt->execute();
 $emailEmUso = $stmt->get_result()->num_rows > 0;
@@ -70,7 +70,7 @@ if ($emailEmUso) {
 // Impede retirar o perfil do último gestor ativo
 if ((int) $usuarioAtual['FK_id_perfil'] === PERFIL_GESTOR && $perfil !== PERFIL_GESTOR && (int) $usuarioAtual['ativo'] === 1) {
     $totalGestores = (int) $conexao
-        ->query('SELECT COUNT(*) AS total FROM PESSOA WHERE FK_id_perfil = 2 AND ativo = 1')
+        ->query('SELECT COUNT(*) AS total FROM pessoa WHERE FK_id_perfil = 2 AND ativo = 1')
         ->fetch_assoc()['total'];
 
     if ($totalGestores <= 1) {
@@ -83,7 +83,7 @@ $dataNascimento = $dataNascimento !== '' ? $dataNascimento : null;
 $telefone       = $telefone !== '' ? $telefone : null;
 
 $stmt = $conexao->prepare(
-    'UPDATE PESSOA
+    'UPDATE pessoa
      SET nome = ?, data_nascimento = ?, telefone = ?, email = ?, FK_id_perfil = ?
      WHERE id_pessoa = ?'
 );

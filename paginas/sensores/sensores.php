@@ -15,11 +15,14 @@ if (!isset($abas[$acao])) {
     $acao = 'adicionar';
 }
 
+// Os valores precisam ser iguais aos tipos usados nos indicadores dos painéis
+// (includes/paineis.php) e nos dados de exemplo do banco.
 $tiposSensor = [
-    'velocidade'           => 'Velocidade',
-    'temperatura do motor' => 'Temperatura do motor',
-    'consumo de energia'   => 'Consumo de energia',
-    'localização'          => 'Localização',
+    'Velocidade'  => 'Velocidade',
+    'Temperatura' => 'Temperatura do motor',
+    'Consumo'     => 'Consumo de energia',
+    'Vibração'    => 'Vibração',
+    'Localização' => 'Localização',
 ];
 
 $erro = '';
