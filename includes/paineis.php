@@ -46,23 +46,33 @@ function contarTrens(mysqli $conexao, string $status, ?string $tipoTrem = null):
 function exibirIndicadoresSensores(mysqli $conexao): void
 {
     $indicadores = [
-        ['Velocidade',  'Velocidade',  'fa-bolt'],
-        ['Temperatura', 'Temperatura', 'fa-temperature-high'],
-        ['Consumo',     'Consumo',     'fa-gas-pump'],
-        ['Vibração',    'Vibração',    'fa-water'],
+        ['Velocidade média',  'Velocidade',  'fa-bolt'],
+        ['Temperatura média', 'Temperatura', 'fa-temperature-high'],
+        ['Consumo médio',     'Consumo',     'fa-gas-pump'],
+        ['Vibração média',    'Vibração',    'fa-water'],
     ];
-    ?>
+
+?>
     <section class="indicadores" aria-label="Médias dos sensores">
         <?php foreach ($indicadores as [$rotulo, $tipo, $icone]): ?>
             <?php $media = mediaSensor($conexao, $tipo); ?>
             <div class="indicador">
                 <i class="fas <?= $icone ?>"></i>
                 <h2><?= h($rotulo) ?></h2>
-                <p><?= $media !== null ? h($media) : '—' ?></p>
+                <?php
+                $unidade = match ($tipo) {
+                    'Velocidade'  => 'km/h',
+                    'Temperatura' => 'ºC',
+                    'Consumo'     => 'L/h',
+                    'Vibração'    => 'mm/s',
+                    default       => ''
+                };
+                ?>
+                <p><?= $media !== null ? h($media) : '—' ?> <?= $unidade ?></p>
             </div>
         <?php endforeach; ?>
     </section>
-    <?php
+<?php
 }
 
 // Mostra os cartões com a situação dos trens.
@@ -74,7 +84,7 @@ function exibirResumoTrens(mysqli $conexao): void
         ['Em manutenção',       'Quantidade', contarTrens($conexao, 'manutencao'),          'fa-wrench'],
         ['Trens inativos',      'Quantidade', contarTrens($conexao, 'inativo'),             'fa-ban'],
     ];
-    ?>
+?>
     <section class="resumo-trens" aria-label="Situação dos trens">
         <?php foreach ($cartoes as [$titulo, $rotulo, $total, $icone]): ?>
             <div class="resumo-cartao">
@@ -86,5 +96,5 @@ function exibirResumoTrens(mysqli $conexao): void
             </div>
         <?php endforeach; ?>
     </section>
-    <?php
+<?php
 }
