@@ -97,7 +97,7 @@ As demais decisões dos blocos anteriores devem ser acrescentadas conforme as es
 
 1. Conexão entre as páginas: algumas páginas apresentavam dificuldades para se conectar e direcionar corretamente umas às outras. O problema foi corrigido com ajustes no código.
 
-2. Botão "Sair": após encerrar a sessão, ainda era possível retornar às páginas internas pelo botão de voltar do navegador. Esse comportamento também foi corrigido.
+2. Botão "Sair": após encerrar a sessão, ainda era possível retornar às páginas internas pelo botão de voltar do navegador. Não conseguimos arrumar este problema.
 
 3. Acompanhamento de carga e passageiros: tivemos dificuldades no desenvolvimento das páginas acompanhamento_carga e acompanhamento_passageiro,
 principalmente na configuração do mapa para que ele mostrasse corretamente a rota do trem. Após vários testes e ajustes, conseguimos fazer o mapa funcionar como esperado.
