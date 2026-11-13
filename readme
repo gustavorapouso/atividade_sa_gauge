@@ -1,177 +1,119 @@
-# Ferrorama Gauge
+# Ferrorama Gauge — Sistema de Monitoramento Ferroviário
 
-## 1. Identificação do projeto
+## 1. Equipe
 
-O Ferrorama Gauge é um sistema web desenvolvido como projeto escolar para organizar informações relacionadas ao monitoramento de trens e sensores. O sistema possui diferentes áreas de acesso de acordo com o perfil do usuário.
-
-Tecnologias utilizadas:** PHP, HTML, CSS e MySQL.
-
-**Repositório:** https://github.com/gustavorapouso/atividade_sa_gauge.git
-
-### Integrantes da equipe
+**Integrantes:**
 - Alice Lopes Fernandes
 - Davi Felski de Vargas
 - Gustavo Henrique Rapouso
 - Vitória Jaroczinski
 
-Turma: T TDES 2024/1 M6
+**Turma:** T TDES 2024/1 M6  
+**Unidade curricular:** Desenvolvimento de Sistemas  
+**Professor:** Ewerton de Oliveira Cercal
 
-Unidade curricular: Desenvolvimento de Sistemas
+## 2. O que o sistema faz
 
-Professor(a): Ewerton de Oliveira Cercal
+O Ferrorama Gauge é um sistema web desenvolvido para organizar e facilitar o acompanhamento de informações relacionadas ao monitoramento ferroviário. Seu objetivo é reunir dados sobre trens, trilhos, viagens e sensores em um único ambiente.
 
-## 2. Instalação e execução
+O sistema permite consultar informações, acompanhar viagens pelo mapa, visualizar leituras dos sensores, verificar alertas e gerar relatórios. Também possui diferentes perfis de acesso — gestor, maquinista e cliente — para que cada usuário utilize as funcionalidades disponíveis de acordo com sua função.
 
-### 2.1. Preparação do ambiente
+## 3. Tecnologias
+
+- **PHP:** funcionamento das páginas e processamento das informações.
+- **MySQL:** armazenamento dos dados.
+- **HTML:** estrutura das páginas.
+- **CSS:** aparência e organização visual.
+- **JavaScript:** recursos interativos das telas.
+- **Leaflet:** exibição de mapas.
+- **XAMPP:** ambiente utilizado para executar o sistema localmente.
+
+## 4. Como instalar
 
 1. Instale o XAMPP no computador.
-2. Inicie os serviços Apache e MySQL pelo painel do XAMPP.
-3. Baixe o projeto pelo repositório do GitHub ou utilize a pasta fornecida pela equipe.
-4. Coloque a pasta do projeto dentro do diretório `C:\xampp\htdocs\`.
+2. Baixe o projeto pelo GitHub:
 
-Para baixar pelo Git, utilize:
+   ```bash
+   git clone https://github.com/gustavorapouso/atividade_sa_gauge.git
+   ```
 
-```bash
-git clone https://github.com/gustavorapouso/atividade_sa_gauge.git
-```
+3. Coloque a pasta `atividade_sa_gauge` dentro de `C:\xampp\htdocs\`.
+4. Abra o XAMPP e inicie os serviços Apache e MySQL.
+5. Acesse `http://localhost/phpmyadmin`.
+6. Importe o arquivo SQL do projeto, localizado na pasta `data_base`, caso esse seja o local do script na versão final.
+7. Confira as configurações de conexão no arquivo `includes/conexao.php`.
+8. Abra o navegador e acesse:
 
-### 2.2. Importação do banco de dados
+   `http://localhost/atividade_sa_gauge/`
 
-1. Abra o navegador e acesse `http://localhost/phpmyadmin`.
-2. Crie ou selecione o banco de dados utilizado pelo projeto.
-3. Acesse a opção **Importar**.
-4. Selecione o arquivo SQL disponibilizado junto com o projeto.
-5. Clique em **Importar** ou **Executar** e aguarde a conclusão.
-6. Confira se as tabelas foram criadas corretamente.
+## 5. Usuários de teste
 
-### 2.3. Configuração da conexão
-
-O arquivo `includes/conexao.php` é responsável pela conexão com o banco de dados. O projeto utiliza MySQLi no formato orientado a objetos.
-
-Antes de executar o sistema, confira se o endereço do servidor, o usuário, a senha e o nome do banco de dados estão de acordo com a configuração do MySQL no computador.
-
-### 2.5. Estrutura de pastas
-
-```
-atividade_sa_gauge/
-├── index.php                 Tela de login
-├── assets/
-│   ├── css/                  Estilos
-│   │   ├── base.css          Cores, fontes e reset (todas as páginas)
-│   │   ├── layout.css        Barra superior, menu lateral e rodapé
-│   │   ├── componentes.css   Botões, formulários, tabelas, cartões, mensagens
-│   │   └── ...               Estilos específicos (paineis, relatorios, alertas...)
-│   ├── img/                  Imagens e logos
-│   └── js/                   menu.js (menu lateral) e mapa.js (mapas Leaflet)
-├── includes/                 Arquivos PHP compartilhados
-│   ├── conexao.php           Conexão com o banco
-│   ├── funcoes.php           Funções auxiliares (h, url, temPapel...)
-│   ├── proteger.php          Exige login nas páginas restritas
-│   ├── cabecalho.php         Início das páginas internas (barra + menu)
-│   ├── menu.php              Itens do menu de acordo com o perfil
-│   ├── rodape.php            Fim das páginas internas (rodapé)
-│   └── ...
-├── paginas/
-│   ├── autenticacao/         Cadastro, recuperação de senha, sair
-│   ├── paineis/              Painéis do gestor, cliente e maquinista
-│   ├── usuarios/             Perfil e gestão de usuários
-│   ├── trens/                Trens (cadastro, listas e detalhes)
-│   ├── trilhos/              Trilhos
-│   ├── viagens/              Viagens e acompanhamento no mapa
-│   ├── sensores/             Sensores, leituras, simulador e alertas
-│   ├── relatorios/           Geração e visualização de relatórios
-│   └── suporte/              Contato com o suporte
-└── docs/                     Plano de implementação
-```
-
-Toda página interna segue o mesmo modelo:
-
-```php
-<?php
-require __DIR__ . '/../../includes/proteger.php';   // exige login
-
-// ... consultas ao banco ...
-
-$titulo = 'Nome da página';
-require __DIR__ . '/../../includes/cabecalho.php';  // barra superior + menu
-?>
-
-<h1 class="titulo-pagina">Nome da página</h1>
-<!-- conteúdo -->
-
-<?php require __DIR__ . '/../../includes/rodape.php'; ?>
-```
-
-O menu lateral fica ao lado do conteúdo em telas grandes (e pode ser recolhido pelo botão ☰) e abre por cima do conteúdo em celulares.
-
-### 2.4. Acesso ao sistema
-
-1. Confira se os serviços Apache e MySQL estão iniciados.
-2. Abra o navegador.
-3. Acesse `http://localhost/atividade_sa_gauge/`, ajustando o endereço caso a pasta tenha outro nome.
-4. Faça login com uma das contas de teste disponibilizadas pela equipe.
-
-## 3. Usuários de teste
-
-As contas abaixo serão utilizadas para testar o acesso de cada perfil do sistema.
+As contas abaixo permitem testar os diferentes perfis de acesso.
 
 | Perfil | Login | Senha |
 |---|---|---|
-| Maquinista | [login de teste] | [senha de teste] |
-| Gestor | [login de teste] | [senha de teste] |
-| Cliente | [login de teste] | [senha de teste] |
+| Gestor | [Preencher] | [Preencher] |
+| Maquinista | [Preencher] | [Preencher] |
+| Cliente | [Preencher] | [Preencher] |
 
-Cada conta deve ser testada para verificar se o usuário consegue acessar o painel correspondente ao seu perfil.
+Cada conta deve ser utilizada para verificar se o painel e as permissões correspondem ao perfil cadastrado.
 
-## 4. Telas do sistema
+## 6. Telas e funcionalidades do sistema
 
-### Login
-Permite que o usuário informe suas credenciais para acessar o sistema.
+| Tela ou arquivo | Funcionalidade |
+|---|---|
+| `index.php` | Tela inicial de login. |
+| Painel do gestor | Reúne as funcionalidades administrativas. |
+| Painel do maquinista | Apresenta as informações disponíveis para o maquinista. |
+| Painel do cliente | Disponibiliza as informações destinadas ao cliente. |
+| Recuperação de senha | Permite iniciar a recuperação do acesso. |
+| Trens | Cadastro, consulta e visualização de informações dos trens. |
+| Trilhos | Consulta e gerenciamento das informações dos trilhos. |
+| Viagens | Consulta e acompanhamento das viagens pelo mapa. |
+| Sensores | Consulta de sensores, leituras, simulador e alertas. |
+| Relatórios | Geração e visualização de relatórios. |
+| Usuários | Consulta e gerenciamento dos usuários. |
+| Suporte | Área de contato e atendimento ao usuário. |
 
-### Painel do maquinista
-Área destinada ao usuário com perfil de maquinista, reunindo as funcionalidades disponíveis para esse perfil.
+## 7. Decisões tomadas durante o desenvolvimento
 
-### Painel do gestor
-Área destinada ao gestor, com acesso às funcionalidades administrativas disponíveis no sistema.
+**Bloco 1 — Conexão com o banco de dados**
 
-### Painel do cliente
-Área destinada ao cliente, com acesso às funcionalidades disponibilizadas para esse perfil.
+Foi escolhido o MySQLi no formato orientado a objetos para realizar a conexão com o banco de dados. A conexão fica centralizada no arquivo `includes/conexao.php`, facilitando a organização e a manutenção do sistema.
 
-### Recuperação de senha
-Permite que o usuário inicie o processo de recuperação de acesso caso esqueça sua senha.
+**Bloco 2 — Exclusão de trens e sensores**
 
-As funcionalidades de cada tela devem ser conferidas na versão final do sistema. Recomenda-se adicionar capturas de tela para facilitar a compreensão da interface.
+Foi escolhido o comportamento `RESTRICT`, pois os sensores possuem informações importantes para o monitoramento. Assim, um trem não pode ser excluído enquanto possuir sensores vinculados, evitando a perda de dados.
 
-## 5. Decisões tomadas durante o desenvolvimento
+**Bloco 4 — Recuperação de senha**
 
-### Bloco 1 — Conexão com o banco de dados
+Foi desenvolvida uma funcionalidade de recuperação de senha para ajudar os usuários que esquecerem suas credenciais. Dessa forma, é possível recuperar o acesso sem precisar criar outra conta.
 
-Escolhemos utilizar o `mysqli` no formato orientado a objetos para conectar o sistema ao banco de dados. A conexão é realizada pelo arquivo `conexao.php`, que foi conferido e está correto. Essa organização facilita a centralização da conexão e a manutenção do código.
+**Outras decisões**
 
-### Bloco 2 — Exclusão de trens e sensores
+As demais decisões dos blocos anteriores devem ser acrescentadas conforme as escolhas realizadas pela equipe, acompanhadas de uma breve justificativa.
 
-Escolhemos o comportamento `RESTRICT`, pois os sensores possuem informações importantes para o monitoramento. Dessa forma, um trem não poderá ser excluído enquanto houver sensores vinculados a ele, evitando a perda de dados e mantendo a integridade do banco de dados.
+## 8. Limitações conhecidas
 
-### Bloco 4 — Recuperação de senha
+As limitações devem representar o estado real da versão entregue. Durante os testes finais, a equipe deve verificar:
 
-A funcionalidade de recuperação de senha foi desenvolvida para permitir que os usuários recuperem o acesso ao Ferrorama Gauge caso esqueçam suas credenciais. Ela facilita o processo de acesso, evitando a necessidade de criar outra conta e reduzindo a dependência de suporte técnico. A verificação da identidade do usuário também é importante para proteger a conta durante a redefinição da senha.
+- Se todas as funcionalidades planejadas foram implementadas.
+- Se existem páginas ou operações que apresentam erros.
+- Se todos os perfis possuem os acessos esperados.
+- Se os relatórios e demais recursos funcionam corretamente.
 
-### Outras decisões técnicas
+As funcionalidades que não foram concluídas devem ser identificadas nesta seção, explicando brevemente o motivo, como falta de tempo ou dificuldades durante o desenvolvimento.
 
-Outras decisões devem ser documentadas de acordo com as escolhas realmente feitas pela equipe em cada bloco do projeto. Cada decisão deve apresentar o que foi escolhido e o motivo dessa escolha.
+## 9. Uso de inteligência artificial
 
-## 6. Limitações conhecidas
+Ferramentas de inteligência artificial foram utilizadas como apoio durante o desenvolvimento, principalmente para esclarecer dúvidas, auxiliar na identificação de erros e organizar a documentação.
 
-As limitações desta versão devem ser registradas com base nos testes realizados pela equipe.
+O conteúdo sugerido pelas ferramentas foi revisado pela equipe, que permanece responsável pelo código, pelas decisões tomadas e pelos testes do sistema.
 
-Devem ser verificadas possíveis funcionalidades que não foram concluídas, problemas encontrados durante os testes e recursos previstos no planejamento que ficaram de fora da versão final.
+| Utilização | Finalidade |
+|---|---|
+| Esclarecimento de dúvidas | Compreender conceitos e recursos utilizados no projeto. |
+| Análise de erros | Auxiliar na identificação de possíveis problemas no código. |
+| Documentação | Apoiar a organização e a escrita do README. |
 
-A equipe deve atualizar esta seção com as limitações reais do Ferrorama Gauge antes da entrega.
-
-## 7. Registro de uso de inteligência artificial
-
-Ferramentas de inteligência artificial foram utilizadas como apoio durante o desenvolvimento do projeto, auxiliando na compreensão de dúvidas técnicas, na análise de erros e na organização da documentação.
-
-As sugestões fornecidas foram utilizadas como apoio e devem ser conferidas pela equipe de acordo com o código desenvolvido. A equipe é responsável por compreender o funcionamento do sistema, testar suas funcionalidades e revisar o conteúdo final.
-
-Este registro deve ser ajustado para representar o uso efetivo de inteligência artificial pela equipe e respeitar as orientações da unidade curricular.
+*O registro deve ser ajustado conforme as ferramentas e os usos efetivamente realizados pela equipe.*
