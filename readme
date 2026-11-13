@@ -52,9 +52,9 @@ As contas abaixo permitem testar os diferentes perfis de acesso.
 
 | Perfil | Login | Senha |
 |---|---|---|
-| Gestor | [Preencher] | [Preencher] |
-| Maquinista | [Preencher] | [Preencher] |
-| Cliente | [Preencher] | [Preencher] |
+| Gestor | [Gustavo Henrique Rapouso] | [12345] |
+| Maquinista | [Vitória] | [123456] |
+| Cliente | [Alice] | [1234567] |
 
 Cada conta deve ser utilizada para verificar se o painel e as permissões correspondem ao perfil cadastrado.
 
@@ -95,25 +95,17 @@ As demais decisões dos blocos anteriores devem ser acrescentadas conforme as es
 
 ## 8. Limitações conhecidas
 
-As limitações devem representar o estado real da versão entregue. Durante os testes finais, a equipe deve verificar:
+1. Conexão entre as páginas: algumas páginas apresentavam dificuldades para se conectar e direcionar corretamente umas às outras. O problema foi corrigido com ajustes no código.
 
-- Se todas as funcionalidades planejadas foram implementadas.
-- Se existem páginas ou operações que apresentam erros.
-- Se todos os perfis possuem os acessos esperados.
-- Se os relatórios e demais recursos funcionam corretamente.
+2. Botão "Sair": após encerrar a sessão, ainda era possível retornar às páginas internas pelo botão de voltar do navegador. Esse comportamento também foi corrigido.
 
-As funcionalidades que não foram concluídas devem ser identificadas nesta seção, explicando brevemente o motivo, como falta de tempo ou dificuldades durante o desenvolvimento.
+3. Acompanhamento de carga e passageiros: tivemos dificuldades no desenvolvimento das páginas acompanhamento_carga e acompanhamento_passageiro,
+principalmente na configuração do mapa para que ele mostrasse corretamente a rota do trem. Após vários testes e ajustes, conseguimos fazer o mapa funcionar como esperado.
+
+4.Calendário: no layout inicial do Figma, planejamos uma página para mostrar todos os trens e suas viagens disponíveis. 
+Porém, durante a implementação, percebemos que essa página não seria necessária para o funcionamento do sistema e decidimos removê-la.
 
 ## 9. Uso de inteligência artificial
 
 Ferramentas de inteligência artificial foram utilizadas como apoio durante o desenvolvimento, principalmente para esclarecer dúvidas, auxiliar na identificação de erros e organizar a documentação.
-
-O conteúdo sugerido pelas ferramentas foi revisado pela equipe, que permanece responsável pelo código, pelas decisões tomadas e pelos testes do sistema.
-
-| Utilização | Finalidade |
-|---|---|
-| Esclarecimento de dúvidas | Compreender conceitos e recursos utilizados no projeto. |
-| Análise de erros | Auxiliar na identificação de possíveis problemas no código. |
-| Documentação | Apoiar a organização e a escrita do README. |
-
-*O registro deve ser ajustado conforme as ferramentas e os usos efetivamente realizados pela equipe.*
+As decisões e implementações foram realizadas pela equipe.
